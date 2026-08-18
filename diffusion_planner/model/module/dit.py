@@ -90,6 +90,11 @@ class DiTBlock(nn.Module):
         shift_msa, scale_msa, gate_msa, shift_mlp, scale_mlp, gate_mlp = self.adaLN_modulation(y).chunk(6, dim=1)
 
         modulated_x = modulate(self.norm1(x), shift_msa, scale_msa)
+        # float additive mask instead of bool: a float key_padding_mask disables torch's MHA
+        # fast path, whose NPU fused kernel (aclnnTransformBiasRescaleQkv) has no 310P
+        # implementation (EZ1001). Semantics are identical for the decomposed slow path.
+        if attn_mask is not None and attn_mask.dtype == torch.bool:
+            attn_mask = torch.zeros(attn_mask.shape, dtype=x.dtype, device=x.device).masked_fill(attn_mask, float("-inf"))
         x = x + gate_msa.unsqueeze(1) * self.attn(modulated_x, modulated_x, modulated_x, key_padding_mask=attn_mask)[0]
 
         modulated_x = modulate(self.norm2(x), shift_mlp, scale_mlp)

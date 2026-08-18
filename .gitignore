@@ -1,12 +1,5 @@
-logs/*
-*/.vscode/*
-*/.git/*
-exp/*
-.vscode
-__pycache__/
+.stfolder/
+.stignore
+syx_docs/
 *.egg-info/
-ckpt/
-image*
-exp/
-cache/
-checkpoints/
+__pycache__/

@@ -25,4 +25,4 @@ diffusion_planner:
     num_poses: 80
     time_horizon: 8
 
-  device: cuda
+  device: npu

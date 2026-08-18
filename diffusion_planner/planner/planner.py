@@ -1,10 +1,12 @@
 
 import warnings
 import torch
+import torch_npu  # Ascend NPU backend, hard dependency (project rule: no try/except)
 import numpy as np
 from typing import Deque, Dict, List, Type
 
 warnings.filterwarnings("ignore")
+torch.npu.set_compile_mode(jit_compile=False)  # use precompiled op kernels; stable for inference
 
 from nuplan.common.actor_state.ego_state import EgoState
 from nuplan.common.utils.interpolatable_state import InterpolatableState
@@ -38,9 +40,11 @@ class DiffusionPlanner(AbstractPlanner):
             device: str = "cpu",
         ):
 
-        assert device in ["cpu", "cuda"], f"device {device} not supported"
+        assert device in ["cpu", "cuda", "npu"], f"device {device} not supported"
         if device == "cuda":
             assert torch.cuda.is_available(), "cuda is not available"
+        elif device == "npu":
+            assert torch.npu.is_available(), "npu is not available"
             
         self._future_horizon = future_trajectory_sampling.time_horizon # [s] 
         self._step_interval = future_trajectory_sampling.time_horizon / future_trajectory_sampling.num_poses # [s]
@@ -120,12 +124,17 @@ class DiffusionPlanner(AbstractPlanner):
         """
         inputs = self.planner_input_to_model_inputs(current_input)
 
-        inputs = self.observation_normalizer(inputs)        
+        inputs = self.observation_normalizer(inputs)
+        # jit window: 310P precompiled set lacks aclnnTransformBiasRescaleQkv (MHA fused path,
+        # EZ1001). Allow JIT only inside the model forward; restore False right after.
+        torch.npu.set_compile_mode(jit_compile=True)
         _, outputs = self._planner(inputs)
+        torch.npu.set_compile_mode(jit_compile=False)
 
         trajectory = InterpolatedTrajectory(
             trajectory=self.outputs_to_trajectory(outputs, current_input.history.ego_states)
         )
 
         return trajectory
+        # sync-bump: trivial comment to force a new file version for syncthing
     
