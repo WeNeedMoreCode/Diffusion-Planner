@@ -31,6 +31,24 @@ from diffusion_planner.data_process.utils import vector_set_coordinates_to_local
 # =====================
 # 1. Get lanes, speed limit, traffic light and lane's roadblock ids
 # =====================
+# Per-lane polyline conversion cache. discrete_path content is a map invariant
+# (devkit caches it on the map object itself), so the [N, 2] array for a given
+# (map, lane, role) is a pure function of immutable map data. Closed-loop
+# simulation re-queries the same lanes every step; the cache removes the
+# per-point Point2D construction that dominated the mapquery stage (~17% of
+# profile samples, 2026-08-20).
+_POLYLINE_CACHE: Dict[Tuple[str, str, str], np.ndarray] = {}
+
+
+def _polyline_array(map_name: str, lane_id: str, role: str, path) -> np.ndarray:
+    key = (map_name, lane_id, role)
+    arr = _POLYLINE_CACHE.get(key)
+    if arr is None:
+        arr = np.array([(state.x, state.y) for state in path], dtype=np.float64)
+        _POLYLINE_CACHE[key] = arr
+    return arr
+
+
 def _get_lane_polylines(
     map_api: AbstractMap, point: Point2D, radius: float
 ) -> Tuple[MapObjectPolylines, MapObjectPolylines, MapObjectPolylines, LaneSegmentLaneIDs]:
@@ -65,14 +83,14 @@ def _get_lane_polylines(
     # sort by distance to query point
     map_objects.sort(key=lambda map_obj: float(get_distance_between_map_object_and_point(point, map_obj)))
 
+    map_name = map_api.map_name
     for map_obj in map_objects:
-        # center lane
-        baseline_path_polyline = [Point2D(node.x, node.y) for node in map_obj.baseline_path.discrete_path]
-        lanes_mid.append(baseline_path_polyline)
+        lane_id = map_obj.id
 
-        # boundaries
-        lanes_left.append([Point2D(node.x, node.y) for node in map_obj.left_boundary.discrete_path])
-        lanes_right.append([Point2D(node.x, node.y) for node in map_obj.right_boundary.discrete_path])
+        # center lane and boundaries as cached [N, 2] arrays
+        lanes_mid.append(_polyline_array(map_name, lane_id, "mid", map_obj.baseline_path.discrete_path))
+        lanes_left.append(_polyline_array(map_name, lane_id, "left", map_obj.left_boundary.discrete_path))
+        lanes_right.append(_polyline_array(map_name, lane_id, "right", map_obj.right_boundary.discrete_path))
 
         # lane ids
         lane_ids.append(map_obj.id)
@@ -169,10 +187,95 @@ def get_neighbor_vector_set_map(
 # 2. Get maps array for model input
 # =====================
 def _interpolate_points(line, num_point):
-    line = LineString(line)
-    new_line = np.concatenate([line.interpolate(d).coords._coords for d in np.linspace(0, line.length, num_point)])
+    # Resample a polyline to num_point points equidistant in arc length (endpoints
+    # included). Vectorized numpy arc-length parameterization replaces per-point
+    # shapely interpolate() calls, which dominated map_process runtime (~220ms/step
+    # measured 2026-08-19, see syx_docs summary 2026-08-19).
+    pts = np.asarray(line, dtype=np.float64)
+    if pts.shape[0] < 2:
+        # Degenerate input (old shapely code would raise); return repeated point.
+        return np.repeat(pts[-1:], num_point, axis=0)
 
-    return new_line
+    seg = pts[1:] - pts[:-1]
+    seg_len = np.linalg.norm(seg, axis=-1)
+    cum = np.concatenate([[0.0], np.cumsum(seg_len)])
+    total = cum[-1]
+    if total <= 0.0:
+        # All points coincide: zero-length line.
+        return np.repeat(pts[:1], num_point, axis=0)
+
+    s = np.linspace(0.0, total, num_point)
+    idx = np.clip(np.searchsorted(cum, s, side="right") - 1, 0, seg_len.shape[0] - 1)
+    denom = seg_len[idx]
+    safe_denom = np.where(denom > 0.0, denom, 1.0)
+    t = np.where(denom > 0.0, (s - cum[idx]) / safe_denom, 0.0)
+    return pts[idx] + t[:, None] * seg[idx]
+
+
+def _interpolate_points_batch(lines, num_point):
+    """Batch version of _interpolate_points: resample every ragged polyline to
+    the same fixed point count. Equivalent to calling _interpolate_points once
+    per line, but flattens all lines into one array and shifts each line's
+    cumulative arclength by line_index * span (span > any line length) so the
+    merged array stays non-decreasing and one searchsorted serves all lines.
+    Replaces the per-element loop in _convert_lane_to_fixed_size, where
+    hundreds of small-array numpy call chains dominated the mapproc stage."""
+    n_lines = len(lines)
+    out = np.zeros((n_lines, num_point, 2), dtype=np.float64)
+    if n_lines == 0:
+        return out
+
+    arrays = [np.asarray(line, dtype=np.float64) for line in lines]
+
+    # Degenerate lines (< 2 points): repeat the single point, matching
+    # _interpolate_points.
+    batch_idx = []
+    for i, arr in enumerate(arrays):
+        if arr.shape[0] < 2:
+            out[i] = np.repeat(arr[-1:], num_point, axis=0)
+        else:
+            batch_idx.append(i)
+    if not batch_idx:
+        return out
+
+    pts = np.concatenate([arrays[i] for i in batch_idx], axis=0)
+    counts = np.array([arrays[i].shape[0] for i in batch_idx], dtype=np.int64)
+    n_batch = len(batch_idx)
+    line_of_point = np.repeat(np.arange(n_batch), counts)
+
+    seg_len = np.linalg.norm(pts[1:] - pts[:-1], axis=-1)
+    # Cross-line join segments are not real geometry; zero them out.
+    seg_len = np.where(line_of_point[1:] != line_of_point[:-1], 0.0, seg_len)
+    cum = np.concatenate([[0.0], np.cumsum(seg_len)])
+    bounds = np.concatenate([[0], np.cumsum(counts)])  # point index where each line starts
+    # Per-line cumulative arclength, each line starting from 0.
+    within = cum - cum[bounds[:-1]][line_of_point]
+    lens = within[bounds[1:] - 1]  # total length per line (starts are always 0)
+
+    # Zero-length lines: all points coincide, repeat the first point.
+    degenerate = lens <= 0.0
+    for k in np.flatnonzero(degenerate):
+        out[batch_idx[k]] = np.repeat(arrays[batch_idx[k]][:1], num_point, axis=0)
+
+    ok = np.flatnonzero(~degenerate)
+    if ok.size == 0:
+        return out
+
+    # Global monotone key: line k's points live in [k*span, k*span + len_k].
+    span = float(lens[ok].max()) + 1.0
+    offsets = np.arange(n_batch, dtype=np.float64) * span
+    cum_m = within + offsets[line_of_point]
+    s = offsets[ok][:, None] + np.linspace(0.0, 1.0, num_point)[None, :] * lens[ok][:, None]
+
+    s_flat = s.ravel()
+    pos = np.clip(np.searchsorted(cum_m, s_flat, side="right") - 1, 0, pts.shape[0] - 2)
+    denom = seg_len[pos]
+    safe_denom = np.where(denom > 0.0, denom, 1.0)
+    t = np.where(denom > 0.0, (s_flat - cum_m[pos]) / safe_denom, 0.0)
+    res = pts[pos] + t[:, None] * (pts[pos + 1] - pts[pos])
+
+    out[np.asarray(batch_idx)[ok]] = res.reshape(ok.size, num_point, 2)
+    return out
 
 def _convert_lane_to_fixed_size(ego_pose, feature_coords, speed_limit, lane_route, left_boundary, right_boundary, feature_tl_data, max_elements, max_points,
                                          traffic_light_encoding_dim):
@@ -206,29 +309,22 @@ def _convert_lane_to_fixed_size(ego_pose, feature_coords, speed_limit, lane_rout
 
     mapping = sorted(mapping.items(), key=lambda item: item[1])
     sorted_elements = mapping[:max_elements]
+    chosen = [element_idx[0] for element_idx in sorted_elements]
 
-    # pad or trim waypoints in a map element
-    for idx, element_idx in enumerate(sorted_elements):
-        element_coords = feature_coords[element_idx[0]]
-        left_coords = left_boundary[element_idx[0]]
-        right_coords = right_boundary[element_idx[0]]
+    # Resample all chosen elements (mid/left/right) with three batched calls
+    # instead of per-element _interpolate_points loops.
+    coords_array[:len(chosen)] = _interpolate_points_batch([feature_coords[i] for i in chosen], max_points)
+    left_array[:len(chosen)] = _interpolate_points_batch([left_boundary[i] for i in chosen], max_points)
+    right_array[:len(chosen)] = _interpolate_points_batch([right_boundary[i] for i in chosen], max_points)
+    avails_array[:len(chosen)] = True  # specify real vs zero-padded data
 
-        # interpolate to maintain fixed size if the number of points is not enough
-        element_coords = _interpolate_points(element_coords, max_points)
-        left_coords = _interpolate_points(left_coords, max_points)
-        right_coords = _interpolate_points(right_coords, max_points)
-
-        coords_array[idx] = element_coords
-        left_array[idx] = left_coords
-        right_array[idx] = right_coords
-        avails_array[idx] = True  # specify real vs zero-padded data
-
-        lane_has_speed_limit_array[idx] = lane_has_speed_limit[element_idx[0]]
-        lane_speed_limit_array[idx] = lane_speed_limit[element_idx[0]]
-        lane_routes.append(lane_route[element_idx[0]])
+    for idx, i in enumerate(chosen):
+        lane_has_speed_limit_array[idx] = lane_has_speed_limit[i]
+        lane_speed_limit_array[idx] = lane_speed_limit[i]
+        lane_routes.append(lane_route[i])
 
         if tl_data_array is not None and feature_tl_data is not None:
-            tl_data_array[idx] = feature_tl_data[element_idx[0]]
+            tl_data_array[idx] = feature_tl_data[i]
 
     return coords_array, left_array, right_array, tl_data_array, avails_array, lane_has_speed_limit_array, lane_speed_limit_array, lane_routes
 
@@ -257,28 +353,33 @@ def _prune_route_by_connectivity(route_roadblock_ids: List[str], roadblock_ids: 
 
 
 def _lane_polyline_process(polylines, left_boundary, right_boundary, avails, traffic_light):
+    # Vectorized over elements. Invalid (zero-padded) elements are all-zero in
+    # every input (coords were masked by availability before this point), so
+    # the computed block is all-zero too — matching the original loop that
+    # skipped them. Flip decisions only read the first polyline point, so a
+    # single [E, 1] slice serves all elements.
     dim = 12
-    new_polylines = np.zeros(shape=(polylines.shape[0], polylines.shape[1], dim), dtype=np.float32)
 
-    for i in range(polylines.shape[0]):
-        if avails[i][0]: 
-            polyline = polylines[i]
-            polyline_vector = polyline[1:]-polyline[:-1]
-            polyline_vector = np.insert(polyline_vector, polyline_vector.shape[0] , 0, axis=0)
+    polyline_vector = np.zeros_like(polylines)
+    polyline_vector[:, :-1] = polylines[:, 1:] - polylines[:, :-1]
 
-            if np.linalg.norm(left_boundary[i, -1] - polyline[0]) < np.linalg.norm(left_boundary[i, 0] - polyline[0]):
-                left_boundary[i] = np.flip(left_boundary[i], axis=0)
+    first = polylines[:, 0]  # [E, 2]
+    flip_left = (
+        np.linalg.norm(left_boundary[:, -1] - first, axis=-1)
+        < np.linalg.norm(left_boundary[:, 0] - first, axis=-1)
+    )
+    left_boundary[flip_left] = left_boundary[flip_left][:, ::-1]
 
-            if np.linalg.norm(right_boundary[i, -1] - polyline[0]) < np.linalg.norm(right_boundary[i, 0] - polyline[0]):
-                right_boundary[i] = np.flip(right_boundary[i], axis=0)
+    flip_right = (
+        np.linalg.norm(right_boundary[:, -1] - first, axis=-1)
+        < np.linalg.norm(right_boundary[:, 0] - first, axis=-1)
+    )
+    right_boundary[flip_right] = right_boundary[flip_right][:, ::-1]
 
-            polyline_to_left = left_boundary[i] - polyline
-            polyline_to_right = right_boundary[i] - polyline
-
-
-            new_polylines[i] = np.concatenate([polyline, polyline_vector, polyline_to_left, polyline_to_right, traffic_light[i]], axis=-1)  
-
-    return new_polylines
+    return np.concatenate(
+        [polylines, polyline_vector, left_boundary - polylines, right_boundary - polylines, traffic_light],
+        axis=-1,
+    ).astype(np.float32, copy=False)
 
 
 
@@ -301,9 +402,13 @@ def map_process(route_roadblock_ids, anchor_ego_state, coords, traffic_light_dat
     for feature_name, feature_coords in coords.items():
         list_feature_coords = []
 
-        # Pack coords into array list
-        for element_coords in feature_coords.to_vector():
-            list_feature_coords.append(np.array(element_coords, dtype=np.float64))
+        # Pack coords into array list. Since _get_lane_polylines polylines hold
+        # [N, 2] float64 arrays already, consume them directly: the old devkit
+        # to_vector() round-trip (Point2D objects -> nested lists -> array)
+        # cost ~13% of step time (2026-08-20). Lane layers are the only feature
+        # layers requested here, so no Point2D-based polygon layers occur.
+        for element_coords in feature_coords.polylines:
+            list_feature_coords.append(np.asarray(element_coords, dtype=np.float64))
         list_array_data[f"coords.{feature_name}"] = list_feature_coords
 
         # Pack traffic light data into array list if it exists

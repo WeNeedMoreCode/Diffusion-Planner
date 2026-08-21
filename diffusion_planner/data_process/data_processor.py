@@ -1,7 +1,15 @@
+import os
+import time
+
 import numpy as np
 from tqdm import tqdm
 
 from nuplan.common.actor_state.state_representation import Point2D
+
+# Sub-stage timing inside observation_adapter (same switch as planner.py).
+# No device sync at these boundaries: blocks are CPU work except the final
+# host-to-device copy, whose async tail is accounted by planner.py's adapt sync.
+_STAGE_TIMING = os.environ.get("DP_STAGE_TIMING") == "1"
 
 from diffusion_planner.data_process.roadblock_utils import route_roadblock_correction
 from diffusion_planner.data_process.agent_process import (
@@ -37,6 +45,8 @@ class DataProcessor(object):
     # Use for inference
     def observation_adapter(self, history_buffer, traffic_light_data, map_api, route_roadblock_ids, device='cpu'):
 
+        if _STAGE_TIMING:
+            t0 = time.perf_counter()
         '''
         ego
         '''
@@ -45,6 +55,8 @@ class DataProcessor(object):
         ego_coords = Point2D(ego_state.rear_axle.x, ego_state.rear_axle.y)
         anchor_ego_state = np.array([ego_state.rear_axle.x, ego_state.rear_axle.y, ego_state.rear_axle.heading], dtype=np.float64)
 
+        if _STAGE_TIMING:
+            t1 = time.perf_counter()
         '''
         neighbor
         '''
@@ -54,6 +66,8 @@ class DataProcessor(object):
         _, neighbor_agents_past, _, static_objects = \
             agent_past_process(ego_agent_past, neighbor_agents_past, neighbor_agents_types, self.num_agents, static_objects, static_objects_types, self.num_static, self.max_ped_bike, anchor_ego_state)
 
+        if _STAGE_TIMING:
+            t2 = time.perf_counter()
         '''
         Map
         '''
@@ -61,18 +75,31 @@ class DataProcessor(object):
         route_roadblock_ids = route_roadblock_correction(
             ego_state, map_api, route_roadblock_ids
         )
+        if _STAGE_TIMING:
+            t3 = time.perf_counter()
         coords, traffic_light_data, speed_limit, lane_route = get_neighbor_vector_set_map(
             map_api, self._map_features, ego_coords, self._radius, traffic_light_data
         )
-        vector_map = map_process(route_roadblock_ids, anchor_ego_state, coords, traffic_light_data, speed_limit, lane_route, self._map_features, 
+        if _STAGE_TIMING:
+            t4 = time.perf_counter()
+        vector_map = map_process(route_roadblock_ids, anchor_ego_state, coords, traffic_light_data, speed_limit, lane_route, self._map_features,
                                     self._max_elements, self._max_points)
 
-        
+        if _STAGE_TIMING:
+            t5 = time.perf_counter()
         data = {"neighbor_agents_past": neighbor_agents_past[:, -21:],
                 "ego_current_state": np.array([0., 0., 1. ,0., 0., 0., 0., 0., 0., 0.], dtype=np.float32), # ego centric x, y, cos, sin, vx, vy, ax, ay, steering angle, yaw rate, we only use x, y, cos, sin during inference
                 "static_objects": static_objects}
         data.update(vector_map)
         data = convert_to_model_inputs(data, device)
+        if _STAGE_TIMING:
+            t6 = time.perf_counter()
+            print(
+                f"[dp-adapt] ego={1000*(t1-t0):6.1f} agents={1000*(t2-t1):6.1f} "
+                f"route={1000*(t3-t2):6.1f} mapquery={1000*(t4-t3):6.1f} "
+                f"mapproc={1000*(t5-t4):6.1f} to_tensor={1000*(t6-t5):6.1f} ms",
+                flush=True,
+            )
 
         return data
     

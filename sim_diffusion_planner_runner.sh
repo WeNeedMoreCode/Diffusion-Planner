@@ -1,6 +1,7 @@
 # NOTE: device occupancy on this server is DYNAMIC (vllm/mindie containers drift).
 # Check `npu-smi info` before each run and pick a device with <2GB usage (4-7 free at setup time).
-export ASCEND_RT_VISIBLE_DEVICES=4
+# DP_DEVICE / DP_LIMIT / DP_THREADS override for benchmark runs (defaults = production config).
+export ASCEND_RT_VISIBLE_DEVICES=${DP_DEVICE:-4}
 export HYDRA_FULL_ERROR=1
 # Ray blanks accelerator-visibility env vars (ASCEND_RT_VISIBLE_DEVICES -> "") in workers
 # when the task requests num_gpus=0 (our number_of_gpus_allocated_per_simulation=0).
@@ -11,8 +12,8 @@ export RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
 # User Configuration Section
 ###################################
 # Server paths (this NPU server; code synced from local Windows via Syncthing)
-DP_ROOT="/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/Diffusion-Planner"
-DP_DEVKIT="/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit"
+DP_ROOT="/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner"
+DP_DEVKIT="/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit"
 # datasets/ckpt/exp live on /data (server root disk is chronically full; /data has 1.6T free)
 DP_DATA="/data/syx_dp"
 
@@ -69,11 +70,11 @@ python $NUPLAN_DEVKIT_ROOT/nuplan/planning/script/run_simulation.py \
     planner.diffusion_planner.ckpt_path=$CKPT_FILE \
     scenario_builder=$SCENARIO_BUILDER \
     scenario_filter=$SPLIT \
-    scenario_filter.limit_total_scenarios=50 \
+    scenario_filter.limit_total_scenarios=${DP_LIMIT:-50} \
     experiment_uid=$PLANNER/$SPLIT/$BRANCH_NAME/${FILENAME_WITHOUT_EXTENSION}_$(date "+%Y-%m-%d-%H-%M-%S") \
     verbose=true \
     worker=ray_distributed \
-    worker.threads_per_node=4 \
+    worker.threads_per_node=${DP_THREADS:-4} \
     distributed_mode='SINGLE_NODE' \
     number_of_gpus_allocated_per_simulation=0 \
     enable_simulation_progress_bar=true \

@@ -7,7 +7,6 @@ Categories:
     2. Get agents array for model input
 """
 import numpy as np
-from typing import Dict
 
 from nuplan.planning.training.preprocessing.utils.agents_preprocessing import AgentInternalIndex
 from nuplan.common.actor_state.tracked_objects_types import TrackedObjectType
@@ -33,21 +32,37 @@ def _extract_agent_array(tracked_objects, track_token_ids, object_types):
     output = np.zeros((len(agents), AgentInternalIndex.dim()), dtype=np.float64)
     max_agent_id = len(track_token_ids)
 
-    for idx, agent in enumerate(agents):
+    # Track tokens first (sequential int assignment, dict ops), then field
+    # values in one list -> array conversion. The old per-field scalar setitem
+    # (8 numpy scalar writes per agent) dominated _extract_agent_array time.
+    token_ints = []
+    field_rows = []
+    for agent in agents:
         if agent.track_token not in track_token_ids:
             track_token_ids[agent.track_token] = max_agent_id
             max_agent_id += 1
-        track_token_int = track_token_ids[agent.track_token]
-
-        output[idx, AgentInternalIndex.track_token()] = float(track_token_int)
-        output[idx, AgentInternalIndex.vx()] = agent.velocity.x
-        output[idx, AgentInternalIndex.vy()] = agent.velocity.y
-        output[idx, AgentInternalIndex.heading()] = agent.center.heading
-        output[idx, AgentInternalIndex.width()] = agent.box.width
-        output[idx, AgentInternalIndex.length()] = agent.box.length
-        output[idx, AgentInternalIndex.x()] = agent.center.x
-        output[idx, AgentInternalIndex.y()] = agent.center.y
+        token_ints.append(float(track_token_ids[agent.track_token]))
+        field_rows.append((
+            agent.velocity.x,
+            agent.velocity.y,
+            agent.center.heading,
+            agent.box.width,
+            agent.box.length,
+            agent.center.x,
+            agent.center.y,
+        ))
         agent_types.append(agent.tracked_object_type)
+
+    if field_rows:
+        fields = np.array(field_rows, dtype=np.float64)
+        output[:, AgentInternalIndex.track_token()] = token_ints
+        output[:, AgentInternalIndex.vx()] = fields[:, 0]
+        output[:, AgentInternalIndex.vy()] = fields[:, 1]
+        output[:, AgentInternalIndex.heading()] = fields[:, 2]
+        output[:, AgentInternalIndex.width()] = fields[:, 3]
+        output[:, AgentInternalIndex.length()] = fields[:, 4]
+        output[:, AgentInternalIndex.x()] = fields[:, 5]
+        output[:, AgentInternalIndex.y()] = fields[:, 6]
 
     return output, track_token_ids, agent_types
 
@@ -112,22 +127,18 @@ def _filter_agents_array(agents, reverse: bool = False):
     :return: filtered agents in the same format as the input `agents` parameter
     """
     target_array = agents[-1] if reverse else agents[0]
+    track_idx = int(AgentInternalIndex.track_token())
+    target_ids = (
+        target_array[:, track_idx]
+        if target_array.shape[0] > 0
+        else np.empty(0, dtype=np.float64)
+    )
+
+    # np.isin keeps rows whose track token appears in the target frame; boolean
+    # indexing preserves order. The old per-agent `(id == target).max()` scan
+    # made this loop O(num_frames * num_agents^2).
     for i in range(len(agents)):
-
-        rows = []
-        for j in range(agents[i].shape[0]):
-            if target_array.shape[0] > 0:
-                agent_id: float = float(agents[i][j, int(AgentInternalIndex.track_token())])
-                is_in_target_frame: bool = bool(
-                    (agent_id == target_array[:, AgentInternalIndex.track_token()]).max()
-                )
-                if is_in_target_frame:
-                    rows.append(agents[i][j, :].squeeze())
-
-        if len(rows) > 0:
-            agents[i] = np.stack(rows)
-        else:
-            agents[i] = np.empty((0, agents[i].shape[1]), dtype=np.float32)
+        agents[i] = agents[i][np.isin(agents[i][:, track_idx], target_ids)]
 
     return agents
 
@@ -163,18 +174,22 @@ def _pad_agent_states(agent_trajectories, reverse: bool):
 
     key_frame = agent_trajectories[0]
 
-    id_row_mapping: Dict[int, int] = {}
-    for idx, val in enumerate(key_frame[:, track_id_idx]):
-        id_row_mapping[int(val)] = idx
+    # Row lookup by track token. Tokens are small sequential ints (assigned in
+    # _extract_agent_array), so a dense array beats a dict; -1 marks unused ids.
+    key_ids = key_frame[:, track_id_idx].astype(np.int64)
+    row_of_id = np.full(int(key_ids.max()) + 1 if key_ids.size else 0, -1, dtype=np.int64)
+    row_of_id[key_ids] = np.arange(key_ids.shape[0], dtype=np.int64)
 
     current_state = np.zeros((key_frame.shape[0], key_frame.shape[1]), dtype=np.float64)
     for idx in range(len(agent_trajectories)):
         frame = agent_trajectories[idx]
 
-        # Update current frame
-        for row_idx in range(frame.shape[0]):
-            mapped_row: int = id_row_mapping[int(frame[row_idx, track_id_idx])]
-            current_state[mapped_row, :] = frame[row_idx, :]
+        # Scatter the frame's rows into key-frame row order. Track tokens are
+        # unique within a frame (one row per agent), so target rows never
+        # collide and assignment order is irrelevant. _filter_agents_array
+        # guarantees every frame token exists in the key frame, so row_of_id
+        # lookups never hit -1.
+        current_state[row_of_id[frame[:, track_id_idx].astype(np.int64)]] = frame
 
         # Save current state
         agent_trajectories[idx] = current_state.copy()

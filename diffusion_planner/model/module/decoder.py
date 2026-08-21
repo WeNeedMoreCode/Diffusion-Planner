@@ -1,14 +1,116 @@
 import math
+import os
+
 import torch
 import torch.nn as nn
 from timm.models.layers import Mlp
 from timm.layers import DropPath
 
+from diffusion_planner.model.diffusion_utils import fast_dpm_sampler
 from diffusion_planner.model.diffusion_utils.sampling import dpm_sampler
 from diffusion_planner.model.diffusion_utils.sde import SDE, VPSDE_linear
 from diffusion_planner.utils.normalizer import ObservationNormalizer, StateNormalizer
 from diffusion_planner.model.module.mixer import MixerBlock
 from diffusion_planner.model.module.dit import TimestepEmbedder, DiTBlock, FinalLayer
+
+# DP_FASTDPM=1: precomputed-coefficient 10-step solver instead of the generic
+# dpm_sampler (kills the per-step NPU scalar chain, ~11ms/step measured
+# 2026-08-20). Default 0 keeps the upstream path as the A/B baseline.
+_FASTDPM = os.environ.get("DP_FASTDPM", "0") == "1"
+
+
+class DiTBody(nn.Module):
+    """DiT.forward with RouteEncoder hoisted out.
+
+    The torchair graph backend rejects RouteEncoder's boolean-mask scatter
+    (x_result[valid_indices] = x, dynamic shape). route_lanes is constant for
+    the whole sampling step, so its encoding is computed once outside (see
+    SamplerAdapter.begin_step) and fed in; the body is static-shape only.
+    Mathematically identical to DiT.forward for model_type == "x_start".
+    """
+
+    def __init__(self, dit):
+        super().__init__()
+        self.dit = dit
+
+    def forward(self, x, t, cross_c, route_encoding, attn_mask):
+        d = self.dit
+        B, P, _ = x.shape
+        x = d.preproj(x)
+        x_embedding = torch.cat(
+            [d.agent_embedding.weight[0][None, :], d.agent_embedding.weight[1][None, :].expand(P - 1, -1)], dim=0
+        )
+        x = x + x_embedding[None, :, :].expand(B, -1, -1)
+        y = route_encoding + d.t_embedder(t)
+        for block in d.blocks:
+            x = block(x, cross_c, y, attn_mask)
+        x = d.final_layer(x, y)
+        return x
+
+
+class SamplerAdapter(nn.Module):
+    """DiT wrapper handed to dpm_sampler / fast_dpm_sampler.
+
+    Two wins over calling self.dit directly in the sampling loop:
+    1. RouteEncoder runs once per planning step (begin_step) instead of being
+       recomputed at every DPM step (~3.5ms x 10 steps measured 2026-08-19);
+       the attention mask is prebuilt there too (neighbor_current_mask is a
+       loop invariant, the DiT.forward path rebuilt it at every DPM step).
+    2. DP_TORCHAIR=1 compiles the static-shape DiTBody into a torchair GE graph
+       (~15.8x on the body, one-time ~31s compile on first step, cached).
+    Call signature matches dpm_solver's model_kwargs: (x, t, cross_c,
+    route_lanes, neighbor_current_mask); route_lanes and
+    neighbor_current_mask are ignored after begin_step captured them.
+    """
+
+    def __init__(self, dit):
+        super().__init__()
+        self.dit = dit
+        self._body = None  # built lazily on first forward (weights must be loaded first)
+        self._route_encoding = None
+        self._attn_mask = None
+
+    def begin_step(self, route_lanes, neighbor_current_mask):
+        self._route_encoding = self.dit.route_encoder(route_lanes)
+        B, P_minus_1 = neighbor_current_mask.shape
+        attn_mask = torch.zeros((B, P_minus_1 + 1), dtype=torch.bool, device=neighbor_current_mask.device)
+        attn_mask[:, 1:] = neighbor_current_mask
+        self._attn_mask = attn_mask
+
+    @property
+    def model_type(self):
+        # dpm_solver's model_wrapper reads model_type off the model object
+        return self.dit.model_type
+
+    def _get_body(self):
+        if self._body is None:
+            assert self.dit.model_type == "x_start", "SamplerAdapter assumes x_start"
+            body = DiTBody(self.dit).eval()
+            if os.environ.get("DP_TORCHAIR", "0") == "1":
+                import torchair  # top-level import would break CUDA-only environments
+
+                config = torchair.CompilerConfig()
+                # torchair.inference.cache_compile persists the compiled graph:
+                # every Ray worker recompiles ~31s without it; with it the
+                # first worker builds the cache and the rest load from disk
+                # (same graph, no numerical effect). CAVEAT: the cache key is
+                # str(module) + config options -- NOT the forward source -- so
+                # after editing this file delete DP_TORCHAIR_CACHE or point it
+                # at a fresh directory, or a stale graph gets loaded.
+                self._body = torchair.inference.cache_compile(
+                    body.forward,
+                    config=config,
+                    dynamic=False,
+                    cache_dir=os.environ.get("DP_TORCHAIR_CACHE", "/data/syx_dp/torchair_cache"),
+                )
+            else:
+                self._body = body
+        return self._body
+
+    def forward(self, x, t, cross_c, route_lanes=None, neighbor_current_mask=None):
+        assert self._route_encoding is not None and self._attn_mask is not None, \
+            "begin_step() must run before sampling"
+        return self._get_body()(x, t, cross_c, self._route_encoding, self._attn_mask)
 
 
 class Decoder(nn.Module):
@@ -33,8 +135,17 @@ class Decoder(nn.Module):
         
         self._state_normalizer: StateNormalizer = config.state_normalizer
         self._observation_normalizer: ObservationNormalizer = config.observation_normalizer
-        
+
         self._guidance_fn = config.guidance_fn
+
+        # dpm_sampler-facing DiT wrapper: hoists RouteEncoder out of the sampling
+        # loop and (DP_TORCHAIR=1) runs the body as a torchair graph. Cached on
+        # the module so the one-time graph compile happens once per process.
+        # Held in a list on purpose: nn.Module.__setattr__ would register a bare
+        # module attribute into state_dict, adding a duplicate "_sampler.dit.*"
+        # key set that no checkpoint provides. The adapter's dit aliases
+        # self.dit (same Parameter objects), so loaded weights are shared.
+        self._sampler_holder = [SamplerAdapter(self.dit)]
         
     @property
     def sde(self):
@@ -109,33 +220,48 @@ class Decoder(nn.Module):
                 xt[:, :, 0, :] = current_states
                 return xt.reshape(B, P, -1)
             
-            x0 = dpm_sampler(
-                        self.dit,
-                        xT,
-                        other_model_params={
-                            "cross_c": ego_neighbor_encoding, 
-                            "route_lanes": route_lanes,
-                            "neighbor_current_mask": neighbor_current_mask                            
-                        },
-                        dpm_solver_params={
-                            "correcting_xt_fn":initial_state_constraint,
-                        },
-                        model_wrapper_params={
-                            "classifier_fn": self._guidance_fn,
-                            "classifier_kwargs": {
-                                "model": self.dit,
-                                "model_condition": {
-                                    "cross_c": ego_neighbor_encoding, 
-                                    "route_lanes": route_lanes,
-                                    "neighbor_current_mask": neighbor_current_mask                            
-                                },
-                                "inputs": inputs,
-                                "observation_normalizer": self._observation_normalizer,
-                                "state_normalizer": self._state_normalizer
+            # route_lanes and the attention mask are loop-invariant: encode once
+            # via begin_step, then sample through the adapter (eager body by
+            # default; DP_TORCHAIR=1 for the GE graph).
+            sampler = self._sampler_holder[0]
+            sampler.begin_step(route_lanes, neighbor_current_mask)
+            if _FASTDPM:
+                # precomputed-coefficient 10-step multistep solver; model_fn is
+                # the body directly (x_start + dpmsolver++ wrapper cancels)
+                assert self._guidance_fn is None, "fast_dpm_sample assumes uncond guidance"
+                x0 = fast_dpm_sampler.fast_dpm_sample(
+                    lambda x, t: sampler(x, t, ego_neighbor_encoding),
+                    xT,
+                    correcting_xt_fn=initial_state_constraint,
+                )
+            else:
+                x0 = dpm_sampler(
+                    sampler,
+                    xT,
+                    other_model_params={
+                        "cross_c": ego_neighbor_encoding,
+                        "route_lanes": route_lanes,
+                        "neighbor_current_mask": neighbor_current_mask
+                    },
+                    dpm_solver_params={
+                        "correcting_xt_fn":initial_state_constraint,
+                    },
+                    model_wrapper_params={
+                        "classifier_fn": self._guidance_fn,
+                        "classifier_kwargs": {
+                            "model": self.dit,
+                            "model_condition": {
+                                "cross_c": ego_neighbor_encoding,
+                                "route_lanes": route_lanes,
+                                "neighbor_current_mask": neighbor_current_mask
                             },
-                            "guidance_scale": 0.5,
-                            "guidance_type": "classifier" if self._guidance_fn is not None else "uncond"
+                            "inputs": inputs,
+                            "observation_normalizer": self._observation_normalizer,
+                            "state_normalizer": self._state_normalizer
                         },
+                        "guidance_scale": 0.5,
+                        "guidance_type": "classifier" if self._guidance_fn is not None else "uncond"
+                    },
                 )
             x0 = self._state_normalizer.inverse(x0.reshape(B, P, -1, 4))[:, :, 1:]
 
