@@ -214,6 +214,14 @@ class Encoder(nn.Module):
         # register it into state_dict (same pattern as Decoder._sampler_holder)
         self._static_holder = [None]
 
+    def __getstate__(self):
+        # Same rationale as SamplerAdapter.__getstate__: the torchair compiled
+        # body is unpicklable runtime state, the simulation-log pickle must
+        # not traverse it. Rebuilt lazily by _get_static_body() after load.
+        state = self.__dict__.copy()
+        state["_static_holder"] = [None]
+        return state
+
     def _get_static_body(self):
         if self._static_holder[0] is None:
             body = StaticEncoderBody(self).eval()

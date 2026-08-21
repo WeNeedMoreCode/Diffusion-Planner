@@ -82,6 +82,14 @@ class SamplerAdapter(nn.Module):
         # dpm_solver's model_wrapper reads model_type off the model object
         return self.dit.model_type
 
+    def __getstate__(self):
+        # The simulation-log callback pickles the whole planner; the torchair
+        # compiled body (LazyCompiledModel) cannot be pickled and is runtime
+        # state anyway -- drop it, _get_body() rebuilds lazily after load.
+        state = self.__dict__.copy()
+        state["_body"] = None
+        return state
+
     def _get_body(self):
         if self._body is None:
             assert self.dit.model_type == "x_start", "SamplerAdapter assumes x_start"
