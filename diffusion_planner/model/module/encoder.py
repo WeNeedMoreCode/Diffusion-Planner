@@ -7,10 +7,12 @@ from timm.layers import DropPath
 
 from diffusion_planner.model.module.mixer import MixerBlock
 
-# DP_TORCHAIR=1: encoder runs as the static-shape StaticEncoderBody, compiled
+# DP_TORCHAIR: encoder runs as the static-shape StaticEncoderBody, compiled
 # into a torchair GE graph (same switch and lazy-build pattern as the DiT
-# sampler body in decoder.py). Default 0 keeps the upstream forward.
-_TORCHAIR = os.environ.get("DP_TORCHAIR", "0") == "1"
+# sampler body in decoder.py). Default on since the 50-scenario full run
+# matched the pre-optimization baseline (0.9170, 2026-08-21); set 0 to fall
+# back to the upstream eager forward.
+_TORCHAIR = os.environ.get("DP_TORCHAIR", "1") == "1"
 
 
 def _agent_pos(x):

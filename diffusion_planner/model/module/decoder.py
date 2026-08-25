@@ -13,10 +13,11 @@ from diffusion_planner.utils.normalizer import ObservationNormalizer, StateNorma
 from diffusion_planner.model.module.mixer import MixerBlock
 from diffusion_planner.model.module.dit import TimestepEmbedder, DiTBlock, FinalLayer
 
-# DP_FASTDPM=1: precomputed-coefficient 10-step solver instead of the generic
+# DP_FASTDPM: precomputed-coefficient 10-step solver instead of the generic
 # dpm_sampler (kills the per-step NPU scalar chain, ~11ms/step measured
-# 2026-08-20). Default 0 keeps the upstream path as the A/B baseline.
-_FASTDPM = os.environ.get("DP_FASTDPM", "0") == "1"
+# 2026-08-20). Default on since the 50-scenario full run matched the
+# pre-optimization baseline (0.9170, 2026-08-21); set 0 for the upstream path.
+_FASTDPM = os.environ.get("DP_FASTDPM", "1") == "1"
 
 
 class DiTBody(nn.Module):
@@ -94,7 +95,7 @@ class SamplerAdapter(nn.Module):
         if self._body is None:
             assert self.dit.model_type == "x_start", "SamplerAdapter assumes x_start"
             body = DiTBody(self.dit).eval()
-            if os.environ.get("DP_TORCHAIR", "0") == "1":
+            if os.environ.get("DP_TORCHAIR", "1") == "1":
                 import torchair  # top-level import would break CUDA-only environments
 
                 config = torchair.CompilerConfig()
