@@ -11,11 +11,16 @@ export RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
 ###################################
 # User Configuration Section
 ###################################
-# Server paths (this NPU server; code synced from local Windows via Syncthing)
-DP_ROOT="/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner"
-DP_DEVKIT="/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit"
-# datasets/ckpt/exp live on /data (server root disk is chronically full; /data has 1.6T free)
-DP_DATA="/data/syx_dp"
+# Paths are resolved relative to this script (portable across machines):
+#   datasets/  checkpoints/  exp/  torchair_cache/ live inside the project dir.
+# Layout assumption: nuplan-devkit is a sibling checkout (see README).
+# Override DP_DATA (e.g. export DP_DATA=/data/syx_dp) when the data lives on
+# another disk; DP_DEVICE picks the NPU card (check npu-smi info first).
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+DP_ROOT="$SCRIPT_DIR"
+DP_DEVKIT="$(dirname "$SCRIPT_DIR")/nuplan-devkit"
+DP_DATA=${DP_DATA:-"$SCRIPT_DIR"}
+export DP_TORCHAIR_CACHE=${DP_TORCHAIR_CACHE:-"$DP_DATA/torchair_cache"}
 
 # Set environment variables
 export NUPLAN_DEVKIT_ROOT="$DP_DEVKIT/"  # nuplan-devkit absolute path
