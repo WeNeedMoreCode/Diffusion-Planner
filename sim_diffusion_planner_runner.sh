@@ -24,7 +24,11 @@ export DP_TORCHAIR_CACHE=${DP_TORCHAIR_CACHE:-"$DP_DATA/torchair_cache"}
 
 # Set environment variables
 export NUPLAN_DEVKIT_ROOT="$DP_DEVKIT/"  # nuplan-devkit absolute path
-export NUPLAN_DATA_ROOT="$DP_DATA/datasets/data/"  # nuplan dataset absolute path
+# Official mini archives extract straight to <dir>/mini/ (no nuplan-v1.1/splits
+# prefix), so the runner overrides scenario_builder.data_root to point at
+# cache/mini directly instead of relying on NUPLAN_DATA_ROOT + the hardcoded
+# suffix in nuplan_mini.yaml (see DB_ROOT_OVERRIDE below).
+export NUPLAN_DATA_ROOT="$DP_DATA/datasets/data/cache/"  # nuplan dataset absolute path
 export NUPLAN_MAPS_ROOT="$DP_DATA/datasets/maps/" # nuplan maps absolute path
 export NUPLAN_EXP_ROOT="$DP_DATA/exp" # nuplan experiment absolute path
 
@@ -49,10 +53,13 @@ ARGS_FILE="$DP_DATA/checkpoints/args.json"
 CKPT_FILE="$DP_DATA/checkpoints/model.pth"
 
 # val14 uses the full nuplan builder; everything else (mini db / one_continuous_log) uses nuplan_mini
+DB_ROOT_OVERRIDE=""
 if [ "$SPLIT" == "val14" ]; then
     SCENARIO_BUILDER="nuplan"
 else
     SCENARIO_BUILDER="nuplan_mini"
+    # archives extract to cache/mini/ -- bypass the yaml's nuplan-v1.1/splits suffix
+    DB_ROOT_OVERRIDE="scenario_builder.data_root=$DP_DATA/datasets/data/cache/mini"
 fi
 echo "Processing $CKPT_FILE..."
 FILENAME=$(basename "$CKPT_FILE")
@@ -74,6 +81,7 @@ python $NUPLAN_DEVKIT_ROOT/nuplan/planning/script/run_simulation.py \
     planner.diffusion_planner.config.args_file=$ARGS_FILE \
     planner.diffusion_planner.ckpt_path=$CKPT_FILE \
     scenario_builder=$SCENARIO_BUILDER \
+    $DB_ROOT_OVERRIDE \
     scenario_filter=$SPLIT \
     scenario_filter.limit_total_scenarios=${DP_LIMIT:-50} \
     experiment_uid=$PLANNER/$SPLIT/$BRANCH_NAME/${FILENAME_WITHOUT_EXTENSION}_$(date "+%Y-%m-%d-%H-%M-%S") \
