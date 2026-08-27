@@ -1,7 +1,6 @@
-# NOTE: device occupancy on this server is DYNAMIC (vllm/mindie containers drift).
-# Check `npu-smi info` before each run and pick a device with <2GB usage (4-7 free at setup time).
-# DP_DEVICE / DP_LIMIT / DP_THREADS override for benchmark runs (defaults = production config).
-export ASCEND_RT_VISIBLE_DEVICES=${DP_DEVICE:-4}
+# Pick a free card with `npu-smi info` first (occupancy is dynamic on shared
+# servers); DP_DEVICE overrides the default card 0 for multi-card machines.
+export ASCEND_RT_VISIBLE_DEVICES=${DP_DEVICE:-0}
 export HYDRA_FULL_ERROR=1
 # Ray blanks accelerator-visibility env vars (ASCEND_RT_VISIBLE_DEVICES -> "") in workers
 # when the task requests num_gpus=0 (our number_of_gpus_allocated_per_simulation=0).
