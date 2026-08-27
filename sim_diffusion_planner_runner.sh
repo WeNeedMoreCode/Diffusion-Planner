@@ -55,6 +55,12 @@ ARGS_FILE="$DP_DATA/checkpoints/args.json"
 CKPT_FILE="$DP_DATA/checkpoints/model.pth"
 
 # val14 uses the full nuplan builder; everything else (mini db / one_continuous_log) uses nuplan_mini
+# threads_per_node exists only in the ray_distributed worker config; sequential
+# rejects the override (hydra struct mode)
+THREADS_OVERRIDE="worker.threads_per_node=${DP_THREADS:-4}"
+if [ "${DP_WORKER:-ray_distributed}" == "sequential" ]; then
+    THREADS_OVERRIDE=""
+fi
 DB_ROOT_OVERRIDE=""
 if [ "$SPLIT" == "val14" ]; then
     SCENARIO_BUILDER="nuplan"
@@ -89,7 +95,7 @@ python $NUPLAN_DEVKIT_ROOT/nuplan/planning/script/run_simulation.py \
     experiment_uid=$PLANNER/$SPLIT/$BRANCH_NAME/${FILENAME_WITHOUT_EXTENSION}_$(date "+%Y-%m-%d-%H-%M-%S") \
     verbose=true \
     worker=${DP_WORKER:-ray_distributed} \
-    worker.threads_per_node=${DP_THREADS:-4} \
+    $THREADS_OVERRIDE \
     distributed_mode='SINGLE_NODE' \
     number_of_gpus_allocated_per_simulation=0 \
     enable_simulation_progress_bar=true \
