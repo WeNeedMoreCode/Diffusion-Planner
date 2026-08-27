@@ -1,5 +1,8 @@
 # Pick a free card with `npu-smi info` first (occupancy is dynamic on shared
 # servers); DP_DEVICE overrides the default card 0 for multi-card machines.
+# DP_WORKER=sequential runs single-process without Ray (troubleshooting mode;
+# DP_THREADS is ignored there). DP_DEVICE / DP_LIMIT / DP_THREADS override
+# for benchmark runs.
 export ASCEND_RT_VISIBLE_DEVICES=${DP_DEVICE:-0}
 export HYDRA_FULL_ERROR=1
 # Ray blanks accelerator-visibility env vars (ASCEND_RT_VISIBLE_DEVICES -> "") in workers
@@ -85,7 +88,7 @@ python $NUPLAN_DEVKIT_ROOT/nuplan/planning/script/run_simulation.py \
     scenario_filter.limit_total_scenarios=${DP_LIMIT:-50} \
     experiment_uid=$PLANNER/$SPLIT/$BRANCH_NAME/${FILENAME_WITHOUT_EXTENSION}_$(date "+%Y-%m-%d-%H-%M-%S") \
     verbose=true \
-    worker=ray_distributed \
+    worker=${DP_WORKER:-ray_distributed} \
     worker.threads_per_node=${DP_THREADS:-4} \
     distributed_mode='SINGLE_NODE' \
     number_of_gpus_allocated_per_simulation=0 \
