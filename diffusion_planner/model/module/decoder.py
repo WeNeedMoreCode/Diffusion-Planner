@@ -6,6 +6,8 @@ import torch.nn as nn
 from timm.models.layers import Mlp
 from timm.layers import DropPath
 
+from npu_utils import is_rc_device
+
 from diffusion_planner.model.diffusion_utils import fast_dpm_sampler
 from diffusion_planner.model.diffusion_utils.sampling import dpm_sampler
 from diffusion_planner.model.diffusion_utils.sde import SDE, VPSDE_linear
@@ -222,7 +224,15 @@ class Decoder(nn.Module):
                 }
         else:
             # [B, 1 + predicted_neighbor_num, (1 + V_future) * 4]
-            xT = torch.cat([current_states[:, :, None], torch.randn(B, P, self._future_len, 4, device=current_states.device, dtype=torch.float32) * 0.5], dim=2).reshape(B, P, -1)
+            # RC boards (310P1-class) cannot execute the aicpu
+            # StatelessRandomNormalV2 kernel behind device-side randn; sample on
+            # CPU there and copy (~3.5K floats, negligible). Same standard-normal
+            # distribution, different RNG stream -- closed-loop equivalent.
+            if is_rc_device():
+                noise = torch.randn(B, P, self._future_len, 4, dtype=torch.float32).to(current_states.device)
+            else:
+                noise = torch.randn(B, P, self._future_len, 4, device=current_states.device, dtype=torch.float32)
+            xT = torch.cat([current_states[:, :, None], noise * 0.5], dim=2).reshape(B, P, -1)
 
             def initial_state_constraint(xt, t, step):
                 xt = xt.reshape(B, P, -1, 4)

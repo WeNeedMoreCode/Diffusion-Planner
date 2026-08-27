@@ -21,6 +21,9 @@ export RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 DP_ROOT="$SCRIPT_DIR"
 DP_DEVKIT="$(dirname "$SCRIPT_DIR")/nuplan-devkit"
+# sample dir (parent) holds npu_utils.py (board-specific helpers); keep it
+# importable for the model code
+export PYTHONPATH="$(dirname "$SCRIPT_DIR"):$PYTHONPATH"
 DP_DATA=${DP_DATA:-"$SCRIPT_DIR"}
 export DP_TORCHAIR_CACHE=${DP_TORCHAIR_CACHE:-"$DP_DATA/torchair_cache"}
 
