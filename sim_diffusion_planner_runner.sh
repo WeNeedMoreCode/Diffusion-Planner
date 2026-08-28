@@ -103,3 +103,15 @@ python $NUPLAN_DEVKIT_ROOT/nuplan/planning/script/run_simulation.py \
     number_of_gpus_allocated_per_simulation=0 \
     enable_simulation_progress_bar=true \
     hydra.searchpath="[pkg://diffusion_planner.config.scenario_filter, pkg://diffusion_planner.config, pkg://nuplan.planning.script.config.common, pkg://nuplan.planning.script.experiments  ]"
+
+# Print score + latency summary for THIS run (newest model_* dir under the
+# challenge/planner/split/release branch just executed); read_results.py
+# lives in the sample dir next to npu_utils.py.
+EXP_BASE="$NUPLAN_EXP_ROOT/exp/simulation/$CHALLENGE/$PLANNER/$SPLIT/$BRANCH_NAME"
+LATEST_EXP=$(ls -td "$EXP_BASE"/model_* 2>/dev/null | head -1)
+if [ -n "$LATEST_EXP" ]; then
+    echo "== read_results: $LATEST_EXP"
+    python "$(dirname "$SCRIPT_DIR")/read_results.py" "$LATEST_EXP"
+else
+    echo "== read_results: no experiment dir found under $EXP_BASE"
+fi
