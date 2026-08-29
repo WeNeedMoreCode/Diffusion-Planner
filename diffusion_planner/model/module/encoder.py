@@ -13,6 +13,12 @@ from diffusion_planner.model.module.mixer import MixerBlock
 # matched the pre-optimization baseline (0.9170, 2026-08-21); set 0 to fall
 # back to the upstream eager forward.
 _TORCHAIR = os.environ.get("DP_TORCHAIR", "1") == "1"
+# DP_OM: same StaticEncoderBody graph, but pre-compiled offline to encoder.om
+# via export_om.py (ONNX -> ATC) and run through aclruntime instead of the
+# torchair runtime. Motivation is RC boards (ATC locks operator selection at
+# compile time), not speed; takes precedence over DP_TORCHAIR. Requires
+# encoder.om under DP_OM_DIR (default $DP_DATA/om).
+_OM = os.environ.get("DP_OM", "0") == "1"
 
 
 def _agent_pos(x):
@@ -215,14 +221,26 @@ class Encoder(nn.Module):
         # be loaded first); held in a list so nn.Module.__setattr__ does not
         # register it into state_dict (same pattern as Decoder._sampler_holder)
         self._static_holder = [None]
+        # OM variant of the same body (DP_OM=1), same lazy/list pattern
+        self._om_holder = [None]
 
     def __getstate__(self):
         # Same rationale as SamplerAdapter.__getstate__: the torchair compiled
         # body is unpicklable runtime state, the simulation-log pickle must
         # not traverse it. Rebuilt lazily by _get_static_body() after load.
+        # The OM holder carries an aclruntime session, same treatment.
         state = self.__dict__.copy()
         state["_static_holder"] = [None]
+        state["_om_holder"] = [None]
         return state
+
+    def _get_om_body(self):
+        if self._om_holder[0] is None:
+            from om_runtime import OmBody  # outer sample dir, deferred import
+
+            # closed loop is B=1; the exported graph is static B=1 as well
+            self._om_holder[0] = OmBody("encoder", (1, self.token_num, self.hidden_dim))
+        return self._om_holder[0]
 
     def _get_static_body(self):
         if self._static_holder[0] is None:
@@ -244,6 +262,23 @@ class Encoder(nn.Module):
         return self._static_holder[0]
 
     def forward(self, inputs):
+
+        if _OM:
+            # same body boundary as the torchair branch: pos extraction stays
+            # eager (atan2), everything else runs inside encoder.om; inputs
+            # may sit on NPU, OmBody moves them to host buffers itself
+            body = self._get_om_body()
+            encoding = body(
+                inputs['neighbor_agents_past'],
+                inputs['static_objects'],
+                inputs['lanes'],
+                inputs['lanes_speed_limit'],
+                inputs['lanes_has_speed_limit'],  # bool -> 0/1 float inside OmBody
+                _agent_pos(inputs['neighbor_agents_past']),
+                _static_pos(inputs['static_objects']),
+                _lane_pos(inputs['lanes'], self.lane_encoder._lane_len),
+            )
+            return {"encoding": encoding}
 
         if _TORCHAIR:
             body = self._get_static_body()

@@ -20,6 +20,11 @@ from diffusion_planner.model.module.dit import TimestepEmbedder, DiTBlock, Final
 # 2026-08-20). Default on since the 50-scenario full run matched the
 # pre-optimization baseline (0.9170, 2026-08-21); set 0 for the upstream path.
 _FASTDPM = os.environ.get("DP_FASTDPM", "1") == "1"
+# DP_OM: DiTBody as a pre-compiled dit_body.om (export_om.py, ONNX -> ATC)
+# run through aclruntime instead of the torchair runtime. Same motivation /
+# precedence as the encoder-side switch (RC risk removal, not speed): the
+# sampling loop stays in eager torch on CPU and calls the OM graph per step.
+_OM = os.environ.get("DP_OM", "0") == "1"
 
 
 class DiTBody(nn.Module):
@@ -157,6 +162,61 @@ class Decoder(nn.Module):
         # key set that no checkpoint provides. The adapter's dit aliases
         # self.dit (same Parameter objects), so loaded weights are shared.
         self._sampler_holder = [SamplerAdapter(self.dit)]
+        # OM variant of the DiT body (DP_OM=1); same lazy/list discipline
+        self._om_dit_holder = [None]
+
+    def __getstate__(self):
+        # Simulation-log pickle safety (same rationale as
+        # SamplerAdapter/Encoder): the aclruntime session inside OmBody is
+        # process-bound runtime state and must not be serialized.
+        state = self.__dict__.copy()
+        state["_om_dit_holder"] = [None]
+        return state
+
+    def _get_om_dit(self, p, out_dim):
+        if self._om_dit_holder[0] is None:
+            from om_runtime import OmBody  # outer sample dir, deferred import
+
+            self._om_dit_holder[0] = OmBody("dit_body", (1, p, out_dim))
+        return self._om_dit_holder[0]
+
+    def _om_sample(self, encoder_outputs, inputs, current_states, neighbor_current_mask, b, p):
+        """OM orchestration for the inference branch: everything except the
+        two big bodies runs in eager torch on CPU (the loop ops are tiny
+        [1,P,324] tensors, host-side is free), each DPM step is one
+        dit_body.om call. RouteEncoder runs once per planning step, eager on
+        CPU, exactly the begin_step hoist of the torchair path.
+        """
+        ego_neighbor_encoding = encoder_outputs['encoding'].cpu()
+        # RouteEncoder weights live on the planner device (npu); run it there
+        # and bring the result host-side for the OM loop
+        route_encoding = self.dit.route_encoder(inputs['route_lanes']).cpu()
+
+        # SamplerAdapter.begin_step layout with DiTBlock's bool->float mask
+        # conversion pre-applied (the OM graph takes the additive mask)
+        attn_bool = torch.zeros((b, p), dtype=torch.bool)
+        attn_bool[:, 1:] = neighbor_current_mask.cpu()
+        attn_mask = torch.zeros(attn_bool.shape, dtype=torch.float32).masked_fill(attn_bool, float("-inf"))
+
+        # xT on CPU (same construction as the eager branch, unseeded like it;
+        # OM branch is naturally RC-safe, no is_rc_device split needed)
+        noise = torch.randn(b, p, self._future_len, 4, dtype=torch.float32) * 0.5
+        cs = current_states.cpu()
+        x = torch.cat([cs[:, :, None], noise], dim=2).reshape(b, p, -1)
+
+        def initial_state_constraint(xt, t, step):
+            xt = xt.reshape(b, p, -1, 4)
+            xt[:, :, 0, :] = cs
+            return xt.reshape(b, p, -1)
+
+        om = self._get_om_dit(p, x.shape[-1])
+        x0 = fast_dpm_sampler.fast_dpm_sample(
+            lambda xt, t: om(xt, t, ego_neighbor_encoding, route_encoding, attn_mask),
+            x,
+            correcting_xt_fn=initial_state_constraint,
+        )
+        x0 = self._state_normalizer.inverse(x0.reshape(b, p, -1, 4))[:, :, 1:]
+        return {"prediction": x0}
         
     @property
     def sde(self):
@@ -223,6 +283,11 @@ class Decoder(nn.Module):
                     ).reshape(B, P, -1, 4)
                 }
         else:
+            if _OM:
+                # offline-OM orchestration (see _om_sample); takes precedence
+                # over the torchair/eager sampler paths below
+                return self._om_sample(encoder_outputs, inputs, current_states, neighbor_current_mask, B, P)
+
             # [B, 1 + predicted_neighbor_num, (1 + V_future) * 4]
             # RC boards (310P1-class) cannot execute the aicpu
             # StatelessRandomNormalV2 kernel behind device-side randn; sample on
