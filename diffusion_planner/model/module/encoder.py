@@ -16,9 +16,11 @@ _TORCHAIR = os.environ.get("DP_TORCHAIR", "1") == "1"
 # DP_OM: same StaticEncoderBody graph, but pre-compiled offline to encoder.om
 # via export_om.py (ONNX -> ATC) and run through aclruntime instead of the
 # torchair runtime. Motivation is RC boards (ATC locks operator selection at
-# compile time), not speed; takes precedence over DP_TORCHAIR. Requires
-# encoder.om under DP_OM_DIR (default $DP_DATA/om).
-_OM = os.environ.get("DP_OM", "0") == "1"
+# compile time), not speed; takes precedence over DP_TORCHAIR. Values: "1"
+# or "loop" (loop selects the whole-solver dit_loop.om on the decoder side;
+# the encoder side is the same graph either way). Requires encoder.om under
+# DP_OM_DIR (default $DP_DATA/om).
+_OM = os.environ.get("DP_OM", "0") in ("1", "loop")
 
 
 def _agent_pos(x):

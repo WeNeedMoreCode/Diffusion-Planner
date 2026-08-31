@@ -20,11 +20,16 @@ from diffusion_planner.model.module.dit import TimestepEmbedder, DiTBlock, Final
 # 2026-08-20). Default on since the 50-scenario full run matched the
 # pre-optimization baseline (0.9170, 2026-08-21); set 0 for the upstream path.
 _FASTDPM = os.environ.get("DP_FASTDPM", "1") == "1"
-# DP_OM: DiTBody as a pre-compiled dit_body.om (export_om.py, ONNX -> ATC)
-# run through aclruntime instead of the torchair runtime. Same motivation /
-# precedence as the encoder-side switch (RC risk removal, not speed): the
-# sampling loop stays in eager torch on CPU and calls the OM graph per step.
-_OM = os.environ.get("DP_OM", "0") == "1"
+# DP_OM: DiTBody as a pre-compiled om (export_om.py, ONNX -> ATC) run through
+# aclruntime instead of the torchair runtime. Same motivation / precedence as
+# the encoder-side switch (RC risk removal). Two modes:
+#   DP_OM=1    per-step dit_body.om, the fast-DPM loop stays in eager torch
+#              on CPU (11 aclruntime round trips per planning step)
+#   DP_OM=loop the whole 10-step loop baked into dit_loop.om (coefficients
+#              are schedule constants, the loop unrolls into one graph) --
+#              one round trip per planning step
+_OM = os.environ.get("DP_OM", "0") in ("1", "loop")
+_OM_LOOP = os.environ.get("DP_OM", "0") == "loop"
 
 
 class DiTBody(nn.Module):
@@ -177,7 +182,8 @@ class Decoder(nn.Module):
         if self._om_dit_holder[0] is None:
             from om_runtime import OmBody  # outer sample dir, deferred import
 
-            self._om_dit_holder[0] = OmBody("dit_body", (1, p, out_dim))
+            name = "dit_loop" if _OM_LOOP else "dit_body"
+            self._om_dit_holder[0] = OmBody(name, (1, p, out_dim))
         return self._om_dit_holder[0]
 
     def _om_sample(self, encoder_outputs, inputs, current_states, neighbor_current_mask, b, p):
@@ -210,11 +216,16 @@ class Decoder(nn.Module):
             return xt.reshape(b, p, -1)
 
         om = self._get_om_dit(p, x.shape[-1])
-        x0 = fast_dpm_sampler.fast_dpm_sample(
-            lambda xt, t: om(xt, t, ego_neighbor_encoding, route_encoding, attn_mask),
-            x,
-            correcting_xt_fn=initial_state_constraint,
-        )
+        if _OM_LOOP:
+            # whole 10-step solver unrolled inside dit_loop.om (constraint
+            # included): one aclruntime round trip per planning step
+            x0 = om(x, cs, ego_neighbor_encoding, route_encoding, attn_mask)
+        else:
+            x0 = fast_dpm_sampler.fast_dpm_sample(
+                lambda xt, t: om(xt, t, ego_neighbor_encoding, route_encoding, attn_mask),
+                x,
+                correcting_xt_fn=initial_state_constraint,
+            )
         x0 = self._state_normalizer.inverse(x0.reshape(b, p, -1, 4))[:, :, 1:]
         return {"prediction": x0}
         
