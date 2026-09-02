@@ -1,3 +1,4 @@
+import copy
 import math
 import os
 
@@ -169,6 +170,9 @@ class Decoder(nn.Module):
         self._sampler_holder = [SamplerAdapter(self.dit)]
         # OM variant of the DiT body (DP_OM=1); same lazy/list discipline
         self._om_dit_holder = [None]
+        # CPU weight copy of RouteEncoder for the OM path (see
+        # _get_om_route_encoder); same lazy/list discipline
+        self._om_route_holder = [None]
 
     def __getstate__(self):
         # Simulation-log pickle safety (same rationale as
@@ -176,6 +180,7 @@ class Decoder(nn.Module):
         # process-bound runtime state and must not be serialized.
         state = self.__dict__.copy()
         state["_om_dit_holder"] = [None]
+        state["_om_route_holder"] = [None]
         return state
 
     def _get_om_dit(self, p, out_dim):
@@ -186,6 +191,20 @@ class Decoder(nn.Module):
             self._om_dit_holder[0] = OmBody(name, (1, p, out_dim))
         return self._om_dit_holder[0]
 
+    def _get_om_route_encoder(self):
+        """One-time CPU copy of RouteEncoder for the OM path.
+
+        RouteEncoder is a small-op chain (Mlp/Mixer, ~100 launches) whose
+        cost is launch postage, not compute: 10.7ms eager on RC NPU vs ~2ms
+        on CPU (2026-09-02 bench_step/bench_launch evidence). Running it on
+        CPU also removes the D2H of its output (the OM loop consumes it
+        host-side anyway). The weights are copied once and held here; the
+        NPU copy stays untouched for the torchair/eager paths.
+        """
+        if self._om_route_holder[0] is None:
+            self._om_route_holder[0] = copy.deepcopy(self.dit.route_encoder).cpu().eval()
+        return self._om_route_holder[0]
+
     def _om_sample(self, encoder_outputs, inputs, current_states, neighbor_current_mask, b, p):
         """OM orchestration for the inference branch: everything except the
         two big bodies runs in eager torch on CPU (the loop ops are tiny
@@ -194,9 +213,10 @@ class Decoder(nn.Module):
         CPU, exactly the begin_step hoist of the torchair path.
         """
         ego_neighbor_encoding = encoder_outputs['encoding'].cpu()
-        # RouteEncoder weights live on the planner device (npu); run it there
-        # and bring the result host-side for the OM loop
-        route_encoding = self.dit.route_encoder(inputs['route_lanes']).cpu()
+        # RouteEncoder runs on CPU (launch-postage-bound chain, see
+        # _get_om_route_encoder); input comes over once (~14KB), output is
+        # already host-side for the OM loop
+        route_encoding = self._get_om_route_encoder()(inputs['route_lanes'].cpu())
 
         # SamplerAdapter.begin_step layout with DiTBlock's bool->float mask
         # conversion pre-applied (the OM graph takes the additive mask)
