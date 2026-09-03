@@ -240,8 +240,11 @@ class Encoder(nn.Module):
         if self._om_holder[0] is None:
             from om_runtime import OmBody  # outer sample dir, deferred import
 
-            # closed loop is B=1; the exported graph is static B=1 as well
-            self._om_holder[0] = OmBody("encoder", (1, self.token_num, self.hidden_dim))
+            # closed loop is B=1; the exported graph is static B=1 as well.
+            # R8: encoder.om also carries the static RouteEncoder, so the
+            # graph has two outputs -- encoding and route_encoding
+            self._om_holder[0] = OmBody(
+                "encoder", [(1, self.token_num, self.hidden_dim), (1, self.hidden_dim)])
         return self._om_holder[0]
 
     def _get_static_body(self):
@@ -268,9 +271,12 @@ class Encoder(nn.Module):
         if _OM:
             # same body boundary as the torchair branch: pos extraction stays
             # eager (atan2), everything else runs inside encoder.om; inputs
-            # may sit on NPU, OmBody moves them to host buffers itself
+            # may sit on NPU, OmBody moves them to host buffers itself.
+            # R8: route_lanes rides the same call (static RouteEncoder baked
+            # into the graph) -- its eager launch train is gone and the
+            # decoder picks route_encoding from this dict
             body = self._get_om_body()
-            encoding = body(
+            encoding, route_encoding = body(
                 inputs['neighbor_agents_past'],
                 inputs['static_objects'],
                 inputs['lanes'],
@@ -279,8 +285,9 @@ class Encoder(nn.Module):
                 _agent_pos(inputs['neighbor_agents_past']),
                 _static_pos(inputs['static_objects']),
                 _lane_pos(inputs['lanes'], self.lane_encoder._lane_len),
+                inputs['route_lanes'],
             )
-            return {"encoding": encoding}
+            return {"encoding": encoding, "route_encoding": route_encoding}
 
         if _TORCHAIR:
             body = self._get_static_body()

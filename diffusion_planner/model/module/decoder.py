@@ -1,4 +1,3 @@
-import copy
 import math
 import os
 
@@ -170,9 +169,6 @@ class Decoder(nn.Module):
         self._sampler_holder = [SamplerAdapter(self.dit)]
         # OM variant of the DiT body (DP_OM=1); same lazy/list discipline
         self._om_dit_holder = [None]
-        # CPU weight copy of RouteEncoder for the OM path (see
-        # _get_om_route_encoder); same lazy/list discipline
-        self._om_route_holder = [None]
 
     def __getstate__(self):
         # Simulation-log pickle safety (same rationale as
@@ -180,7 +176,6 @@ class Decoder(nn.Module):
         # process-bound runtime state and must not be serialized.
         state = self.__dict__.copy()
         state["_om_dit_holder"] = [None]
-        state["_om_route_holder"] = [None]
         return state
 
     def _get_om_dit(self, p, out_dim):
@@ -191,20 +186,6 @@ class Decoder(nn.Module):
             self._om_dit_holder[0] = OmBody(name, (1, p, out_dim))
         return self._om_dit_holder[0]
 
-    def _get_om_route_encoder(self):
-        """One-time CPU copy of RouteEncoder for the OM path.
-
-        RouteEncoder is a small-op chain (Mlp/Mixer, ~100 launches) whose
-        cost is launch postage, not compute: 10.7ms eager on RC NPU vs ~2ms
-        on CPU (2026-09-02 bench_step/bench_launch evidence). Running it on
-        CPU also removes the D2H of its output (the OM loop consumes it
-        host-side anyway). The weights are copied once and held here; the
-        NPU copy stays untouched for the torchair/eager paths.
-        """
-        if self._om_route_holder[0] is None:
-            self._om_route_holder[0] = copy.deepcopy(self.dit.route_encoder).cpu().eval()
-        return self._om_route_holder[0]
-
     def _om_sample(self, encoder_outputs, inputs, current_states, neighbor_current_mask, b, p):
         """OM orchestration for the inference branch: everything except the
         two big bodies runs in eager torch on CPU (the loop ops are tiny
@@ -213,10 +194,10 @@ class Decoder(nn.Module):
         CPU, exactly the begin_step hoist of the torchair path.
         """
         ego_neighbor_encoding = encoder_outputs['encoding'].cpu()
-        # RouteEncoder runs on CPU (launch-postage-bound chain, see
-        # _get_om_route_encoder); input comes over once (~14KB), output is
-        # already host-side for the OM loop
-        route_encoding = self._get_om_route_encoder()(inputs['route_lanes'].cpu())
+        # route encoding rides the encoder.om call (static RouteEncoder baked
+        # into the graph, R8 launch-cut): no separate eager pass, no extra
+        # launch train, output lands host-side with the encoding
+        route_encoding = encoder_outputs['route_encoding'].cpu()
 
         # SamplerAdapter.begin_step layout with DiTBlock's bool->float mask
         # conversion pre-applied (the OM graph takes the additive mask)
@@ -427,8 +408,39 @@ class RouteEncoder(nn.Module):
 
         x_result = torch.zeros((B, x.shape[-1]), device=x.device)
         x_result[valid_indices] = x  # Fill in valid parts
-        
+
         return x_result.view(B, -1)
+
+
+def _encode_route(re, x):
+    """Static RouteEncoder: [B, P, V, D] -> [B, hidden].
+
+    Graph-friendly version of RouteEncoder.forward (the boolean-mask row
+    filter has no place in a compiled graph). Semantics note, different
+    from the fusion encoders' per-row zeroing: upstream filters at BATCH
+    level (mask_b) -- a batch holding any valid route computes every row
+    (all-zero P rows keep their bias-induced garbage, that is the trained
+    semantics), only a fully-invalid batch outputs zeros. Static form:
+    compute all rows, multiply by the batch-level valid indicator.
+    Numerically identical for B=1: the row filter degenerates to a no-op
+    when mask_b is False, and finite garbage * 0 reproduces the zeros.
+    """
+    x = x[..., :4]
+    B, P, V, _ = x.shape
+    mask_v = torch.sum(torch.ne(x[..., :4], 0), dim=-1).to(x.device) == 0
+    mask_p = torch.sum(~mask_v, dim=-1) == 0
+    mask_b = torch.sum(~mask_p, dim=-1) == 0
+    valid = (~mask_b).view(B, 1).to(x.dtype)
+
+    x = x.view(B, P * V, -1)
+    x = re.channel_pre_project(x)
+    x = x.permute(0, 2, 1)
+    x = re.token_pre_project(x)
+    x = x.permute(0, 2, 1)
+    x = re.Mixer(x)
+    x = torch.mean(x, dim=1)
+    x = re.emb_project(re.norm(x))
+    return x * valid
 
 
 class DiT(nn.Module):
