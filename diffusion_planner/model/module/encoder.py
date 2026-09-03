@@ -24,38 +24,41 @@ _OM = os.environ.get("DP_OM", "0") in ("1", "loop")
 
 
 def _agent_pos(x):
-    """Neighbor token positions, eager / outside the graph (see StaticEncoderBody)."""
-    x = x[..., :8]
-    pos = x[:, :, -1, :7].clone()  # x, y, cos, sin
-    pos[..., -3:] = 0.0
-    pos[..., -3] = 1.0  # neighbor: [1,0,0]
-    return pos
+    """Neighbor token positions: [x, y, cos, sin, 1, 0, 0].
+
+    Functional cat form. The original clone+slice-write (`pos[..., -3] = 1`)
+    traces into write-back style ONNX nodes that ATC on 310P3 silently
+    miscompiles (the one-hot 1 came back 0, 2026-09-03 pos.onnx probe:
+    ort exact, om wrong) -- plain Concat carries no such risk and is
+    value-identical on every path (eager/torchair/OM).
+    """
+    core = x[..., :8][:, :, -1, :4]  # x, y, cos, sin
+    typ = torch.tensor([1.0, 0.0, 0.0], device=x.device).expand(*core.shape[:-1], 3)
+    return torch.cat([core, typ], dim=-1)
 
 
 def _static_pos(x):
-    """Static-object token positions, eager / outside the graph."""
-    pos = x[:, :, :7].clone()  # x, y, cos, sin
-    pos[..., -3:] = 0.0
-    pos[..., -2] = 1.0  # static: [0,1,0]
-    return pos
+    """Static-object token positions: [x, y, cos, sin, 0, 1, 0] (see _agent_pos)."""
+    core = x[:, :, :4]
+    typ = torch.tensor([0.0, 1.0, 0.0], device=x.device).expand(*core.shape[:-1], 3)
+    return torch.cat([core, typ], dim=-1)
 
 
 def _lane_pos(x, lane_len):
-    """Lane token positions, eager / outside the graph.
+    """Lane token positions: [x, y, cos(h), sin(h), 0, 0, 1].
 
+    Functional cat form (see _agent_pos for the ATC slice-write pitfall).
     Contains atan2/cos/sin for the heading rewrite; torchair's GE backend has
-    no aten.atan2 converter, so this whole pos-extraction step stays out of
-    the compiled unit and runs eagerly (same hoisting pattern as RouteEncoder
-    in decoder.py, there for dynamic shapes instead).
+    no aten.atan2 converter, so on the torchair path this stays outside the
+    compiled unit and runs eagerly. Through ONNX/ATC it rides the standard
+    atan2 decomposition (v3 encoder graph).
     """
     x = x[..., :8]
-    pos = x[:, :, int(lane_len / 2), :7].clone()  # x, y, x'-x, y'-y
-    heading = torch.atan2(pos[..., 3], pos[..., 2])
-    pos[..., 2] = torch.cos(heading)
-    pos[..., 3] = torch.sin(heading)
-    pos[..., -3:] = 0.0
-    pos[..., -1] = 1.0  # lane: [0,0,1]
-    return pos
+    mid = x[:, :, int(lane_len / 2), :4]  # x, y, x'-x, y'-y
+    heading = torch.atan2(mid[..., 3], mid[..., 2])
+    csh = torch.stack((torch.cos(heading), torch.sin(heading)), dim=-1)
+    typ = torch.tensor([0.0, 0.0, 1.0], device=x.device).expand(*mid.shape[:-1], 3)
+    return torch.cat([mid[..., :2], csh, typ], dim=-1)
 
 
 class StaticEncoderBody(nn.Module):
