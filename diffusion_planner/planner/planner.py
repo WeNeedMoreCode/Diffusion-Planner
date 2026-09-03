@@ -21,9 +21,16 @@ _STAGE_TIMING = os.environ.get("DP_STAGE_TIMING") == "1"
 # costs ~50ms/step (245 vs 197ms) on 310P. Default off; DP_JIT_WINDOW=1 restores
 # the old baseline behavior.
 _JIT_WINDOW = os.environ.get("DP_JIT_WINDOW", "0") == "1"
-# DP_CAPTURE_DIR=<dir>: save the normalized forward inputs (flat dict of CPU
+# DP_CAPTURE_DIR=<dir>: save the RAW forward inputs (flat dict of CPU
 # tensors) of the first step per process, for offline forward-only replay.
+# Captured before normalization since encoder.om v3 (R8): the graph eats raw
+# adapt output, so replays/export parity must start from raw too.
 _CAPTURE_DIR = os.environ.get("DP_CAPTURE_DIR")
+# DP_OM=1/loop: encoder.om v3 bakes observation normalization (constants) and
+# the pos extraction into the graph and feeds on raw adapt output -- skip the
+# eager ObservationNormalizer pass entirely (its per-key mask/zeroing chain
+# was a launch-postage victim on RC)
+_OM = os.environ.get("DP_OM", "0") in ("1", "loop")
 
 from nuplan.common.actor_state.ego_state import EgoState
 from nuplan.common.utils.interpolatable_state import InterpolatableState
@@ -147,7 +154,6 @@ class DiffusionPlanner(AbstractPlanner):
         if _STAGE_TIMING:
             torch.npu.synchronize()
             t1 = time.perf_counter()
-        inputs = self.observation_normalizer(inputs)
 
         if _CAPTURE_DIR is not None and not getattr(self, "_captured", False):
             torch.save(
@@ -155,6 +161,10 @@ class DiffusionPlanner(AbstractPlanner):
                 f"{_CAPTURE_DIR}/inputs_pid{os.getpid()}.pt",
             )
             self._captured = True
+
+        if not _OM:
+            # OM path: normalization (and pos) live inside encoder.om
+            inputs = self.observation_normalizer(inputs)
 
         if _STAGE_TIMING:
             torch.npu.synchronize()

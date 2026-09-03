@@ -186,7 +186,7 @@ class Decoder(nn.Module):
             self._om_dit_holder[0] = OmBody(name, (1, p, out_dim))
         return self._om_dit_holder[0]
 
-    def _om_sample(self, encoder_outputs, inputs, current_states, neighbor_current_mask, b, p):
+    def _om_sample(self, encoder_outputs, inputs, neighbor_current_mask, b, p):
         """OM orchestration for the inference branch: everything except the
         two big bodies runs in eager torch on CPU (the loop ops are tiny
         [1,P,324] tensors, host-side is free), each DPM step is one
@@ -208,7 +208,9 @@ class Decoder(nn.Module):
         # xT on CPU (same construction as the eager branch, unseeded like it;
         # OM branch is naturally RC-safe, no is_rc_device split needed)
         noise = torch.randn(b, p, self._future_len, 4, dtype=torch.float32) * 0.5
-        cs = current_states.cpu()
+        # norm-ed ego + last-frame neighbors out of encoder.om (v3); the
+        # forward-arg current_states is raw on this path and unused here
+        cs = encoder_outputs['current_states'].cpu()
         x = torch.cat([cs[:, :, None], noise], dim=2).reshape(b, p, -1)
 
         def initial_state_constraint(xt, t, step):
@@ -298,7 +300,7 @@ class Decoder(nn.Module):
             if _OM:
                 # offline-OM orchestration (see _om_sample); takes precedence
                 # over the torchair/eager sampler paths below
-                return self._om_sample(encoder_outputs, inputs, current_states, neighbor_current_mask, B, P)
+                return self._om_sample(encoder_outputs, inputs, neighbor_current_mask, B, P)
 
             # [B, 1 + predicted_neighbor_num, (1 + V_future) * 4]
             # RC boards (310P1-class) cannot execute the aicpu

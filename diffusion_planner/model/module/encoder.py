@@ -202,6 +202,9 @@ class Encoder(nn.Module):
 
         self.hidden_dim = config.hidden_dim
 
+        # decoder-side agent count for the encoder.om v3 current_states output
+        self._predicted_neighbor_num = config.predicted_neighbor_num
+
         self.token_num = config.agent_num + config.static_objects_num + config.lane_num
 
         self.neighbor_encoder = AgentFusionEncoder(config.time_len, drop_path_rate=config.encoder_drop_path_rate, hidden_dim=config.hidden_dim, depth=config.encoder_depth)
@@ -241,10 +244,13 @@ class Encoder(nn.Module):
             from om_runtime import OmBody  # outer sample dir, deferred import
 
             # closed loop is B=1; the exported graph is static B=1 as well.
-            # R8: encoder.om also carries the static RouteEncoder, so the
-            # graph has two outputs -- encoding and route_encoding
+            # v3 outputs: encoding, route_encoding, current_states (norm-ed
+            # ego + last-frame neighbors, what the decoder's sampler anchors
+            # on -- saves the decoder a host-side norm of its own)
             self._om_holder[0] = OmBody(
-                "encoder", [(1, self.token_num, self.hidden_dim), (1, self.hidden_dim)])
+                "encoder", [(1, self.token_num, self.hidden_dim),
+                            (1, self.hidden_dim),
+                            (1, 1 + self._predicted_neighbor_num, 4)])
         return self._om_holder[0]
 
     def _get_static_body(self):
@@ -269,25 +275,24 @@ class Encoder(nn.Module):
     def forward(self, inputs):
 
         if _OM:
-            # same body boundary as the torchair branch: pos extraction stays
-            # eager (atan2), everything else runs inside encoder.om; inputs
-            # may sit on NPU, OmBody moves them to host buffers itself.
-            # R8: route_lanes rides the same call (static RouteEncoder baked
-            # into the graph) -- its eager launch train is gone and the
-            # decoder picks route_encoding from this dict
+            # encoder.om v3 (R8): the graph eats RAW adapt output -- the
+            # observation normalization (json constants baked in), the pos
+            # extraction (atan2 rides its ONNX decomposition; ATC has the
+            # kernels, unlike the torchair GE converter) and the static
+            # RouteEncoder all run inside. Three outputs; the eager
+            # norm/pos/route launch trains are gone, one submission total
             body = self._get_om_body()
-            encoding, route_encoding = body(
+            encoding, route_encoding, current_states = body(
                 inputs['neighbor_agents_past'],
                 inputs['static_objects'],
                 inputs['lanes'],
                 inputs['lanes_speed_limit'],
-                inputs['lanes_has_speed_limit'],  # bool -> 0/1 float inside OmBody
-                _agent_pos(inputs['neighbor_agents_past']),
-                _static_pos(inputs['static_objects']),
-                _lane_pos(inputs['lanes'], self.lane_encoder._lane_len),
+                inputs['lanes_has_speed_limit'],
                 inputs['route_lanes'],
+                inputs['ego_current_state'],
             )
-            return {"encoding": encoding, "route_encoding": route_encoding}
+            return {"encoding": encoding, "route_encoding": route_encoding,
+                    "current_states": current_states}
 
         if _TORCHAIR:
             body = self._get_static_body()
