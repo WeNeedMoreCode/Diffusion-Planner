@@ -15,6 +15,39 @@ from nuplan.common.maps.abstract_map_objects import RoadBlockGraphEdgeMapObject
 def normalize_angle(angle: np.ndarray):
     return (angle + np.pi) % (2 * np.pi) - np.pi
 
+
+# --- map-invariant caches (inference adapter only, R9) ---
+# The candidate-error loop below re-converted every candidate lane's python
+# StateSE2 list into numpy arrays on every planning step; the lane geometry
+# is a map invariant, so the conversion is cached once per lane. The route
+# block lookup likewise rebuilds the same dict for the same mission route
+# ids every step. Both are exact (no quantization). A single map slot: if
+# the process ever switches maps, the caches are dropped wholesale so ids
+# from different maps can never collide.
+_LANE_GEOM_CACHE: Dict[str, Tuple[np.ndarray, np.ndarray]] = {}
+_ROUTE_BLOCK_CACHE: Dict[tuple, Dict[str, RoadBlockGraphEdgeMapObject]] = {}
+_CACHE_MAP_NAME = [None]
+
+
+def _bind_map_caches(map_name):
+    if _CACHE_MAP_NAME[0] != map_name:
+        _LANE_GEOM_CACHE.clear()
+        _ROUTE_BLOCK_CACHE.clear()
+        _CACHE_MAP_NAME[0] = map_name
+
+
+def _lane_geometry(lane):
+    """(discrete points [N,2] float64, headings [N] float64) of a lane baseline."""
+    geom = _LANE_GEOM_CACHE.get(lane.id)
+    if geom is None:
+        path = lane.baseline_path.discrete_path
+        geom = (
+            np.array([s.point.array for s in path], dtype=np.float64),
+            np.array([s.heading for s in path], dtype=np.float64),
+        )
+        _LANE_GEOM_CACHE[lane.id] = geom
+    return geom
+
 class BreadthFirstSearchRoadBlock:
     """
     A class that performs iterative breadth first search. The class operates on the roadblock graph.
@@ -205,17 +238,14 @@ def get_current_roadblock_candidates(
         lane_displacement_error, lane_heading_error = np.inf, np.inf
 
         for lane in roadblock.interior_edges:
-            lane_discrete_path: List[StateSE2] = lane.baseline_path.discrete_path
-            lane_discrete_points = np.array(
-                [state.point.array for state in lane_discrete_path], dtype=np.float64
-            )
+            lane_discrete_points, lane_headings = _lane_geometry(lane)
             lane_state_distances = (
                 (lane_discrete_points - ego_pose.point.array[None, ...]) ** 2.0
             ).sum(axis=-1) ** 0.5
             argmin = np.argmin(lane_state_distances)
 
             heading_error = np.abs(
-                normalize_angle(lane_discrete_path[argmin].heading - ego_pose.heading)
+                normalize_angle(lane_headings[argmin] - ego_pose.heading)
             )
             displacement_error = lane_state_distances[argmin]
 
@@ -271,13 +301,17 @@ def route_roadblock_correction(
     :return: list of roadblock id's of corrected route
     """
 
-    route_roadblock_dict = {}
-    for id_ in route_roadblock_ids:
-        block = map_api.get_map_object(id_, SemanticMapLayer.ROADBLOCK)
-        block = block or map_api.get_map_object(
-            id_, SemanticMapLayer.ROADBLOCK_CONNECTOR
-        )
-        route_roadblock_dict[id_] = block
+    _bind_map_caches(map_api.map_name)
+    route_roadblock_dict = _ROUTE_BLOCK_CACHE.get(tuple(route_roadblock_ids))
+    if route_roadblock_dict is None:
+        route_roadblock_dict = {}
+        for id_ in route_roadblock_ids:
+            block = map_api.get_map_object(id_, SemanticMapLayer.ROADBLOCK)
+            block = block or map_api.get_map_object(
+                id_, SemanticMapLayer.ROADBLOCK_CONNECTOR
+            )
+            route_roadblock_dict[id_] = block
+        _ROUTE_BLOCK_CACHE[tuple(route_roadblock_ids)] = route_roadblock_dict
 
     starting_block, starting_block_candidates = get_current_roadblock_candidates(
         ego_state, map_api, route_roadblock_dict
