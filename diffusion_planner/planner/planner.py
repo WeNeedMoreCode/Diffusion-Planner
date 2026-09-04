@@ -128,7 +128,13 @@ class DiffusionPlanner(AbstractPlanner):
     def planner_input_to_model_inputs(self, planner_input: PlannerInput) -> Dict[str, torch.Tensor]:
         history = planner_input.history
         traffic_light_data = list(planner_input.traffic_light_data)
-        model_inputs = self.data_processor.observation_adapter(history, traffic_light_data, self._map_api, self._route_roadblock_ids, self._device)
+        # DP_OM: everything compute-side lives inside the graphs (aclruntime
+        # exchanges host buffers), so adapt output stays on the host --
+        # staging it on the card only to copy it back per OmBody call is
+        # pure H2D+D2H overhead, and the decoder's mask ops also get cheaper
+        # as host-side launches (R9)
+        device = "cpu" if _OM else self._device
+        model_inputs = self.data_processor.observation_adapter(history, traffic_light_data, self._map_api, self._route_roadblock_ids, device)
 
         return model_inputs
 
