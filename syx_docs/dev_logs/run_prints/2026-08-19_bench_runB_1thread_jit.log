@@ -1,0 +1,916 @@
+Processing /data/syx_dp/checkpoints/model.pth...
+/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/lightning_fabric/__init__.py:40: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+Seed set to 0
+INFO:nuplan.planning.script.builders.main_callback_builder:Building MultiMainCallback...
+INFO:nuplan.planning.script.builders.main_callback_builder:Building MultiMainCallback: 4...DONE!
+2026-08-19 02:12:18,047	INFO worker.py:2012 -- Started a local Ray instance.
+2026-08-19 02:12:14,915 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/worker_pool_builder.py:19}  Building WorkerPool...
+2026-08-19 02:12:14,919 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_ray.py:52}  Not using GPU in ray
+2026-08-19 02:12:14,920 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_ray.py:78}  Starting ray local!
+2026-08-19 02:12:18,692 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:101}  Worker: RayDistributed
+2026-08-19 02:12:18,693 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:102}  Number of nodes: 1
+Number of CPUs per node: 1
+Number of GPUs per node: 0
+Number of threads across all nodes: 1
+2026-08-19 02:12:18,693 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/worker_pool_builder.py:27}  Building WorkerPool...DONE!
+2026-08-19 02:12:18,693 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:32}  Building experiment folders...
+2026-08-19 02:12:18,694 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:35}  
+
+	Folder where all results are stored: /data/syx_dp/exp/exp/simulation/closed_loop_nonreactive_agents/diffusion_planner/one_continuous_log/diffusion_planner_release/model_2026-08-19-02-11-57
+
+2026-08-19 02:12:18,699 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:70}  Building experiment folders...DONE!
+2026-08-19 02:12:18,700 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_callback_builder.py:52}  Building AbstractCallback...
+2026-08-19 02:12:18,700 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_callback_builder.py:68}  Building AbstractCallback: 0...DONE!
+2026-08-19 02:12:18,701 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:47}  Building simulations...
+2026-08-19 02:12:18,701 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:53}  Extracting scenarios...
+2026-08-19 02:12:18,701 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/common/utils/distributed_scenario_filter.py:83}  Building Scenarios in mode DistributedMode.SINGLE_NODE
+2026-08-19 02:12:18,702 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_building_builder.py:18}  Building AbstractScenarioBuilder...
+2026-08-19 02:12:18,733 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_building_builder.py:21}  Building AbstractScenarioBuilder...DONE!
+2026-08-19 02:12:18,733 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_filter_builder.py:35}  Building ScenarioFilter...
+2026-08-19 02:12:18,736 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_filter_builder.py:44}  Building ScenarioFilter...DONE!
+Ray objects:   0%|          | 0/1 [00:00<?, ?it/s]Ray objects: 100%|██████████| 1/1 [00:02<00:00,  2.48s/it]Ray objects: 100%|██████████| 1/1 [00:02<00:00,  2.48s/it]
+2026-08-19 02:12:21,241 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:74}  Building metric engines...
+2026-08-19 02:12:21,365 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:76}  Building metric engines...DONE
+2026-08-19 02:12:21,365 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:80}  Building simulations from 5 scenarios...
+2026-08-19 02:12:25,064 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:133}  Building simulations...DONE!
+2026-08-19 02:12:25,064 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit//nuplan/planning/script/run_simulation.py:78}  Running simulation...
+2026-08-19 02:12:25,065 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:138}  Executing runners...
+2026-08-19 02:12:25,065 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:82}  Starting 5 simulations using RayDistributed!
+2026-08-19 02:12:25,065 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:116}  Submitting 5 tasks!
+('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
+Ray objects:   0%|          | 0/5 [00:00<?, ?it/s][33m(raylet)[0m [2026-08-19 02:12:27,964 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2445 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:12:37,971 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2444 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m [W compiler_depend.ts:83] Warning: [Check][offset] Check input storage_offset[%ld] = 0 failed, result is untrustworthy4 (function operator())
+[36m(pid=gcs_server)[0m [2026-08-19 02:12:46,484 E 697264 697264] (gcs_server) gcs_server.cc:302: Failed to establish connection to the event+metrics exporter agent. Events and metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[33m(raylet)[0m [2026-08-19 02:12:47,979 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2444 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:12:47,996 E 697497 697497] (raylet) main.cc:975: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[2026-08-19 02:12:48,696 E 696944 697591] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[36m(wrapped_fn pid=697592)[0m [2026-08-19 02:12:48,683 E 697592 697688] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[33m(raylet)[0m [2026-08-19 02:12:57,987 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2441 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m [W compiler_depend.ts:116] Warning: Driver Version: �%�ܪ� is invalid or not supported yet. (function operator())
+[33m(raylet)[0m [2026-08-19 02:13:07,998 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2437 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:13:18,010 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2432 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:13:28,022 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2428 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:13:38,033 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2424 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:13:48,044 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2419 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:13:58,056 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2415 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:14:08,067 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2351 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:14:18,075 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2346 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:14:28,082 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2342 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:14:38,089 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2376 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:14:48,095 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2375 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:14:58,105 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2375 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:15:08,116 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2375 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:15:18,125 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2375 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:15:28,134 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2375 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt= 3381.6 norm= 230.9 fwd=113364.9 post=  14.2 total=116991.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  695.1 norm=   8.6 fwd=  247.1 post=   8.9 total=  959.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  362.2 norm=   7.5 fwd=  246.3 post=   8.9 total=  624.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  669.1 norm=   7.3 fwd=  285.6 post=   8.9 total=  971.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  691.1 norm=   7.6 fwd=  247.2 post=   8.7 total=  954.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  360.4 norm=   7.5 fwd=  246.0 post=   9.2 total=  623.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  668.7 norm=   7.4 fwd=  244.4 post=   9.0 total=  929.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  358.4 norm=   7.7 fwd=  269.9 post=   9.3 total=  645.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  666.2 norm=   7.6 fwd=  244.8 post=   9.2 total=  927.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  356.9 norm=   7.6 fwd=  283.6 post=   9.2 total=  657.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  673.7 norm=   7.3 fwd=  243.8 post=   9.2 total=  934.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  672.6 norm=   7.5 fwd=  248.9 post=   9.2 total=  938.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  363.8 norm=   7.3 fwd=  246.9 post=   9.1 total=  627.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  686.5 norm=   7.3 fwd=  244.1 post=   9.1 total=  947.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  374.3 norm=   7.6 fwd=  249.4 post=   8.9 total=  640.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  683.0 norm=   7.9 fwd=  244.0 post=   9.2 total=  944.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  697.1 norm=   7.3 fwd=  247.2 post=   9.2 total=  960.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  366.6 norm=   7.7 fwd=  261.6 post=   9.2 total=  645.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  689.6 norm=   7.5 fwd=  244.0 post=   9.1 total=  950.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  375.1 norm=   7.6 fwd=  247.6 post=   9.2 total=  639.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  689.9 norm=   7.5 fwd=  244.5 post=   9.1 total=  951.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  369.3 norm=   7.1 fwd=  247.4 post=   9.1 total=  633.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  674.3 norm=   7.5 fwd=  285.1 post=   9.1 total=  976.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  690.5 norm=   7.7 fwd=  246.9 post=   9.2 total=  954.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  373.6 norm=   7.2 fwd=  256.0 post=   9.5 total=  646.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  701.3 norm=   7.7 fwd=  254.4 post=   9.6 total=  972.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  364.9 norm=   7.6 fwd=  247.8 post=   9.2 total=  629.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  681.8 norm=   7.6 fwd=  249.4 post=   9.2 total=  948.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  352.8 norm=   7.2 fwd=  276.8 post=   9.3 total=  646.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  673.2 norm=   7.8 fwd=  247.0 post=   9.2 total=  937.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  685.5 norm=   7.6 fwd=  245.6 post=   9.1 total=  947.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  357.9 norm=   7.6 fwd=  283.7 post=   9.1 total=  658.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  719.0 norm=   7.7 fwd=  281.8 post=   9.1 total= 1017.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  378.2 norm=   7.5 fwd=  255.3 post=   9.1 total=  650.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  691.6 norm=   7.6 fwd=  246.2 post=   9.2 total=  954.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  366.9 norm=   7.2 fwd=  247.7 post=   9.1 total=  630.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  693.1 norm=   7.4 fwd=  269.8 post=   9.0 total=  979.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  380.5 norm=   7.5 fwd=  285.7 post=   8.8 total=  682.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  697.9 norm=   7.5 fwd=  249.8 post=   8.8 total=  964.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  368.0 norm=   7.4 fwd=  284.4 post=   8.8 total=  668.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  717.3 norm=   7.5 fwd=  252.6 post=   8.8 total=  986.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  431.9 norm=   8.0 fwd=  266.1 post=   8.9 total=  714.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  707.6 norm=   7.6 fwd=  249.5 post=   8.9 total=  973.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  377.6 norm=   7.9 fwd=  278.0 post=   8.9 total=  672.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  697.0 norm=   7.4 fwd=  245.7 post=   8.8 total=  958.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  709.1 norm=   8.6 fwd=  259.9 post=   8.8 total=  986.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  373.3 norm=   7.5 fwd=  267.1 post=   9.2 total=  657.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  725.2 norm=   7.7 fwd=  253.2 post=   9.3 total=  995.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  373.2 norm=   7.5 fwd=  249.3 post=   8.8 total=  638.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  703.1 norm=   7.7 fwd=  246.2 post=   9.1 total=  966.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  714.8 norm=   7.7 fwd=  250.0 post=   9.0 total=  981.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  367.7 norm=   7.5 fwd=  256.9 post=   9.2 total=  641.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  707.7 norm=  13.1 fwd=  250.1 post=   9.2 total=  980.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  368.8 norm=   7.6 fwd=  273.3 post=   9.1 total=  658.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  714.7 norm=   7.2 fwd=  240.3 post=   9.1 total=  971.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  371.1 norm=   7.7 fwd=  255.1 post=   9.2 total=  643.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  711.1 norm=   7.6 fwd=  247.2 post=   9.2 total=  975.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  366.4 norm=   7.6 fwd=  249.3 post=   8.9 total=  632.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  701.1 norm=   7.7 fwd=  248.5 post=   8.9 total=  966.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  365.1 norm=   7.5 fwd=  247.5 post=   8.8 total=  628.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  705.6 norm=   7.3 fwd=  245.2 post=   8.8 total=  966.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  708.6 norm=   7.4 fwd=  249.0 post=   9.5 total=  974.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  361.7 norm=   7.2 fwd=  249.2 post=   8.8 total=  626.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  716.0 norm=   7.4 fwd=  248.4 post=   8.8 total=  980.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  364.7 norm=   7.8 fwd=  248.8 post=   9.6 total=  630.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  712.9 norm=   7.2 fwd=  246.6 post=   9.2 total=  975.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  361.8 norm=   7.7 fwd=  246.4 post=   9.2 total=  625.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  702.3 norm=   7.6 fwd=  248.4 post=   9.4 total=  967.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  362.7 norm=   7.5 fwd=  249.0 post=   9.2 total=  628.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  707.0 norm=   7.4 fwd=  265.5 post=   9.2 total=  989.2 ms
+[33m(raylet)[0m [2026-08-19 02:15:38,142 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2375 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:15:48,149 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2374 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:15:58,155 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2371 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:16:08,162 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2368 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:16:18,173 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2364 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:16:28,181 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.236 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:16:38,189 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2357 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:16:48,195 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2354 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:16:58,202 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2354 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:17:08,209 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2354 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:17:18,217 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2353 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  714.4 norm=   7.3 fwd=  247.6 post=   9.1 total=  978.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  358.7 norm=   7.5 fwd=  244.6 post=   9.1 total=  619.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  710.7 norm=   7.3 fwd=  244.1 post=   9.1 total=  971.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  359.6 norm=   7.3 fwd=  243.2 post=   9.2 total=  619.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  721.2 norm=   7.2 fwd=  247.0 post=   9.1 total=  984.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  363.0 norm=   7.5 fwd=  284.1 post=   9.2 total=  663.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  715.1 norm=   7.7 fwd=  250.6 post=   9.2 total=  982.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  357.9 norm=   7.4 fwd=  245.7 post=   8.7 total=  619.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  707.4 norm=   7.6 fwd=  243.9 post=   9.2 total=  968.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  354.9 norm=   7.5 fwd=  243.8 post=   9.2 total=  615.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  709.0 norm=   7.7 fwd=  251.4 post=   9.2 total=  977.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  360.2 norm=   7.3 fwd=  253.7 post=   9.2 total=  630.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  719.4 norm=   7.6 fwd=  248.4 post=   9.2 total=  984.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  353.9 norm=   7.5 fwd=  247.9 post=   9.2 total=  618.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  356.5 norm=   7.6 fwd=  264.4 post=   9.3 total=  637.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  702.3 norm=   7.2 fwd=  284.4 post=   9.2 total= 1003.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  353.8 norm=   7.3 fwd=  255.4 post=   9.2 total=  625.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  704.6 norm=   7.2 fwd=  246.0 post=   9.2 total=  967.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  349.0 norm=   7.4 fwd=  245.8 post=   9.2 total=  611.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  711.0 norm=   7.4 fwd=  245.9 post=   9.1 total=  973.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  351.0 norm=   7.4 fwd=  260.1 post=   9.2 total=  627.6 ms
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  726.9 norm=   7.7 fwd= 3878.4 post=   9.5 total= 4622.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  346.2 norm=   7.8 fwd= 3872.1 post=   9.5 total= 4235.5 ms
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  722.9 norm=   7.6 fwd=12726.0 post=  10.1 total=13466.6 ms
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  349.3 norm=   7.6 fwd=12614.1 post=   9.4 total=12980.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  730.7 norm=   9.3 fwd= 3842.5 post=   9.6 total= 4592.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  350.5 norm=   7.8 fwd=  253.4 post=   9.2 total=  620.9 ms
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  739.4 norm=   8.1 fwd=11314.2 post=   9.9 total=12071.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  355.0 norm=   9.5 fwd=  279.0 post=   9.4 total=  652.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  738.0 norm=   9.7 fwd=  246.8 post=   9.2 total= 1003.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  342.9 norm=   9.3 fwd=  285.8 post=   9.2 total=  647.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  341.6 norm=   9.5 fwd=  276.9 post=   9.2 total=  637.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  698.7 norm=   9.3 fwd=  287.3 post=   9.2 total= 1004.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  341.3 norm=   9.5 fwd=  266.2 post=   9.2 total=  626.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  699.8 norm=  10.0 fwd=  251.8 post=   9.2 total=  970.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  345.5 norm=   9.6 fwd=  250.7 post=   9.1 total=  615.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  709.1 norm=   9.4 fwd=  243.0 post=   9.1 total=  970.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.3 norm=   9.1 fwd=  246.5 post=   9.1 total=  592.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  699.5 norm=   9.4 fwd=  273.9 post=   9.2 total=  992.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  329.7 norm=   9.2 fwd=  256.5 post=   9.2 total=  604.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  363.6 norm=   9.6 fwd=  253.4 post=   9.2 total=  635.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  705.0 norm=   9.2 fwd=  246.1 post=   9.2 total=  969.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  338.6 norm=   9.1 fwd=  248.9 post=   9.2 total=  605.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  707.1 norm=   9.4 fwd=  245.6 post=   9.1 total=  971.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  359.7 norm=   9.2 fwd=  246.8 post=   9.3 total=  625.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  710.8 norm=   9.2 fwd=  244.8 post=   9.1 total=  973.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  333.9 norm=   9.1 fwd=  247.2 post=   9.2 total=  599.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  708.4 norm=   9.6 fwd=  257.6 post=   9.3 total=  984.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  333.9 norm=   9.5 fwd=  253.6 post=   9.2 total=  606.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  335.0 norm=   9.3 fwd=  249.5 post=   9.1 total=  603.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  700.7 norm=  10.2 fwd=  267.4 post=   9.2 total=  987.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  329.7 norm=  10.3 fwd=  257.5 post=   9.2 total=  606.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  709.8 norm=   9.5 fwd=  255.8 post=   9.2 total=  984.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  329.3 norm=   9.5 fwd=  251.0 post=   9.2 total=  599.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  731.6 norm=   9.4 fwd=  249.9 post=   9.2 total= 1000.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.2 norm=   9.6 fwd=  246.1 post=   9.2 total=  595.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  336.1 norm=   9.2 fwd=  247.0 post=   9.2 total=  601.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  700.0 norm=   9.5 fwd=  244.5 post=   9.0 total=  963.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  356.8 norm=   9.4 fwd=  247.6 post=   8.7 total=  622.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  722.9 norm=   9.3 fwd=  244.7 post=   8.8 total=  985.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  341.3 norm=   9.2 fwd=  242.2 post=   9.1 total=  601.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  718.8 norm=   9.2 fwd=  242.0 post=   9.4 total=  979.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  352.1 norm=   8.9 fwd=  245.5 post=   9.1 total=  615.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  733.5 norm=   8.9 fwd=  243.9 post=   9.1 total=  995.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  336.8 norm=   9.0 fwd=  245.7 post=   9.1 total=  600.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  723.6 norm=   9.2 fwd=  243.7 post=   9.2 total=  985.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  336.9 norm=   9.4 fwd=  246.4 post=   9.2 total=  601.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  350.3 norm=   9.2 fwd=  243.7 post=   9.1 total=  612.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  714.4 norm=   9.2 fwd=  256.1 post=   9.3 total=  988.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  339.7 norm=   8.9 fwd=  248.7 post=   9.2 total=  606.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  728.3 norm=   9.7 fwd=  243.1 post=   9.1 total=  990.2 ms
+[33m(raylet)[0m [2026-08-19 02:17:28,224 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2353 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+Ray objects:  20%|██        | 1/5 [05:11<20:46, 311.68s/it][33m(raylet)[0m [2026-08-19 02:17:38,230 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2353 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:17:48,237 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2351 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:17:58,244 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.235 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:18:08,250 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.235 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:18:18,259 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.235 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  336.0 norm=   9.5 fwd=  243.1 post=   9.0 total=  597.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  721.3 norm=   9.3 fwd=  243.5 post=   8.7 total=  982.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  331.3 norm=   9.3 fwd=  258.7 post=   9.6 total=  608.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt= 1383.0 norm=   9.4 fwd=  272.8 post=   9.5 total= 1674.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  333.7 norm=   9.1 fwd=  269.8 post=   8.7 total=  621.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  331.2 norm=   9.2 fwd=  253.9 post=   8.9 total=  603.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  733.7 norm=  10.3 fwd=  259.2 post=   9.3 total= 1012.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.8 norm=   9.0 fwd=  250.5 post=   9.1 total=  599.4 ms
+[36m(wrapped_fn pid=697592)[0m ('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  766.3 norm=   9.5 fwd=  274.3 post=   9.7 total= 1059.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  781.6 norm=   9.7 fwd=  259.4 post=   9.1 total= 1059.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  325.1 norm=   9.2 fwd=  250.7 post=   9.2 total=  594.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  328.5 norm=   9.1 fwd=  247.7 post=   9.0 total=  594.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  817.0 norm=   9.7 fwd=  253.3 post=  13.6 total= 1093.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  326.3 norm=   9.5 fwd=  247.7 post=   9.0 total=  592.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  324.3 norm=   9.3 fwd=  285.7 post=   9.6 total=  628.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  806.2 norm=   9.4 fwd=  242.1 post=   8.8 total= 1066.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.5 norm=   9.2 fwd=  242.1 post=   8.8 total=  579.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.9 norm=   8.9 fwd=  243.9 post=   9.0 total=  575.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  761.1 norm=   9.4 fwd=  245.1 post=   8.8 total= 1024.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.5 norm=   9.0 fwd=  248.5 post=   8.8 total=  580.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  326.1 norm=   9.2 fwd=  247.6 post=   8.8 total=  591.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  774.1 norm=   9.6 fwd=  251.3 post=   8.9 total= 1043.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  328.5 norm=   9.5 fwd=  256.1 post=   8.9 total=  603.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  329.4 norm=   9.9 fwd=  258.2 post=   9.0 total=  606.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  335.3 norm=   9.6 fwd=  252.0 post=   8.9 total=  605.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  805.9 norm=   9.5 fwd=  242.2 post=   8.9 total= 1066.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.5 norm=   9.9 fwd=  254.9 post=   9.2 total=  590.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.7 norm=   8.9 fwd=  266.2 post=   8.8 total=  600.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  755.9 norm=   9.4 fwd=  242.2 post=   8.7 total= 1016.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  328.2 norm=   9.3 fwd=  243.2 post=   9.1 total=  590.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.5 norm=   9.0 fwd=  244.1 post=   9.2 total=  579.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  781.4 norm=   9.3 fwd=  269.3 post=   9.2 total= 1069.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.6 norm=  10.6 fwd=  263.3 post=  12.0 total=  616.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  328.0 norm=   9.6 fwd=  263.0 post=   9.0 total=  609.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  814.9 norm=  10.0 fwd=  270.9 post=   9.3 total= 1105.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  357.4 norm=   9.4 fwd=  253.2 post=   9.5 total=  629.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  323.7 norm=   9.8 fwd=  277.6 post=   9.0 total=  620.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  795.9 norm=   9.3 fwd=  258.4 post=   9.3 total= 1072.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  322.3 norm=   9.3 fwd=  278.5 post=   9.1 total=  619.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.1 norm=   9.5 fwd=  264.5 post=   8.8 total=  602.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  776.8 norm=   9.2 fwd=  264.3 post=   8.9 total= 1059.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  323.4 norm=   9.6 fwd=  262.6 post=   9.4 total=  605.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  329.1 norm=   9.4 fwd=  252.6 post=   9.2 total=  600.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.5 norm=   9.1 fwd=  249.8 post=   9.2 total=  587.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  802.9 norm=   9.0 fwd=  248.5 post=   9.6 total= 1070.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.9 norm=   9.3 fwd=  246.9 post=   9.3 total=  579.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.3 norm=   9.1 fwd=  275.1 post=   9.2 total=  604.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  779.5 norm=   9.7 fwd=  253.7 post=   9.2 total= 1052.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.6 norm=   9.3 fwd=  251.3 post=   9.1 total=  579.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.6 norm=   9.1 fwd=  262.3 post=   9.1 total=  588.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.9 norm=   9.2 fwd=  255.6 post=   8.8 total=  587.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  770.2 norm=  10.6 fwd=  258.0 post=   9.1 total= 1047.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.1 norm=   9.5 fwd=  250.1 post=   9.2 total=  588.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.1 norm=  10.0 fwd=  260.9 post=   9.1 total=  610.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  339.0 norm=   9.8 fwd=  281.1 post=   9.3 total=  639.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  818.2 norm=   9.1 fwd=  250.9 post=   9.0 total= 1087.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.5 norm=   8.7 fwd=  249.3 post=   9.2 total=  584.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.7 norm=   9.0 fwd=  249.0 post=   9.3 total=  595.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.7 norm=   8.9 fwd=  289.7 post=   9.7 total=  630.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt= 1099.0 norm=   9.6 fwd=  264.7 post=   9.6 total= 1382.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.0 norm=   9.1 fwd=  261.4 post=   9.5 total=  610.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.8 norm=   9.4 fwd=  249.2 post=   9.3 total=  589.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.0 norm=   9.1 fwd=  249.0 post=   9.0 total=  582.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  866.0 norm=   8.6 fwd=  243.2 post=   9.2 total= 1126.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.9 norm=   9.0 fwd=  245.2 post=   9.2 total=  584.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  322.0 norm=   9.3 fwd=  246.5 post=   9.1 total=  586.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  798.7 norm=   9.0 fwd=  283.1 post=   9.1 total= 1100.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.2 norm=   9.3 fwd=  273.0 post=  12.2 total=  613.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  326.7 norm=   9.6 fwd=  267.2 post=   9.2 total=  612.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.0 norm=   9.2 fwd=  291.3 post=   9.2 total=  636.8 ms
+[33m(raylet)[0m [2026-08-19 02:18:28,267 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.235 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:18:38,274 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.235 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:18:48,283 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2349 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:18:58,291 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2348 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:19:08,299 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2348 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:19:18,307 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2348 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  872.7 norm=   9.2 fwd=  271.5 post=   9.2 total= 1162.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  339.8 norm=   9.7 fwd=  256.1 post=   8.7 total=  614.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.8 norm=   8.9 fwd=  252.8 post=   9.0 total=  586.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.8 norm=   9.3 fwd=  264.7 post=   9.1 total=  603.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  827.0 norm=   9.5 fwd=  270.7 post=   9.1 total= 1116.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.6 norm=   9.1 fwd=  251.4 post=   8.8 total=  600.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.5 norm=   9.2 fwd=  250.1 post=   9.1 total=  588.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.6 norm=   9.3 fwd=  248.6 post=   9.1 total=  581.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  800.4 norm=   9.2 fwd=  244.1 post=   9.2 total= 1062.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.2 norm=   9.4 fwd=  258.6 post=   9.3 total=  593.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  323.3 norm=   9.2 fwd=  255.2 post=   9.9 total=  597.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.1 norm=   9.5 fwd=  282.0 post=   9.2 total=  618.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  822.6 norm=   9.3 fwd=  246.6 post=   9.2 total= 1087.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  366.9 norm=   9.3 fwd=  249.9 post=   9.1 total=  635.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.3 norm=   9.3 fwd=  249.5 post=   9.3 total=  586.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.3 norm=   9.4 fwd=  254.8 post=   9.2 total=  591.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  801.7 norm=   9.0 fwd=  245.3 post=   9.1 total= 1065.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.3 norm=   9.4 fwd=  251.1 post=  12.4 total=  590.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  354.8 norm=   9.5 fwd=  276.1 post=   9.8 total=  650.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  900.1 norm=   9.6 fwd=  257.5 post=   9.4 total= 1176.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  322.1 norm=   9.8 fwd=  274.5 post=   8.7 total=  615.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.3 norm=   9.3 fwd=  254.2 post=   8.8 total=  591.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.8 norm=   9.3 fwd=  252.0 post=   8.8 total=  587.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  827.2 norm=   9.5 fwd=  251.8 post=   8.8 total= 1097.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.6 norm=   9.0 fwd=  249.3 post=   8.8 total=  588.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.3 norm=   8.9 fwd=  250.4 post=   8.8 total=  585.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.6 norm=   9.5 fwd=  254.2 post=   8.8 total=  591.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  855.2 norm=   9.6 fwd=  274.0 post=   9.6 total= 1148.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.5 norm=   9.3 fwd=  251.3 post=   9.4 total=  600.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  335.2 norm=   9.3 fwd=  248.1 post=   9.2 total=  601.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  838.6 norm=   9.5 fwd=  260.4 post=   9.2 total= 1117.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.3 norm=   9.2 fwd=  253.1 post=   9.2 total=  584.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.1 norm=   9.1 fwd=  250.1 post=   9.1 total=  583.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  335.8 norm=   9.3 fwd=  249.6 post=   8.8 total=  603.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  829.4 norm=   9.3 fwd=  247.3 post=   8.8 total= 1094.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.5 norm=   9.3 fwd=  260.7 post=   8.9 total=  600.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.3 norm=  10.3 fwd=  267.6 post=   9.1 total=  617.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  322.3 norm=   9.4 fwd=  258.7 post=   9.6 total=  600.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  884.9 norm=   9.7 fwd=  252.4 post=   8.8 total= 1155.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.9 norm=   8.9 fwd=  246.3 post=   8.7 total=  575.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.3 norm=   9.1 fwd=  251.6 post=   8.8 total=  579.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.9 norm=   9.3 fwd=  278.6 post=   8.9 total=  607.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  825.8 norm=   9.2 fwd=  245.8 post=   8.8 total= 1089.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  308.5 norm=   9.4 fwd=  250.2 post=   8.9 total=  577.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  312.5 norm=   9.4 fwd=  248.4 post=   8.8 total=  579.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.6 norm=   9.2 fwd=  262.2 post=   9.1 total=  590.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  888.3 norm=  10.6 fwd=  260.6 post=   9.1 total= 1168.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.4 norm=   9.4 fwd=  253.3 post=   8.8 total=  582.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.9 norm=   9.4 fwd=  253.3 post=   8.8 total=  579.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.0 norm=   9.2 fwd=  257.0 post=   8.9 total=  591.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  322.3 norm=   9.3 fwd=  271.9 post=   8.9 total=  612.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  828.7 norm=   9.3 fwd=  244.1 post=   8.8 total= 1091.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  338.4 norm=   9.4 fwd=  251.5 post=   8.8 total=  608.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.9 norm=   9.0 fwd=  261.1 post=   8.8 total=  590.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.5 norm=   9.4 fwd=  265.1 post=   9.0 total=  611.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  865.6 norm=   9.7 fwd=  263.9 post=   9.1 total= 1148.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.0 norm=   8.8 fwd=  269.2 post=   9.2 total=  605.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.4 norm=   9.2 fwd=  263.4 post=   9.1 total=  596.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.9 norm=   9.1 fwd=  255.3 post=   8.8 total=  583.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  353.3 norm=   9.9 fwd=  262.3 post=   9.1 total=  634.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  888.1 norm=   9.8 fwd=  247.7 post=   9.1 total= 1154.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.0 norm=   9.2 fwd=  251.1 post=   8.7 total=  583.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.8 norm=   9.3 fwd=  250.0 post=   8.8 total=  581.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.5 norm=   9.3 fwd=  249.2 post=   8.8 total=  577.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  845.3 norm=   9.3 fwd=  256.8 post=   8.9 total= 1120.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.6 norm=   9.2 fwd=  265.1 post=   9.1 total=  600.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.4 norm=   8.8 fwd=  250.2 post=   8.8 total=  589.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.2 norm=   9.1 fwd=  250.0 post=   9.1 total=  588.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  903.7 norm=   9.2 fwd=  244.7 post=   8.8 total= 1166.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  312.6 norm=   8.9 fwd=  249.3 post=   8.8 total=  579.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.2 norm=   9.6 fwd=  247.0 post=   8.8 total=  576.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  312.9 norm=   9.3 fwd=  248.7 post=   8.8 total=  579.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.1 norm=   9.2 fwd=  249.1 post= 548.8 total= 1120.2 ms
+[33m(raylet)[0m [2026-08-19 02:19:28,316 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2348 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:19:38,325 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2347 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+Ray objects:  40%|████      | 2/5 [07:20<10:12, 204.01s/it][33m(raylet)[0m [2026-08-19 02:19:48,333 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2347 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:19:58,340 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2347 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:20:08,347 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2347 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:20:18,354 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2347 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:20:28,361 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2347 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.8 norm=   9.8 fwd=  255.6 post=   8.9 total=  585.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.3 norm=   9.3 fwd=  253.2 post=   9.0 total=  585.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  326.8 norm=   9.2 fwd=  255.2 post=   8.9 total=  600.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.4 norm=   9.6 fwd=  261.4 post=   9.1 total=  597.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  917.0 norm=   9.6 fwd=  252.7 post=   9.0 total= 1188.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.4 norm=   9.6 fwd=  249.3 post=   9.1 total=  587.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.5 norm=   9.1 fwd=  276.9 post=   9.1 total=  610.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.4 norm=   9.5 fwd=  261.5 post=   8.8 total=  594.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  891.6 norm=   9.4 fwd=  256.2 post=   8.8 total= 1166.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.2 norm=   9.3 fwd=  249.4 post=   8.8 total=  580.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.2 norm=   9.4 fwd=  248.5 post=   8.8 total=  579.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.2 norm=   9.2 fwd=  285.5 post=   8.8 total=  613.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.5 norm=   9.4 fwd=  259.7 post=   8.8 total=  585.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  870.4 norm=   8.8 fwd=  258.8 post=   8.9 total= 1146.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  394.9 norm=   9.3 fwd=  258.3 post=  10.0 total=  672.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  815.5 norm=   9.0 fwd=  289.9 post=   9.4 total= 1123.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.6 norm=   8.9 fwd=  259.2 post=   9.3 total=  587.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.6 norm=   9.6 fwd=  289.7 post=   9.3 total=  623.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.8 norm=   9.2 fwd=  261.6 post=   9.2 total=  594.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  843.9 norm=   9.3 fwd=  299.5 post=   9.5 total= 1162.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  335.8 norm=   8.5 fwd=  245.3 post=   9.6 total=  599.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.8 norm=   8.9 fwd=  242.9 post=   9.2 total=  575.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.0 norm=   8.8 fwd=  264.0 post=   9.6 total=  603.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.9 norm=   8.9 fwd=  249.1 post=   9.2 total=  584.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  807.0 norm=   8.6 fwd=  252.0 post=   9.3 total= 1076.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.8 norm=   8.7 fwd=  262.4 post=   9.2 total=  596.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.6 norm=   8.7 fwd=  246.8 post=   9.2 total=  580.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.2 norm=   8.5 fwd=  245.3 post=   9.1 total=  578.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  781.3 norm=   8.7 fwd=  243.0 post=   9.2 total= 1042.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.7 norm=   9.0 fwd=  280.8 post=   9.9 total=  620.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.1 norm=   8.5 fwd=  261.7 post=   9.8 total=  607.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  326.8 norm=   8.7 fwd=  247.2 post=   9.5 total=  592.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.3 norm=   8.8 fwd=  250.5 post=   9.3 total=  584.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  825.2 norm=   8.6 fwd=  246.3 post=   9.3 total= 1089.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.4 norm=   9.2 fwd=  258.0 post=   9.2 total=  592.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.9 norm=   8.8 fwd=  252.8 post=   9.2 total=  586.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.1 norm=   8.9 fwd=  245.7 post=   9.3 total=  581.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.5 norm=   9.1 fwd=  248.7 post=   9.2 total=  583.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  796.6 norm=   9.1 fwd=  260.2 post=   9.4 total= 1075.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  328.3 norm=   9.7 fwd=  263.9 post=   9.6 total=  611.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  329.1 norm=   9.4 fwd=  252.9 post=   9.9 total=  601.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.2 norm=   9.2 fwd=  254.0 post=   9.4 total=  593.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.5 norm=   9.3 fwd=  257.0 post=   9.2 total=  594.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  843.1 norm=   8.9 fwd=  245.5 post=   9.2 total= 1106.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  312.5 norm=   8.7 fwd=  246.5 post=   9.2 total=  576.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  343.9 norm=   8.7 fwd=  250.6 post=   9.2 total=  612.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.9 norm=   8.9 fwd=  249.4 post=   9.2 total=  585.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.3 norm=   9.2 fwd=  261.4 post=   9.5 total=  601.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  838.3 norm=   8.7 fwd=  255.8 post=   9.3 total= 1112.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.8 norm=   9.2 fwd=  263.5 post=   9.2 total=  592.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.7 norm=   8.9 fwd=  250.1 post=   9.1 total=  577.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.6 norm=   9.0 fwd=  248.4 post=   9.2 total=  576.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  308.5 norm=   8.7 fwd=  245.5 post=   9.3 total=  572.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  956.3 norm=  11.8 fwd=  314.6 post=   9.5 total= 1292.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.7 norm=   8.8 fwd=  243.7 post=   9.1 total=  573.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.1 norm=   8.4 fwd=  243.5 post=   9.1 total=  570.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.4 norm=   8.3 fwd=  244.1 post=   9.1 total=  571.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  801.3 norm=  11.2 fwd=  250.1 post=  12.4 total= 1075.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.5 norm=   9.6 fwd=  250.4 post=   9.2 total=  582.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  308.5 norm=   9.3 fwd=  246.2 post=   9.2 total=  573.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.5 norm=   9.2 fwd=  242.7 post=   9.2 total=  568.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  302.6 norm=   8.9 fwd=  246.2 post=   9.2 total=  566.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  299.8 norm=   9.1 fwd=  245.0 post=   9.2 total=  563.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  806.3 norm=   9.0 fwd=  241.5 post=   9.2 total= 1066.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  300.4 norm=   8.9 fwd=  241.1 post=   9.1 total=  559.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  300.3 norm=   9.2 fwd=  246.0 post=   9.2 total=  564.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.8 norm=   8.7 fwd=  253.1 post=   9.6 total=  588.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.2 norm=   9.3 fwd=  247.7 post=   9.6 total=  577.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  306.0 norm=   8.9 fwd=  247.2 post=   9.2 total=  571.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  848.2 norm=   8.8 fwd=  244.5 post=   9.1 total= 1110.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  300.3 norm=   9.0 fwd=  241.7 post=   9.1 total=  560.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  299.5 norm=   8.6 fwd=  247.9 post=   9.2 total=  565.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  299.7 norm=   9.0 fwd=  243.6 post=   9.3 total=  561.6 ms
+[33m(raylet)[0m [2026-08-19 02:20:38,368 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2347 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:20:48,375 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2347 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:20:58,381 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2345 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:21:08,388 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2345 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:21:18,395 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2344 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  298.6 norm=   9.1 fwd=  247.3 post=   9.1 total=  564.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  298.3 norm=   9.3 fwd=  247.9 post=   9.1 total=  564.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  808.1 norm=   9.6 fwd=  253.9 post=   9.3 total= 1080.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  312.6 norm=   8.9 fwd=  254.4 post=   9.5 total=  585.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.0 norm=   9.2 fwd=  255.6 post=   9.8 total=  581.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  300.9 norm=   9.0 fwd=  247.1 post=   9.2 total=  566.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  298.7 norm=   9.0 fwd=  248.9 post=   9.1 total=  565.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  858.1 norm=   8.9 fwd=  253.4 post=  10.5 total= 1130.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  306.3 norm=   9.0 fwd=  244.4 post=   9.3 total=  568.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  299.0 norm=   9.2 fwd=  243.6 post=   9.1 total=  560.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  297.6 norm=   9.0 fwd=  241.9 post=   9.1 total=  557.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  298.0 norm=   8.7 fwd=  243.1 post=   9.1 total=  558.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  301.4 norm=   8.9 fwd=  248.4 post=   9.4 total=  568.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  306.6 norm=   9.1 fwd=  260.6 post=  15.2 total=  591.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  886.6 norm=   9.5 fwd=  241.9 post=   9.3 total= 1147.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  305.4 norm=   9.5 fwd=  248.3 post=   9.2 total=  572.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  299.0 norm=   9.1 fwd=  244.9 post=   9.1 total=  562.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.1 norm=   8.7 fwd=  245.9 post=   9.2 total=  577.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  343.3 norm=   9.1 fwd=  245.8 post=   9.1 total=  607.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  860.9 norm=   9.4 fwd=  242.9 post=   9.2 total= 1122.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.6 norm=   9.2 fwd=  247.1 post=   9.1 total=  577.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.4 norm=   8.7 fwd=  246.8 post=   9.2 total=  576.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.4 norm=   8.9 fwd=  244.5 post=   9.2 total=  589.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  322.5 norm=   9.1 fwd=  261.1 post=   9.6 total=  602.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  331.6 norm=   9.0 fwd=  253.6 post=   9.9 total=  604.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  893.6 norm=   9.3 fwd=  242.9 post=   9.1 total= 1154.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.0 norm=   8.8 fwd=  246.0 post=   9.2 total=  579.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.9 norm=   8.6 fwd=  246.4 post=   9.2 total=  581.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.3 norm=   9.3 fwd=  243.5 post=   9.1 total=  581.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.4 norm=   8.8 fwd=  241.9 post=   9.2 total=  576.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  852.8 norm=   8.8 fwd=  243.5 post=   9.1 total= 1114.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.0 norm=   8.9 fwd=  247.7 post=   9.3 total=  595.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  323.9 norm=   9.0 fwd=  256.3 post=   9.3 total=  598.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  328.3 norm=   9.4 fwd=  269.9 post=   9.6 total=  617.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  335.6 norm=   9.0 fwd=  253.8 post=   9.8 total=  608.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  919.1 norm=   8.9 fwd=  243.3 post=   9.2 total= 1180.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.3 norm=   9.1 fwd=  246.5 post=   9.1 total=  592.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.6 norm=   9.3 fwd=  246.6 post=   9.2 total=  583.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.3 norm=   9.3 fwd=  247.7 post=   9.1 total=  587.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.2 norm=   9.0 fwd=  247.4 post=   9.1 total=  586.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  874.3 norm=   8.6 fwd=  244.9 post=   9.1 total= 1137.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  333.1 norm=   9.0 fwd=  262.5 post=   9.6 total=  614.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  333.5 norm=   8.9 fwd=  269.6 post=   9.6 total=  621.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.4 norm=   9.0 fwd=  251.5 post=   9.2 total=  597.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  332.6 norm=   9.0 fwd=  246.6 post=   9.2 total=  597.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.5 norm=   9.1 fwd=  249.5 post=   9.2 total=  589.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  949.1 norm=   9.1 fwd=  255.0 post=   9.3 total= 1222.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  331.9 norm=  10.4 fwd=  259.3 post=   9.2 total=  610.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  340.8 norm=  10.5 fwd=  256.2 post=   9.2 total=  616.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  326.5 norm=  10.7 fwd=  255.0 post=   9.2 total=  601.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  338.4 norm=   8.9 fwd=  246.5 post=   9.4 total=  603.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  896.4 norm=   9.0 fwd=  240.8 post=   9.1 total= 1155.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.4 norm=   8.6 fwd=  245.2 post=   9.1 total=  590.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.8 norm=   8.7 fwd=  252.9 post=   9.2 total=  589.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  334.1 norm=   9.5 fwd=  263.2 post=   9.5 total=  616.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  328.9 norm=   9.1 fwd=  252.6 post=   9.9 total=  600.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.6 norm=   8.7 fwd=  248.6 post=   9.1 total=  581.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  926.4 norm=   9.1 fwd=  244.0 post=   9.2 total= 1188.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.2 norm=   8.9 fwd=  246.2 post=   9.1 total=  579.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.5 norm=   9.2 fwd=  247.6 post=   9.1 total=  577.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  331.0 norm=   9.2 fwd=  247.9 post=   9.1 total=  597.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.7 norm=   9.1 fwd=  247.5 post=   9.1 total=  580.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  898.3 norm=   8.9 fwd=  244.7 post=   9.1 total= 1161.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.4 norm=   9.0 fwd=  261.9 post=   9.4 total=  599.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.9 norm=   9.0 fwd=  266.5 post=   9.5 total=  615.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  349.4 norm=   9.1 fwd=  255.1 post=   9.8 total=  623.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.4 norm=   9.2 fwd=  250.8 post=   9.2 total=  589.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.8 norm=   8.9 fwd=  250.0 post=   9.3 total=  588.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  961.6 norm=   9.0 fwd=  242.6 post=   9.1 total= 1222.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  331.0 norm=   9.1 fwd=  247.3 post=   8.8 total=  596.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.6 norm=   8.8 fwd=  247.3 post=   9.2 total=  584.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.7 norm=   9.0 fwd=  248.6 post=   9.2 total=  587.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.7 norm=   8.8 fwd=  248.5 post=   9.1 total=  584.1 ms
+[33m(raylet)[0m [2026-08-19 02:21:28,403 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2344 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:21:38,409 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2344 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:21:48,416 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2343 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+Ray objects:  60%|██████    | 3/5 [09:29<05:39, 169.77s/it][33m(raylet)[0m [2026-08-19 02:21:58,422 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2342 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:22:08,428 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2342 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:22:18,434 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2342 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:22:28,440 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2342 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:22:38,446 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2342 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  919.6 norm=   9.0 fwd=  247.7 post=   9.2 total= 1185.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  328.5 norm=   9.2 fwd=  270.0 post=   9.6 total=  617.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  328.2 norm=   9.0 fwd=  265.0 post=   9.6 total=  611.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.3 norm=   9.2 fwd=  254.4 post=   9.5 total=  589.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.4 norm=   9.0 fwd=  247.5 post=   9.3 total=  587.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  979.5 norm=   9.1 fwd=  245.0 post=   9.1 total= 1242.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.2 norm=   9.1 fwd=  245.0 post=   9.0 total=  576.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.6 norm=   8.8 fwd=  246.6 post=   9.1 total=  575.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.6 norm=   8.8 fwd=  246.4 post=   9.1 total=  579.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.5 norm=   9.0 fwd=  247.2 post=   9.1 total=  575.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  916.5 norm=   9.2 fwd=  247.1 post=   9.3 total= 1182.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  336.6 norm=   9.3 fwd=  265.1 post=   9.2 total=  620.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  326.4 norm=   9.1 fwd=  250.7 post=   9.9 total=  596.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.7 norm=   9.3 fwd=  249.4 post=   8.9 total=  589.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  308.9 norm=   9.0 fwd=  246.0 post=   8.7 total=  572.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  962.0 norm=   9.1 fwd=  244.7 post=   8.7 total= 1224.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.3 norm=   9.2 fwd=  246.9 post=   8.8 total=  572.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  326.9 norm=   9.3 fwd=  288.2 post=  10.0 total=  634.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.0 norm=   9.0 fwd=  255.7 post=   9.2 total=  592.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.6 norm=   9.3 fwd=  289.2 post=   9.6 total=  629.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  336.6 norm=   9.1 fwd=  256.5 post=  10.0 total=  612.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.4 norm=   9.6 fwd=  254.0 post=   9.5 total=  593.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  845.5 norm=   9.6 fwd=  262.5 post=   9.6 total= 1127.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  332.7 norm=   9.4 fwd=  251.9 post=   9.9 total=  603.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  324.6 norm=   9.2 fwd=  245.9 post=   9.2 total=  588.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  836.3 norm=   8.8 fwd=  242.7 post=   9.2 total= 1097.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  325.9 norm=   9.1 fwd=  244.3 post=   9.2 total=  588.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.5 norm=   8.8 fwd=  244.0 post=   9.4 total=  589.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  323.6 norm=   9.1 fwd=  247.5 post=   9.3 total=  589.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  780.4 norm=   8.6 fwd=  255.0 post=   9.4 total= 1053.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.4 norm=   9.8 fwd=  258.2 post=   9.3 total=  596.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  328.3 norm=   9.0 fwd=  251.3 post=  12.7 total=  601.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  855.7 norm=   9.4 fwd=  268.1 post=  10.1 total= 1143.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  325.4 norm=   9.3 fwd=  258.4 post=   9.5 total=  602.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  325.4 norm=   9.0 fwd=  261.6 post=   9.6 total=  605.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  332.3 norm=   8.7 fwd=  262.8 post=   9.8 total=  613.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  867.6 norm=   9.3 fwd=  244.7 post=   9.4 total= 1130.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.5 norm=   9.1 fwd=  249.7 post=   9.3 total=  586.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.2 norm=   9.7 fwd=  261.9 post=   9.3 total=  600.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.7 norm=   8.6 fwd=  252.6 post=   9.3 total=  589.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  783.1 norm=   9.4 fwd=  246.5 post=   9.3 total= 1048.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.2 norm=   8.8 fwd=  286.7 post=   9.5 total=  623.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  323.8 norm=   9.3 fwd=  261.1 post=   9.5 total=  603.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  840.2 norm=   9.6 fwd=  261.8 post=   9.7 total= 1121.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  325.2 norm=   9.2 fwd=  248.3 post=   9.5 total=  592.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.5 norm=   8.9 fwd=  251.9 post=   9.3 total=  591.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.5 norm=   9.5 fwd=  283.4 post=   9.3 total=  623.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  826.7 norm=   9.7 fwd=  261.6 post=   9.4 total= 1107.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  331.7 norm=   9.3 fwd=  253.8 post=   9.6 total=  604.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.7 norm=   8.8 fwd=  259.2 post=   9.7 total=  605.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  850.6 norm=  10.4 fwd=  282.8 post=   9.3 total= 1153.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  331.5 norm=   9.0 fwd=  244.9 post=   9.8 total=  595.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  335.0 norm=   9.2 fwd=  258.2 post=   9.7 total=  612.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  331.2 norm=   9.5 fwd=  248.6 post=   9.8 total=  599.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  849.2 norm=   8.9 fwd=  243.7 post=   9.3 total= 1111.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.8 norm=   8.7 fwd=  245.6 post=   9.2 total=  584.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.8 norm=   9.5 fwd=  246.1 post=   9.2 total=  584.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  805.5 norm=   9.5 fwd=  270.5 post=   9.2 total= 1094.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.4 norm=   9.2 fwd=  258.0 post=   9.2 total=  592.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.8 norm=   8.8 fwd=  254.7 post=   9.2 total=  589.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.6 norm=   9.2 fwd=  253.2 post=   9.2 total=  586.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  834.7 norm=  10.0 fwd=  282.5 post=   9.8 total= 1137.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  334.2 norm=   9.5 fwd=  251.6 post=   9.9 total=  605.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.5 norm=   9.0 fwd=  261.7 post=   9.4 total=  599.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  324.5 norm=   9.8 fwd=  268.7 post=   9.8 total=  612.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  890.7 norm=   9.5 fwd=  253.0 post=   9.5 total= 1162.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.0 norm=   8.8 fwd=  252.2 post=   9.3 total=  585.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.0 norm=   9.5 fwd=  266.4 post=   9.2 total=  600.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.2 norm=   9.4 fwd=  253.6 post=   9.2 total=  585.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  806.3 norm=   9.2 fwd=  261.9 post=   9.3 total= 1086.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.7 norm=   9.0 fwd=  255.2 post=   9.4 total=  591.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  322.1 norm=   9.1 fwd=  263.6 post=   9.8 total=  604.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  324.5 norm=   9.1 fwd=  256.5 post=   9.7 total=  599.8 ms
+[33m(raylet)[0m [2026-08-19 02:22:48,453 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2342 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:22:58,459 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2342 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:23:08,465 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2342 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:23:18,471 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2341 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:23:28,477 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2341 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  864.2 norm=  12.3 fwd=  284.9 post=   9.4 total= 1170.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.4 norm=  12.8 fwd=  253.8 post=   9.4 total=  591.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.5 norm=   9.5 fwd=  275.1 post=   9.7 total=  608.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.6 norm=   9.0 fwd=  267.5 post=   9.4 total=  606.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  860.4 norm=   9.6 fwd=  278.8 post=   9.3 total= 1158.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  308.1 norm=   9.0 fwd=  252.4 post=   9.2 total=  578.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  306.6 norm=   9.8 fwd=  275.7 post=   9.1 total=  601.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.9 norm=   9.3 fwd=  266.8 post=   9.2 total=  596.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  814.4 norm=   8.9 fwd=  281.8 post=   9.2 total= 1114.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  305.8 norm=   9.4 fwd=  259.1 post=   9.2 total=  583.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  308.8 norm=   9.4 fwd=  268.1 post=   9.2 total=  595.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.3 norm=   8.7 fwd=  247.1 post=   9.3 total=  576.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.4 norm=   8.5 fwd=  252.6 post=   9.2 total=  580.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  833.3 norm=   9.7 fwd=  271.2 post=   9.6 total= 1123.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.0 norm=   9.2 fwd=  261.8 post=   9.4 total=  594.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.7 norm=   9.3 fwd=  275.4 post=   9.8 total=  610.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  312.7 norm=   8.8 fwd=  254.1 post=   9.4 total=  585.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  875.5 norm=  10.3 fwd=  251.0 post=   9.3 total= 1146.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.1 norm=   9.2 fwd=  258.7 post=   9.6 total=  595.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  323.2 norm=   8.9 fwd=  248.1 post=  12.4 total=  592.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.5 norm=   9.4 fwd=  272.4 post=   9.6 total=  610.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  868.3 norm=   8.6 fwd=  245.5 post=   9.2 total= 1131.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  308.4 norm=   8.7 fwd=  246.4 post=   9.2 total=  572.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.3 norm=   8.9 fwd=  247.3 post=   9.4 total=  575.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.4 norm=   8.9 fwd=  250.5 post=   9.2 total=  583.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  835.9 norm=  10.3 fwd=  265.1 post=   9.3 total= 1120.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.8 norm=   9.2 fwd=  263.6 post=   9.6 total=  599.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.8 norm=   9.1 fwd=  249.0 post=   9.2 total=  589.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.7 norm=   9.0 fwd=  254.9 post=   9.6 total=  589.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  877.3 norm=   8.8 fwd=  245.2 post=   9.5 total= 1140.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.1 norm=   8.9 fwd=  244.8 post=   9.2 total=  572.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.2 norm=   8.9 fwd=  251.3 post=   9.3 total=  578.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.7 norm=   9.0 fwd=  247.7 post=   9.2 total=  577.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  857.2 norm=   9.1 fwd=  283.3 post=   9.3 total= 1159.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.6 norm=   8.7 fwd=  250.5 post=   9.2 total=  586.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.0 norm=   8.9 fwd=  254.6 post=   9.6 total=  586.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.3 norm=   9.1 fwd=  257.1 post=   9.3 total=  592.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.9 norm=   9.1 fwd=  256.4 post=   9.3 total=  585.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  886.7 norm=   9.1 fwd=  244.5 post=   9.2 total= 1149.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.4 norm=   9.2 fwd=  246.9 post=   9.4 total=  579.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.2 norm=   8.9 fwd=  282.3 post=   9.2 total=  610.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.0 norm=   9.2 fwd=  261.5 post=   9.2 total=  590.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  849.3 norm=   9.8 fwd=  262.5 post=   9.2 total= 1130.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.4 norm=   8.8 fwd=  254.0 post=   9.1 total=  579.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.4 norm=   9.2 fwd=  249.7 post=   9.3 total=  578.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.2 norm=   8.8 fwd=  248.9 post=   9.1 total=  580.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.5 norm=   9.6 fwd=  248.9 post=   9.1 total=  581.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  855.6 norm=   9.4 fwd=  284.1 post=   9.2 total= 1158.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.0 norm=   8.9 fwd=  279.6 post=   9.2 total=  608.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.6 norm=   9.4 fwd=  256.1 post=   9.2 total=  589.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.4 norm=  10.0 fwd=  262.7 post=   9.5 total=  598.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  319.7 norm=   9.4 fwd=  252.6 post=   9.3 total=  591.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  909.4 norm=   8.6 fwd=  246.8 post=   9.5 total= 1174.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.6 norm=   9.7 fwd=  253.3 post=   9.2 total=  583.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.6 norm=   8.9 fwd=  248.4 post=   9.1 total=  577.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.0 norm=   8.9 fwd=  249.7 post=   9.6 total=  578.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  312.5 norm=   8.7 fwd=  248.4 post=   9.1 total=  578.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  881.1 norm=   9.0 fwd=  254.3 post=   9.3 total= 1153.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.1 norm=   9.0 fwd=  246.2 post=   9.2 total=  584.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.6 norm=   9.4 fwd=  256.3 post=   9.1 total=  593.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.7 norm=   9.4 fwd=  258.0 post=   9.2 total=  594.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.6 norm=   9.3 fwd=  254.4 post=   9.4 total=  594.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  914.8 norm=   9.1 fwd=  252.7 post=   9.4 total= 1185.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.0 norm=   9.7 fwd=  263.8 post=   9.3 total=  598.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.5 norm=   8.8 fwd=  254.0 post=   9.2 total=  588.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.8 norm=   8.8 fwd=  249.5 post=   9.1 total=  585.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  324.9 norm=   8.8 fwd=  249.0 post=   9.6 total=  592.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  905.3 norm=   8.8 fwd=  243.6 post=   9.2 total= 1166.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.5 norm=   9.3 fwd=  245.4 post=   9.2 total=  581.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.8 norm=   8.8 fwd=  246.8 post=   9.2 total=  582.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.1 norm=   8.7 fwd=  284.3 post=   9.1 total=  617.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.3 norm=   9.3 fwd=  268.9 post=   9.6 total=  602.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  890.9 norm=   8.9 fwd=  244.8 post=   9.2 total= 1153.8 ms
+[33m(raylet)[0m [2026-08-19 02:23:38,483 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2341 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:23:48,490 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2341 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:23:58,496 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2339 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+Ray objects:  80%|████████  | 4/5 [11:38<02:33, 153.58s/it][33m(raylet)[0m [2026-08-19 02:24:08,503 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2338 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:24:18,510 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2338 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:24:28,517 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2338 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:24:38,525 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2337 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:24:48,533 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2336 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.8 norm=   8.6 fwd=  246.1 post=   9.2 total=  577.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.7 norm=   8.7 fwd=  247.2 post=   9.1 total=  576.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.8 norm=   8.9 fwd=  257.3 post=   9.1 total=  586.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.8 norm=   9.0 fwd=  250.0 post=   9.1 total=  578.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.8 norm=   9.0 fwd=  252.4 post=   9.1 total=  578.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  884.2 norm=   8.9 fwd=  246.4 post=   9.1 total= 1148.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.8 norm=   9.1 fwd=  248.9 post=   9.1 total=  580.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.2 norm=   8.6 fwd=  261.4 post=   9.2 total=  592.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.5 norm=   9.0 fwd=  256.1 post=   9.2 total=  589.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.8 norm=   8.8 fwd=  251.3 post=   9.2 total=  588.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  898.3 norm=   8.7 fwd=  249.1 post=   9.2 total= 1165.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.2 norm=   8.9 fwd=  281.0 post=   9.5 total=  616.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.7 norm=   8.7 fwd=  250.1 post=   9.1 total=  584.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  323.0 norm=   9.2 fwd=  259.1 post=   9.4 total=  600.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  316.7 norm=   8.9 fwd=  265.7 post=   9.3 total=  600.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.4 norm=   9.1 fwd=  260.2 post=   9.2 total=  596.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  952.0 norm=   8.9 fwd=  248.8 post=   9.5 total= 1219.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  313.0 norm=   8.6 fwd=  288.5 post=   9.5 total=  619.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.7 norm=   8.9 fwd=  263.1 post=   9.1 total=  596.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.0 norm=   9.3 fwd=  258.7 post=   9.1 total=  591.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt= 1132.6 norm=  11.6 fwd=  288.9 post=  11.1 total= 1444.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  377.8 norm=   9.6 fwd=  250.0 post=   9.9 total=  647.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.8 norm=   8.9 fwd=  252.9 post=   9.4 total=  591.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  849.6 norm=   9.5 fwd=  250.3 post=   9.4 total= 1118.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.2 norm=   9.5 fwd=  249.2 post=   9.3 total=  589.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  321.6 norm=   9.2 fwd=  253.7 post=   9.4 total=  593.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  804.8 norm=   9.6 fwd=  247.3 post=   9.3 total= 1070.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  340.9 norm=   8.9 fwd=  252.6 post=   9.3 total=  611.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  333.4 norm=   9.2 fwd=  263.1 post=   9.6 total=  615.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  341.7 norm=   9.5 fwd=  262.9 post=   9.6 total=  623.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  842.6 norm=   9.1 fwd=  249.6 post=   9.3 total= 1110.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  324.0 norm=   9.2 fwd=  251.3 post=   9.4 total=  593.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  323.5 norm=   9.2 fwd=  253.5 post=   9.4 total=  595.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  826.5 norm=   9.2 fwd=  249.1 post=   9.8 total= 1094.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  380.6 norm=   9.6 fwd=  258.3 post=   9.6 total=  658.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  353.9 norm=   9.6 fwd=  269.5 post=   9.9 total=  642.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  357.7 norm=   9.3 fwd=  272.3 post=  10.4 total=  649.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  897.8 norm=   9.2 fwd=  254.2 post=   9.4 total= 1170.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  347.2 norm=   9.5 fwd=  265.2 post=   9.8 total=  631.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  351.7 norm=   9.3 fwd=  259.0 post=   9.5 total=  629.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  880.3 norm=   9.2 fwd=  254.4 post=   9.5 total= 1153.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  357.1 norm=   9.1 fwd=  252.8 post=   9.3 total=  628.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  342.7 norm=   9.1 fwd=  247.8 post=   9.2 total=  608.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  835.4 norm=   9.1 fwd=  248.5 post=   9.3 total= 1102.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  344.6 norm=   9.2 fwd=  250.4 post=   9.3 total=  613.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  343.4 norm=   9.1 fwd=  250.4 post=   9.3 total=  612.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  838.2 norm=   9.1 fwd=  246.2 post=   9.2 total= 1102.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  347.0 norm=   9.0 fwd=  253.9 post=   9.4 total=  619.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  355.7 norm=   9.2 fwd=  257.7 post=   9.5 total=  632.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  355.0 norm=   9.3 fwd=  259.6 post=   9.7 total=  633.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  882.0 norm=   9.4 fwd=  244.4 post=   9.3 total= 1145.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  346.6 norm=   9.1 fwd=  247.2 post=   9.2 total=  612.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  345.9 norm=   9.2 fwd=  249.4 post=   9.2 total=  613.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  834.6 norm=   8.9 fwd=  247.8 post=   9.2 total= 1100.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  345.6 norm=   9.2 fwd=  247.9 post=   9.2 total=  612.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  352.8 norm=   9.2 fwd=  246.9 post=   9.2 total=  618.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  852.3 norm=   9.1 fwd=  255.8 post=   9.3 total= 1126.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  363.4 norm=   9.6 fwd=  258.3 post=   9.5 total=  640.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  359.6 norm=   9.4 fwd=  262.2 post=   9.7 total=  640.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  913.6 norm=   9.3 fwd=  249.1 post=   9.7 total= 1181.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  350.6 norm=   9.4 fwd=  247.4 post=   9.3 total=  616.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  347.7 norm=   9.1 fwd=  248.1 post=   9.2 total=  614.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  346.7 norm=   9.1 fwd=  248.9 post=   9.3 total=  613.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  850.4 norm=   9.4 fwd=  243.8 post=   9.2 total= 1112.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  346.8 norm=   8.8 fwd=  248.7 post=   9.2 total=  613.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  347.0 norm=   8.9 fwd=  249.1 post=   9.2 total=  614.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  856.8 norm=   9.0 fwd=  255.0 post=   9.4 total= 1130.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  351.0 norm=   9.4 fwd=  259.8 post=   9.3 total=  629.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  354.0 norm=   9.5 fwd=  255.0 post=   9.4 total=  627.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  351.4 norm=   9.3 fwd=  258.8 post=   9.4 total=  629.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  905.3 norm=   9.4 fwd=  248.3 post=   9.7 total= 1172.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  346.7 norm=   9.5 fwd=  248.1 post=   9.2 total=  613.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  344.6 norm=   9.5 fwd=  248.1 post=   9.2 total=  611.4 ms
+[33m(raylet)[0m [2026-08-19 02:24:58,542 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2336 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:25:08,551 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2336 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:25:18,559 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2336 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:25:28,568 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2335 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:25:38,575 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2335 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  861.1 norm=   9.1 fwd=  246.0 post=   9.2 total= 1125.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  343.9 norm=   9.5 fwd=  247.5 post=   9.2 total=  610.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  345.0 norm=   9.2 fwd=  244.3 post=   9.3 total=  607.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  344.0 norm=   9.3 fwd=  243.5 post=   9.2 total=  605.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  844.6 norm=   9.0 fwd=  250.9 post=   9.4 total= 1113.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  348.1 norm=   9.4 fwd=  252.9 post=   9.3 total=  619.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  345.0 norm=   9.3 fwd=  257.1 post=   9.3 total=  620.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  896.0 norm=  15.7 fwd=  253.2 post=   9.4 total= 1174.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  346.2 norm=   9.5 fwd=  257.8 post=   9.7 total=  623.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  336.5 norm=   9.3 fwd=  255.2 post=   9.7 total=  610.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  890.9 norm=   9.5 fwd=  247.0 post=   9.3 total= 1156.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  336.3 norm=   9.2 fwd=  247.1 post=   9.3 total=  601.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  344.4 norm=   8.7 fwd=  248.2 post=   9.2 total=  610.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  338.3 norm=   9.3 fwd=  246.9 post=   9.3 total=  603.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  855.0 norm=   8.9 fwd=  247.3 post=   9.3 total= 1120.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  337.1 norm=   9.2 fwd=  247.4 post=   9.3 total=  603.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  338.0 norm=   9.7 fwd=  246.6 post=   9.3 total=  603.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  336.8 norm=   9.2 fwd=  250.8 post=   9.3 total=  606.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  854.2 norm=  10.0 fwd=  246.4 post=   9.3 total= 1119.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  341.2 norm=   8.9 fwd=  257.4 post=   9.8 total=  617.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  341.9 norm=   9.4 fwd=  260.3 post=   9.4 total=  621.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  909.1 norm=   9.6 fwd=  245.0 post=   9.6 total= 1173.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  337.2 norm=   9.5 fwd=  246.3 post=   9.2 total=  602.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  335.2 norm=   8.8 fwd=  245.3 post=   9.2 total=  598.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  334.8 norm=   9.2 fwd=  245.0 post=   9.2 total=  598.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  856.8 norm=   8.5 fwd=  245.5 post=   9.3 total= 1120.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  334.6 norm=   9.1 fwd=  249.0 post=   9.2 total=  601.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  334.6 norm=   9.3 fwd=  245.7 post=   9.2 total=  598.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  864.0 norm=   9.3 fwd=  243.0 post=   9.5 total= 1125.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  334.7 norm=   9.0 fwd=  242.4 post=   9.2 total=  595.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  347.7 norm=   8.9 fwd=  244.1 post=   9.2 total=  609.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  333.5 norm=   8.5 fwd=  245.9 post=   9.2 total=  597.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  856.2 norm=   8.8 fwd=  243.6 post=   9.2 total= 1117.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  332.1 norm=   8.9 fwd=  244.7 post=   9.2 total=  594.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  331.9 norm=   8.5 fwd=  246.2 post=   9.2 total=  595.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  875.4 norm=   8.8 fwd=  243.1 post=   9.4 total= 1136.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  336.7 norm=   8.8 fwd=  247.5 post=   9.2 total=  602.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  332.6 norm=   8.7 fwd=  250.0 post=   9.4 total=  600.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  332.6 norm=   9.4 fwd=  253.7 post=   9.3 total=  605.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  901.1 norm=   9.2 fwd=  258.4 post=   9.4 total= 1178.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.9 norm=   9.1 fwd=  250.2 post=   9.4 total=  599.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.2 norm=   9.2 fwd=  258.4 post=   9.6 total=  607.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.6 norm=   9.2 fwd=  249.0 post=   9.6 total=  598.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  882.5 norm=   9.4 fwd=  246.1 post=   9.4 total= 1147.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.9 norm=   8.4 fwd=  249.7 post=   9.2 total=  598.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  326.9 norm=   9.2 fwd=  252.6 post=   9.4 total=  598.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  973.9 norm=   8.8 fwd=  260.7 post=   9.6 total= 1253.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  340.2 norm=  17.0 fwd=  264.5 post=  10.0 total=  631.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  332.0 norm=   9.4 fwd=  252.3 post=   9.5 total=  603.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  324.6 norm=   9.1 fwd=  262.1 post=   9.5 total=  605.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  967.7 norm=   9.8 fwd=  250.3 post=   9.6 total= 1237.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.5 norm=   9.2 fwd=  244.2 post=   9.2 total=  582.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.9 norm=   9.2 fwd=  249.0 post=   9.2 total=  585.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.2 norm=   8.8 fwd=  249.8 post=   9.4 total=  586.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  887.0 norm=   9.4 fwd=  266.8 post=   9.7 total= 1172.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  330.4 norm=   9.4 fwd=  267.8 post=   9.7 total=  617.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  322.0 norm=   9.1 fwd=  253.5 post=   9.6 total=  594.2 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  320.6 norm=   9.1 fwd=  252.1 post=   9.2 total=  591.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.7 norm=   9.3 fwd=  251.2 post=   9.2 total=  585.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  906.4 norm=   9.2 fwd=  245.5 post=   9.3 total= 1170.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  314.2 norm=   9.0 fwd=  247.8 post=   9.3 total=  580.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.3 norm=   9.0 fwd=  261.7 post=   9.4 total=  595.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  318.1 norm=   9.6 fwd=  272.5 post=   9.7 total=  609.9 ms
+[36m(wrapped_fn pid=697592)[0m .
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  920.6 norm=   9.4 fwd= 1311.4 post=  10.0 total= 2251.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.4 norm=   7.7 fwd=  248.4 post=   9.2 total=  580.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  315.1 norm=   7.7 fwd=  249.0 post=   9.3 total=  581.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.5 norm=   7.1 fwd=  249.4 post=   9.2 total=  576.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  864.7 norm=   7.7 fwd=  245.2 post=   9.1 total= 1126.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.2 norm=   7.4 fwd=  246.8 post=   9.2 total=  572.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  312.5 norm=   7.4 fwd=  254.4 post=   9.4 total=  583.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.0 norm=   7.7 fwd=  262.3 post=   9.4 total=  596.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  908.6 norm=   7.7 fwd=  258.0 post=   9.5 total= 1183.9 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  317.2 norm=   7.1 fwd=  255.3 post=   9.5 total=  589.1 ms
+[33m(raylet)[0m [2026-08-19 02:25:48,583 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2335 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:25:58,592 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2335 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-08-19 02:26:08,600 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2335 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+Ray objects: 100%|██████████| 5/5 [13:47<00:00, 144.70s/it]Ray objects: 100%|██████████| 5/5 [13:47<00:00, 165.41s/it]
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  312.6 norm=   7.3 fwd=  248.7 post=   9.4 total=  578.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  311.9 norm=   7.2 fwd=  254.8 post=   9.4 total=  583.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  928.3 norm=   8.4 fwd=  273.3 post=   9.7 total= 1219.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  327.3 norm=   7.8 fwd=  286.8 post=   9.5 total=  631.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  328.3 norm=   7.1 fwd=  249.9 post=   9.8 total=  595.1 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  312.9 norm=   7.2 fwd=  247.9 post=   9.3 total=  577.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.8 norm=   7.7 fwd=  243.6 post=   9.2 total=  571.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  907.4 norm=   7.4 fwd=  242.0 post=   9.2 total= 1166.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.4 norm=   7.4 fwd=  243.5 post=   9.3 total=  570.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  326.4 norm=   7.2 fwd=  243.5 post=   9.2 total=  586.3 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.2 norm=   7.4 fwd=  244.3 post=   9.2 total=  570.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  865.6 norm=   7.3 fwd=  243.7 post=   9.4 total= 1126.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  312.8 norm=   7.2 fwd=  244.3 post=   9.2 total=  573.5 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  309.2 norm=   7.0 fwd=  242.5 post=   9.2 total=  567.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.8 norm=   7.1 fwd=  243.6 post=   9.2 total=  567.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  875.5 norm=   7.3 fwd=  236.9 post=   9.1 total= 1128.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  308.0 norm=   7.1 fwd=  242.6 post=   9.3 total=  567.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.7 norm=   7.1 fwd=  241.1 post=   9.1 total=  565.0 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.2 norm=   7.1 fwd=  243.9 post=   9.2 total=  567.4 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  310.5 norm=   7.8 fwd=  253.2 post=   9.4 total=  580.8 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  927.2 norm=   7.8 fwd=  250.8 post=   9.9 total= 1195.7 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  307.4 norm=   7.3 fwd=  246.6 post=   9.2 total=  570.6 ms
+[36m(wrapped_fn pid=697592)[0m [dp-stage] adapt=  306.0 norm=   7.1 fwd=  246.4 post=   9.2 total=  568.6 ms
+2026-08-19 02:26:13,033 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:127}  Number of successful simulations: 5
+2026-08-19 02:26:13,033 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:128}  Number of failed simulations: 0
+2026-08-19 02:26:13,033 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:147}  Finished executing runners!
+2026-08-19 02:26:13,051 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:74}  Saved runner reports to /data/syx_dp/exp/exp/simulation/closed_loop_nonreactive_agents/diffusion_planner/one_continuous_log/diffusion_planner_release/model_2026-08-19-02-11-57/runner_report.parquet
+2026-08-19 02:26:13,052 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/time_callback.py:27}  Simulation duration: 00:13:58 [HH:MM:SS]
+2026-08-19 02:26:13,294 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_file_callback.py:79}  Metric files integration: 00:00:00 [HH:MM:SS]
+2026-08-19 02:26:13,411 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_aggregator_callback.py:58}  Running metric aggregator: closed_loop_nonreactive_agents_weighted_average
+2026-08-19 02:26:13,448 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_aggregator_callback.py:69}  Metric aggregator: 00:00:00 [HH:MM:SS]
+Rendering histograms:   0%|          | 0/17 [00:00<?, ?it/s]Rendering histograms:   6%|▌         | 1/17 [00:00<00:03,  4.04it/s]Rendering histograms:  12%|█▏        | 2/17 [00:00<00:06,  2.35it/s]Rendering histograms:  18%|█▊        | 3/17 [00:01<00:05,  2.46it/s]Rendering histograms:  24%|██▎       | 4/17 [00:02<00:08,  1.61it/s]Rendering histograms:  29%|██▉       | 5/17 [00:02<00:05,  2.17it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:05,  2.17it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:05,  2.17it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:05,  2.17it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:05,  2.17it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:05,  2.17it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:05,  2.17it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:05,  2.17it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:05,  2.17it/s]Rendering histograms:  41%|████      | 7/17 [00:02<00:03,  3.00it/s]Rendering histograms:  53%|█████▎    | 9/17 [00:03<00:02,  3.05it/s]Rendering histograms:  59%|█████▉    | 10/17 [00:03<00:02,  2.61it/s]Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.37it/s]                                                                     Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.37it/s]                                                                     Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.37it/s][33m(raylet)[0m [2026-08-19 02:26:18,609 E 697497 697522] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_02-12-14_934188_696944 is over 95% full, available space: 57.2334 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
+Rendering histograms:  76%|███████▋  | 13/17 [00:05<00:01,  2.70it/s]Rendering histograms:  82%|████████▏ | 14/17 [00:05<00:01,  2.42it/s]Rendering histograms:  94%|█████████▍| 16/17 [00:05<00:00,  3.52it/s]Rendering histograms: 100%|██████████| 17/17 [00:06<00:00,  3.16it/s]Rendering histograms: 100%|██████████| 17/17 [00:06<00:00,  2.73it/s]
+2026-08-19 02:26:16,120 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-19 02:26:16,121 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-19 02:26:16,126 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-19 02:26:16,127 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-19 02:26:16,133 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-19 02:26:16,134 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-19 02:26:16,139 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-19 02:26:16,140 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-19 02:26:18,281 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-19 02:26:18,282 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-19 02:26:26,953 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_summary_callback.py:344}  Metric summary: 00:00:13 [HH:MM:SS]
+2026-08-19 02:26:26,953 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit//nuplan/planning/script/run_simulation.py:80}  Finished running simulation!

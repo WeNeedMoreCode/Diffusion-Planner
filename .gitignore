@@ -1,6 +1,5 @@
 .stfolder/
 .stignore
-syx_docs/
 *.egg-info/
 __pycache__/
 fusion_result.json

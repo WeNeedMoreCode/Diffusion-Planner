@@ -1,0 +1,17 @@
+device: Ascend310P3  jit_window=0
+== inputs_pid497009.pt
+  full     min=  188.0 p50=  197.6 p90=  210.7 ms
+  encoder  min=   22.5 p50=   25.2 p90=   29.0 ms
+  decoder  min=  163.3 p50=  171.3 p90=  184.4 ms
+== inputs_pid497010.pt
+  full     min=  191.4 p50=  201.9 p90=  213.2 ms
+  encoder  min=   23.5 p50=   25.7 p90=   32.4 ms
+  decoder  min=  167.7 p50=  176.6 p90=  186.0 ms
+== inputs_pid497011.pt
+  full     min=  192.0 p50=  203.6 p90=  209.0 ms
+  encoder  min=   23.0 p50=   25.6 p90=   27.9 ms
+  decoder  min=  168.1 p50=  177.9 p90=  182.7 ms
+== inputs_pid497012.pt
+  full     min=  192.6 p50=  200.0 p90=  207.5 ms
+  encoder  min=   23.4 p50=   25.7 p90=   29.3 ms
+  decoder  min=  165.2 p50=  174.1 p90=  181.4 ms

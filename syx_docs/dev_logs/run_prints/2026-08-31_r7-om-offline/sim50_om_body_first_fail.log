@@ -1,0 +1,1623 @@
+Processing /data/syx_dp/checkpoints/model.pth...
+/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/lightning_fabric/__init__.py:40: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+Seed set to 0
+INFO:nuplan.planning.script.builders.main_callback_builder:Building MultiMainCallback...
+INFO:nuplan.planning.script.builders.main_callback_builder:Building MultiMainCallback: 4...DONE!
+2026-08-29 10:00:30,809 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/worker_pool_builder.py:19}  Building WorkerPool...
+2026-08-29 10:00:30,811 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:101}  Worker: Sequential
+2026-08-29 10:00:30,811 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:102}  Number of nodes: 1
+Number of CPUs per node: 1
+Number of GPUs per node: 0
+Number of threads across all nodes: 1
+2026-08-29 10:00:30,811 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/worker_pool_builder.py:27}  Building WorkerPool...DONE!
+2026-08-29 10:00:30,811 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:32}  Building experiment folders...
+2026-08-29 10:00:30,811 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:35}  
+
+	Folder where all results are stored: /data/syx_dp/exp/exp/simulation/closed_loop_nonreactive_agents/diffusion_planner/one_continuous_log/diffusion_planner_release/model_2026-08-29-10-00-13
+
+2026-08-29 10:00:30,816 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:70}  Building experiment folders...DONE!
+2026-08-29 10:00:30,816 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_callback_builder.py:52}  Building AbstractCallback...
+2026-08-29 10:00:30,816 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_callback_builder.py:68}  Building AbstractCallback: 0...DONE!
+2026-08-29 10:00:30,817 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:47}  Building simulations...
+2026-08-29 10:00:30,817 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:53}  Extracting scenarios...
+2026-08-29 10:00:30,817 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/common/utils/distributed_scenario_filter.py:83}  Building Scenarios in mode DistributedMode.SINGLE_NODE
+2026-08-29 10:00:30,817 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_building_builder.py:18}  Building AbstractScenarioBuilder...
+2026-08-29 10:00:30,844 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_building_builder.py:21}  Building AbstractScenarioBuilder...DONE!
+2026-08-29 10:00:30,844 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_filter_builder.py:35}  Building ScenarioFilter...
+2026-08-29 10:00:30,847 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_filter_builder.py:44}  Building ScenarioFilter...DONE!
+2026-08-29 10:00:30,940 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:74}  Building metric engines...
+2026-08-29 10:00:31,306 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:76}  Building metric engines...DONE
+2026-08-29 10:00:31,306 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:80}  Building simulations from 50 scenarios...
+2026-08-29 10:00:46,229 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:133}  Building simulations...DONE!
+2026-08-29 10:00:46,230 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit//nuplan/planning/script/run_simulation.py:78}  Running simulation...
+2026-08-29 10:00:46,230 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:138}  Executing runners...
+2026-08-29 10:00:46,230 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:82}  Starting 50 simulations using Sequential!
+2026-08-29 10:00:46,230 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:116}  Submitting 50 tasks!
+Sequential:   0%|          | 0/50 [00:00<?, ?it/s][WARN] acl repeat initialize
+[INFO] acl init success
+[INFO] open device 0 success
+[INFO] get current context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:   2%|▏         | 1/50 [00:49<40:17, 49.34s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:   4%|▍         | 2/50 [01:28<34:52, 43.60s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:   6%|▌         | 3/50 [02:07<32:17, 41.22s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:   8%|▊         | 4/50 [02:44<30:22, 39.61s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  10%|█         | 5/50 [03:19<28:31, 38.02s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  12%|█▏        | 6/50 [03:55<27:22, 37.33s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  14%|█▍        | 7/50 [04:33<26:48, 37.41s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  16%|█▌        | 8/50 [05:16<27:34, 39.40s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  18%|█▊        | 9/50 [05:52<26:06, 38.21s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  20%|██        | 10/50 [06:29<25:16, 37.91s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  22%|██▏       | 11/50 [07:13<25:48, 39.70s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  24%|██▍       | 12/50 [07:54<25:22, 40.08s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  26%|██▌       | 13/50 [08:30<24:00, 38.93s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  28%|██▊       | 14/50 [09:05<22:39, 37.77s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  30%|███       | 15/50 [09:44<22:13, 38.11s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  32%|███▏      | 16/50 [10:19<21:02, 37.13s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  34%|███▍      | 17/50 [11:08<22:22, 40.67s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  36%|███▌      | 18/50 [11:44<20:57, 39.29s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  38%|███▊      | 19/50 [12:20<19:44, 38.22s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  40%|████      | 20/50 [12:56<18:44, 37.49s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  42%|████▏     | 21/50 [13:43<19:33, 40.45s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  44%|████▍     | 22/50 [14:21<18:29, 39.64s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  46%|████▌     | 23/50 [15:11<19:14, 42.75s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  48%|████▊     | 24/50 [15:54<18:35, 42.92s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  50%|█████     | 25/50 [16:30<17:03, 40.94s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  52%|█████▏    | 26/50 [17:11<16:18, 40.76s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  54%|█████▍    | 27/50 [18:00<16:39, 43.48s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  56%|█████▌    | 28/50 [18:37<15:09, 41.33s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  58%|█████▊    | 29/50 [19:22<14:50, 42.41s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  60%|██████    | 30/50 [19:56<13:22, 40.12s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  62%|██████▏   | 31/50 [20:45<13:32, 42.77s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  64%|██████▍   | 32/50 [21:30<13:01, 43.41s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  66%|██████▌   | 33/50 [22:06<11:36, 40.95s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  68%|██████▊   | 34/50 [22:51<11:16, 42.29s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  70%|███████   | 35/50 [23:29<10:16, 41.09s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  72%|███████▏  | 36/50 [24:12<09:42, 41.58s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  74%|███████▍  | 37/50 [24:49<08:43, 40.27s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  76%|███████▌  | 38/50 [25:26<07:50, 39.19s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  78%|███████▊  | 39/50 [26:03<07:02, 38.45s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  80%|████████  | 40/50 [26:37<06:13, 37.30s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  82%|████████▏ | 41/50 [27:19<05:47, 38.59s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/dit_body.om success
+[INFO] create model description success
+Sequential:  84%|████████▍ | 42/50 [28:02<05:20, 40.10s/it][INFO] create new context
+[INFO] load model /data/syx_dp/om/om_models/encoder.om success
+[INFO] create model description success
+[INFO] create new context
+[ACL ERROR] [PID: 1961870] 2026-08-29-10:28:51.636.604 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        Call rtStreamCreate(&stream, 0) fail, ret: 0x328A0[FUNC:KernelLaunchEx][FILE:model_manager.cc][LINE:493]
+        Failed to execute init graph[FUNC:Load][FILE:model_v2_executor.cc][LINE:189]
+        [Model][FromData]call load executorV2 failed, ge result[1343225857][FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+
+[ERROR] load model from file failed, model file is /data/syx_dp/om/om_models/dit_body.om
+[WARN] Check failed:processModel->LoadModelFromFile(modelPath), ret:1
+
+[WARN] no model had been loaded, unload failed
+                                                           Sequential:  84%|████████▍ | 42/50 [28:05<05:20, 40.10s/it]Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 23, in forward
+    decoder_outputs = self.decoder(encoder_outputs, inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 100, in forward
+    decoder_outputs = self.decoder(encoder_outputs, inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/decoder.py", line 289, in forward
+    sampled_trajectories,
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/decoder.py", line 213, in _om_sample
+    def initial_state_constraint(xt, t, step):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_utils/fast_dpm_sampler.py", line 124, in fast_dpm_sample
+    m0 = model_fn(x, ts[0:1])
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/decoder.py", line 214, in <lambda>
+    xt = xt.reshape(b, p, -1, 4)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [1][ACL: invalid parameter] 
+                                                           Sequential:  84%|████████▍ | 42/50 [28:05<05:20, 40.10s/it]                                                           Sequential:  84%|████████▍ | 42/50 [28:05<05:20, 40.10s/it]                                                           Sequential:  84%|████████▍ | 42/50 [28:05<05:20, 40.10s/it]Sequential:  86%|████████▌ | 43/50 [28:05<03:21, 28.85s/it][INFO] create new context
+[ACL ERROR] [PID: 1961870] 2026-08-29-10:28:53.092.998 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        [Call][Rts]call rts api [rtStreamCreate] failed, retCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:51.636.604 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        Call rtStreamCreate(&stream, 0) fail, ret: 0x328A0[FUNC:KernelLaunchEx][FILE:model_manager.cc][LINE:493]
+        Failed to execute init graph[FUNC:Load][FILE:model_v2_executor.cc][LINE:189]
+        [Model][FromData]call load executorV2 failed, ge result[1343225857][FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+
+[ERROR] load model from file failed, model file is /data/syx_dp/om/om_models/encoder.om
+[WARN] Check failed:processModel->LoadModelFromFile(modelPath), ret:1
+
+[WARN] no model had been loaded, unload failed
+                                                           Sequential:  86%|████████▌ | 43/50 [28:06<03:21, 28.85s/it]Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [1][ACL: invalid parameter] 
+                                                           Sequential:  86%|████████▌ | 43/50 [28:06<03:21, 28.85s/it]                                                           Sequential:  86%|████████▌ | 43/50 [28:06<03:21, 28.85s/it]                                                           Sequential:  86%|████████▌ | 43/50 [28:06<03:21, 28.85s/it]Sequential:  88%|████████▊ | 44/50 [28:06<02:03, 20.62s/it][INFO] create new context
+[ACL ERROR] [PID: 1961870] 2026-08-29-10:28:53.648.268 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.092.998 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        [Call][Rts]call rts api [rtStreamCreate] failed, retCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:51.636.604 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        Call rtStreamCreate(&stream, 0) fail, ret: 0x328A0[FUNC:KernelLaunchEx][FILE:model_manager.cc][LINE:493]
+        Failed to execute init graph[FUNC:Load][FILE:model_v2_executor.cc][LINE:189]
+        [Model][FromData]call load executorV2 failed, ge result[1343225857][FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+
+[ERROR] acl create context failed
+[ERROR] create context failed. ret=207008
+                                                           Sequential:  88%|████████▊ | 44/50 [28:07<02:03, 20.62s/it]Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+                                                           Sequential:  88%|████████▊ | 44/50 [28:07<02:03, 20.62s/it]                                                           Sequential:  88%|████████▊ | 44/50 [28:07<02:03, 20.62s/it]                                                           Sequential:  88%|████████▊ | 44/50 [28:07<02:03, 20.62s/it]Sequential:  90%|█████████ | 45/50 [28:07<01:12, 14.58s/it][INFO] create new context
+[ACL ERROR] [PID: 1961870] 2026-08-29-10:28:54.107.381 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.648.268 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.092.998 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        [Call][Rts]call rts api [rtStreamCreate] failed, retCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:51.636.604 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        Call rtStreamCreate(&stream, 0) fail, ret: 0x328A0[FUNC:KernelLaunchEx][FILE:model_manager.cc][LINE:493]
+        Failed to execute init graph[FUNC:Load][FILE:model_v2_executor.cc][LINE:189]
+        [Model][FromData]call load executorV2 failed, ge result[1343225857][FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+
+[ERROR] acl create context failed
+[ERROR] create context failed. ret=207008
+                                                           Sequential:  90%|█████████ | 45/50 [28:07<01:12, 14.58s/it]Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+                                                           Sequential:  90%|█████████ | 45/50 [28:07<01:12, 14.58s/it]                                                           Sequential:  90%|█████████ | 45/50 [28:07<01:12, 14.58s/it]                                                           Sequential:  90%|█████████ | 45/50 [28:07<01:12, 14.58s/it]Sequential:  92%|█████████▏| 46/50 [28:07<00:41, 10.35s/it][INFO] create new context
+[ACL ERROR] [PID: 1961870] 2026-08-29-10:28:54.627.967 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:54.107.381 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.648.268 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.092.998 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        [Call][Rts]call rts api [rtStreamCreate] failed, retCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:51.636.604 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        Call rtStreamCreate(&stream, 0) fail, ret: 0x328A0[FUNC:KernelLaunchEx][FILE:model_manager.cc][LINE:493]
+        Failed to execute init graph[FUNC:Load][FILE:model_v2_executor.cc][LINE:189]
+        [Model][FromData]call load executorV2 failed, ge result[1343225857][FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+
+[ERROR] acl create context failed
+[ERROR] create context failed. ret=207008
+                                                           Sequential:  92%|█████████▏| 46/50 [28:08<00:41, 10.35s/it]Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+                                                           Sequential:  92%|█████████▏| 46/50 [28:08<00:41, 10.35s/it]                                                           Sequential:  92%|█████████▏| 46/50 [28:08<00:41, 10.35s/it]                                                           Sequential:  92%|█████████▏| 46/50 [28:08<00:41, 10.35s/it]Sequential:  94%|█████████▍| 47/50 [28:08<00:22,  7.40s/it][INFO] create new context
+[ACL ERROR] [PID: 1961870] 2026-08-29-10:28:55.099.646 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:54.627.967 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:54.107.381 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.648.268 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.092.998 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        [Call][Rts]call rts api [rtStreamCreate] failed, retCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:51.636.604 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        Call rtStreamCreate(&stream, 0) fail, ret: 0x328A0[FUNC:KernelLaunchEx][FILE:model_manager.cc][LINE:493]
+        Failed to execute init graph[FUNC:Load][FILE:model_v2_executor.cc][LINE:189]
+        [Model][FromData]call load executorV2 failed, ge result[1343225857][FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+
+[ERROR] acl create context failed
+[ERROR] create context failed. ret=207008
+                                                           Sequential:  94%|█████████▍| 47/50 [28:08<00:22,  7.40s/it]Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+                                                           Sequential:  94%|█████████▍| 47/50 [28:08<00:22,  7.40s/it]                                                           Sequential:  94%|█████████▍| 47/50 [28:08<00:22,  7.40s/it]                                                           Sequential:  94%|█████████▍| 47/50 [28:08<00:22,  7.40s/it]Sequential:  96%|█████████▌| 48/50 [28:08<00:10,  5.32s/it][INFO] create new context
+[ACL ERROR] [PID: 1961870] 2026-08-29-10:28:55.614.118 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:55.099.646 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:54.627.967 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:54.107.381 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.648.268 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.092.998 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        [Call][Rts]call rts api [rtStreamCreate] failed, retCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:51.636.604 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        Call rtStreamCreate(&stream, 0) fail, ret: 0x328A0[FUNC:KernelLaunchEx][FILE:model_manager.cc][LINE:493]
+        Failed to execute init graph[FUNC:Load][FILE:model_v2_executor.cc][LINE:189]
+        [Model][FromData]call load executorV2 failed, ge result[1343225857][FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+
+[ERROR] acl create context failed
+[ERROR] create context failed. ret=207008
+                                                           Sequential:  96%|█████████▌| 48/50 [28:09<00:10,  5.32s/it]Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+                                                           Sequential:  96%|█████████▌| 48/50 [28:09<00:10,  5.32s/it]                                                           Sequential:  96%|█████████▌| 48/50 [28:09<00:10,  5.32s/it]                                                           Sequential:  96%|█████████▌| 48/50 [28:09<00:10,  5.32s/it]Sequential:  98%|█████████▊| 49/50 [28:09<00:03,  3.88s/it][INFO] create new context
+[ACL ERROR] [PID: 1961870] 2026-08-29-10:28:56.124.525 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:55.614.118 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:55.099.646 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:54.627.967 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:54.107.381 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.648.268 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.092.998 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        [Call][Rts]call rts api [rtStreamCreate] failed, retCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:51.636.604 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        Call rtStreamCreate(&stream, 0) fail, ret: 0x328A0[FUNC:KernelLaunchEx][FILE:model_manager.cc][LINE:493]
+        Failed to execute init graph[FUNC:Load][FILE:model_v2_executor.cc][LINE:189]
+        [Model][FromData]call load executorV2 failed, ge result[1343225857][FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+
+[ERROR] acl create context failed
+[ERROR] create context failed. ret=207008
+                                                           Sequential:  98%|█████████▊| 49/50 [28:09<00:03,  3.88s/it]Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+                                                           Sequential:  98%|█████████▊| 49/50 [28:09<00:03,  3.88s/it]                                                           Sequential:  98%|█████████▊| 49/50 [28:09<00:03,  3.88s/it]                                                           Sequential:  98%|█████████▊| 49/50 [28:09<00:03,  3.88s/it]Sequential: 100%|██████████| 50/50 [28:09<00:00,  2.87s/it]                                                           ('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
+2026-08-29 10:28:51,735 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:32}  ----------- Simulation failed: with the following trace:
+2026-08-29 10:28:51,738 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:34}  Simulation failed with error:
+ [1][ACL: invalid parameter] 
+2026-08-29 10:28:51,738 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:38}  
+Failed simulation [log,token]:
+ [2021.07.16.20.45.29_veh-35_01095_01486, cf640ec3b77f5ef7]
+
+2026-08-29 10:28:51,739 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:40}  ----------- Simulation failed!
+2026-08-29 10:28:53,162 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:32}  ----------- Simulation failed: with the following trace:
+2026-08-29 10:28:53,163 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:34}  Simulation failed with error:
+ [1][ACL: invalid parameter] 
+2026-08-29 10:28:53,163 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:38}  
+Failed simulation [log,token]:
+ [2021.07.16.20.45.29_veh-35_01095_01486, d56768d01c9a5e3d]
+
+2026-08-29 10:28:53,163 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:40}  ----------- Simulation failed!
+2026-08-29 10:28:53,649 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:32}  ----------- Simulation failed: with the following trace:
+2026-08-29 10:28:53,650 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:34}  Simulation failed with error:
+ [207008][Error code unknown] 
+2026-08-29 10:28:53,651 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:38}  
+Failed simulation [log,token]:
+ [2021.07.16.20.45.29_veh-35_01095_01486, d94763f20f6257ea]
+
+2026-08-29 10:28:53,651 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:40}  ----------- Simulation failed!
+2026-08-29 10:28:54,109 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:32}  ----------- Simulation failed: with the following trace:
+2026-08-29 10:28:54,110 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:34}  Simulation failed with error:
+ [207008][Error code unknown] 
+2026-08-29 10:28:54,110 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:38}  
+Failed simulation [log,token]:
+ [2021.07.16.20.45.29_veh-35_01095_01486, df18b168964f5f81]
+
+2026-08-29 10:28:54,111 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:40}  ----------- Simulation failed!
+2026-08-29 10:28:54,629 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:32}  ----------- Simulation failed: with the following trace:
+2026-08-29 10:28:54,630 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:34}  Simulation failed with error:
+ [207008][Error code unknown] 
+2026-08-29 10:28:54,630 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:38}  
+Failed simulation [log,token]:
+ [2021.07.16.20.45.29_veh-35_01095_01486, e4e7111ec4e25c1e]
+
+2026-08-29 10:28:54,631 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:40}  ----------- Simulation failed!
+2026-08-29 10:28:55,101 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:32}  ----------- Simulation failed: with the following trace:
+2026-08-29 10:28:55,102 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:34}  Simulation failed with error:
+ [207008][Error code unknown] 
+2026-08-29 10:28:55,102 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:38}  
+Failed simulation [log,token]:
+ [2021.07.16.20.45.29_veh-35_01095_01486, ead857427f5f5f59]
+
+2026-08-29 10:28:55,102 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:40}  ----------- Simulation failed!
+2026-08-29 10:28:55,615 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:32}  ----------- Simulation failed: with the following trace:
+2026-08-29 10:28:55,616 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:34}  Simulation failed with error:
+ [207008][Error code unknown] 
+2026-08-29 10:28:55,617 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:38}  
+Failed simulation [log,token]:
+ [2021.07.16.20.45.29_veh-35_01095_01486, ef19d504b1a952f7]
+
+2026-08-29 10:28:55,617 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:40}  ----------- Simulation failed!
+2026-08-29 10:28:56,126 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:32}  ----------- Simulation failed: with the following trace:
+2026-08-29 10:28:56,127 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:34}  Simulation failed with error:
+ [207008][Error code unknown] 
+2026-08-29 10:28:56,127 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:38}  
+Failed simulation [log,token]:
+ [2021.07.16.20.45.29_veh-35_01095_01486, f5303950bfe157a3]
+
+2026-08-29 10:28:56,127 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:40}  ----------- Simulation failed!
+2026-08-29 10:28:56,129 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:123}  Failed Simulation.
+ 'Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 23, in forward
+    decoder_outputs = self.decoder(encoder_outputs, inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 100, in forward
+    decoder_outputs = self.decoder(encoder_outputs, inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/decoder.py", line 289, in forward
+    sampled_trajectories,
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/decoder.py", line 213, in _om_sample
+    def initial_state_constraint(xt, t, step):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_utils/fast_dpm_sampler.py", line 124, in fast_dpm_sample
+    m0 = model_fn(x, ts[0:1])
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/decoder.py", line 214, in <lambda>
+    xt = xt.reshape(b, p, -1, 4)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [1][ACL: invalid parameter] 
+'
+2026-08-29 10:28:56,130 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:123}  Failed Simulation.
+ 'Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [1][ACL: invalid parameter] 
+'
+2026-08-29 10:28:56,130 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:123}  Failed Simulation.
+ 'Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+'
+2026-08-29 10:28:56,130 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:123}  Failed Simulation.
+ 'Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+'
+2026-08-29 10:28:56,130 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:123}  Failed Simulation.
+ 'Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+'
+2026-08-29 10:28:56,130 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:123}  Failed Simulation.
+ 'Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+'
+2026-08-29 10:28:56,130 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:123}  Failed Simulation.
+ 'Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+'
+2026-08-29 10:28:56,131 WARNING {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:123}  Failed Simulation.
+ 'Traceback (most recent call last):
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py", line 27, in run_simulation
+    return sim_runner.run()
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/simulations_runner.py", line 113, in run
+    trajectory = self.planner.compute_trajectory(planner_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 108, in compute_trajectory
+    raise e
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/planner/abstract_planner.py", line 105, in compute_trajectory
+    trajectory = self.compute_planner_trajectory(current_input)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/planner/planner.py", line 167, in compute_planner_trajectory
+    _, outputs = self._planner(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 22, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/diffusion_planner.py", line 57, in forward
+    encoder_outputs = self.encoder(inputs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/Diffusion-Planner/diffusion_planner/model/module/encoder.py", line 271, in forward
+    # may sit on NPU, OmBody moves them to host buffers itself
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 59, in __call__
+    out = np.asarray(self._get_session().infer(arrs)[0], dtype=np.float32)
+  File "/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/om_runtime.py", line 54, in _get_session
+    self._session = InferSession(self._device, path)
+  File "/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/ais_bench/infer/interface.py", line 82, in __init__
+    self.session = aclruntime.InferenceSession(self.model_path, self.device_id, self.options)
+RuntimeError: [207008][Error code unknown] 
+'
+2026-08-29 10:28:56,131 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:127}  Number of successful simulations: 42
+2026-08-29 10:28:56,131 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:128}  Number of failed simulations: 8
+2026-08-29 10:28:56,131 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:132}  Failed simulations [log, token]:
+[2021.07.16.20.45.29_veh-35_01095_01486, cf640ec3b77f5ef7] 
+[2021.07.16.20.45.29_veh-35_01095_01486, d56768d01c9a5e3d] 
+[2021.07.16.20.45.29_veh-35_01095_01486, d94763f20f6257ea] 
+[2021.07.16.20.45.29_veh-35_01095_01486, df18b168964f5f81] 
+[2021.07.16.20.45.29_veh-35_01095_01486, e4e7111ec4e25c1e] 
+[2021.07.16.20.45.29_veh-35_01095_01486, ead857427f5f5f59] 
+[2021.07.16.20.45.29_veh-35_01095_01486, ef19d504b1a952f7] 
+[2021.07.16.20.45.29_veh-35_01095_01486, f5303950bfe157a3] 
+
+2026-08-29 10:28:56,131 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:147}  Finished executing runners!
+2026-08-29 10:28:56,168 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:74}  Saved runner reports to /data/syx_dp/exp/exp/simulation/closed_loop_nonreactive_agents/diffusion_planner/one_continuous_log/diffusion_planner_release/model_2026-08-29-10-00-13/runner_report.parquet
+2026-08-29 10:28:56,169 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/time_callback.py:27}  Simulation duration: 00:28:25 [HH:MM:SS]
+2026-08-29 10:28:57,409 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_file_callback.py:79}  Metric files integration: 00:00:01 [HH:MM:SS]
+2026-08-29 10:28:57,560 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_aggregator_callback.py:58}  Running metric aggregator: closed_loop_nonreactive_agents_weighted_average
+2026-08-29 10:28:57,682 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_aggregator_callback.py:69}  Metric aggregator: 00:00:00 [HH:MM:SS]
+Rendering histograms:   0%|          | 0/17 [00:00<?, ?it/s]Rendering histograms:   6%|▌         | 1/17 [00:00<00:03,  4.51it/s]Rendering histograms:  12%|█▏        | 2/17 [00:00<00:05,  2.55it/s]Rendering histograms:  18%|█▊        | 3/17 [00:01<00:05,  2.67it/s]Rendering histograms:  24%|██▎       | 4/17 [00:01<00:05,  2.34it/s]Rendering histograms:  29%|██▉       | 5/17 [00:01<00:04,  2.97it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:01<00:04,  2.97it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:01<00:04,  2.97it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:01<00:04,  2.97it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:01<00:04,  2.97it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.97it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.97it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.97it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.97it/s]Rendering histograms:  41%|████      | 7/17 [00:02<00:03,  2.94it/s]Rendering histograms:  53%|█████▎    | 9/17 [00:03<00:02,  3.08it/s]Rendering histograms:  59%|█████▉    | 10/17 [00:03<00:02,  2.70it/s]Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.45it/s]                                                                     Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.45it/s]                                                                     Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.45it/s]Rendering histograms:  76%|███████▋  | 13/17 [00:04<00:01,  2.75it/s]Rendering histograms:  82%|████████▏ | 14/17 [00:05<00:01,  2.52it/s]Rendering histograms:  94%|█████████▍| 16/17 [00:05<00:00,  3.65it/s]Rendering histograms: 100%|██████████| 17/17 [00:06<00:00,  2.14it/s]Rendering histograms: 100%|██████████| 17/17 [00:06<00:00,  2.60it/s]
+2026-08-29 10:28:59,870 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-29 10:28:59,872 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-29 10:28:59,878 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-29 10:28:59,879 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-29 10:28:59,885 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-29 10:28:59,886 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-29 10:28:59,892 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-29 10:28:59,894 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-29 10:29:02,171 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-29 10:29:02,172 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-08-29 10:29:12,326 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_summary_callback.py:344}  Metric summary: 00:00:14 [HH:MM:SS]
+2026-08-29 10:29:12,327 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffusion_Planner/nuplan-devkit//nuplan/planning/script/run_simulation.py:80}  Finished running simulation!
+[W compiler_depend.ts:283] Warning: NPU warning, error code is 107003[Error]: 
+[Error]: The stream is not in the current context.
+        Check whether the context where the stream is located is the same as the current context.
+[PID: 1961870] 2026-08-29-10:29:15.453.484 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Stream destroy failed, stream is not in current ctx, stream_id=59.[FUNC:StreamDestroy][FILE:api_impl.cc][LINE:1406]
+        rtStreamDestroyForce execute failed, reason=[stream not in current context][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        destroy stream force failed, runtime result = 107003[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        The stream resources are insufficient.
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:56.124.525 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:55.614.118 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:55.099.646 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:54.627.967 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:54.107.381 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.648.268 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        Set up failed, default stream setup failed, retCode=0x702001a.[FUNC:Setup][FILE:context.cc][LINE:384]
+        Failed to setup context, retCode=0x702001a[FUNC:NewContext][FILE:api_impl.cc][LINE:3852]
+        Check param failed, defaultStream_ can not be null.[FUNC:TearDown][FILE:context.cc][LINE:434]
+        new context failed, drv devId=2, retCode=0x702001a[FUNC:ContextCreate][FILE:api_impl.cc][LINE:3894]
+        rtCtxCreateEx execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        create context failed, device is 0, runtime errorCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:53.092.998 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        [Call][Rts]call rts api [rtStreamCreate] failed, retCode is 207008[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+        stream setup failed, retCode=0x702001a.[FUNC:SyncGetDevMsg][FILE:api_impl.cc][LINE:6208]
+        Sync get device msg failed, retCode=0x702001a.[FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6258]
+        rtGetDevMsg execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+
+[PID: 1961870] 2026-08-29-10:28:51.636.604 Insufficient_Stream_Resources(EL0009): The stream resources are insufficient.
+        Solution: Close applications not in use.
+        TraceBack (most recent call last):
+        rtStreamCreateWithFlags execute failed, reason=[driver error:no stream resource][FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:53]
+        Call rtStreamCreate(&stream, 0) fail, ret: 0x328A0[FUNC:KernelLaunchEx][FILE:model_manager.cc][LINE:493]
+        Failed to execute init graph[FUNC:Load][FILE:model_v2_executor.cc][LINE:189]
+        [Model][FromData]call load executorV2 failed, ge result[1343225857][FUNC:ReportCallError][FILE:log_inner.cpp][LINE:162]
+ (function operator())
+[INFO] unload model success, model Id is 2147483648
+[INFO] unload model success, model Id is 2147483649
+[INFO] unload model success, model Id is 2147483650
+[INFO] unload model success, model Id is 2147483651
+[INFO] unload model success, model Id is 2147483652
+[INFO] unload model success, model Id is 2147483653
+[INFO] unload model success, model Id is 2147483654
+[INFO] unload model success, model Id is 2147483655
+[INFO] unload model success, model Id is 2147483656
+[INFO] unload model success, model Id is 2147483657
+[INFO] unload model success, model Id is 2147483658
+[INFO] unload model success, model Id is 2147483659
+[INFO] unload model success, model Id is 2147483660
+[INFO] unload model success, model Id is 2147483661
+[INFO] unload model success, model Id is 2147483662
+[INFO] unload model success, model Id is 2147483663
+[INFO] unload model success, model Id is 2147483664
+[INFO] unload model success, model Id is 2147483665
+[INFO] unload model success, model Id is 2147483666
+[INFO] unload model success, model Id is 2147483667
+[INFO] unload model success, model Id is 2147483668
+[INFO] unload model success, model Id is 2147483669
+[INFO] unload model success, model Id is 2147483670
+[INFO] unload model success, model Id is 2147483671
+[INFO] unload model success, model Id is 2147483672
+[INFO] unload model success, model Id is 2147483673
+[INFO] unload model success, model Id is 2147483674
+[INFO] unload model success, model Id is 2147483675
+[INFO] unload model success, model Id is 2147483676
+[INFO] unload model success, model Id is 2147483677
+[INFO] unload model success, model Id is 2147483678
+[INFO] unload model success, model Id is 2147483679
+[INFO] unload model success, model Id is 2147483680
+[INFO] unload model success, model Id is 2147483681
+[INFO] unload model success, model Id is 2147483682
+[INFO] unload model success, model Id is 2147483683
+[INFO] unload model success, model Id is 2147483684
+[INFO] unload model success, model Id is 2147483685
+[INFO] unload model success, model Id is 2147483686
+[INFO] unload model success, model Id is 2147483687
+[INFO] unload model success, model Id is 2147483688
+[INFO] unload model success, model Id is 2147483689
+[INFO] unload model success, model Id is 2147483690
+[INFO] unload model success, model Id is 2147483691
+[INFO] unload model success, model Id is 2147483692
+[INFO] unload model success, model Id is 2147483693
+[INFO] unload model success, model Id is 2147483694
+[INFO] unload model success, model Id is 2147483695
+[INFO] unload model success, model Id is 2147483696
+[INFO] unload model success, model Id is 2147483697
+[INFO] unload model success, model Id is 2147483698
+[INFO] unload model success, model Id is 2147483699
+[INFO] unload model success, model Id is 2147483700
+[INFO] unload model success, model Id is 2147483701
+[INFO] unload model success, model Id is 2147483702
+[INFO] unload model success, model Id is 2147483703
+[INFO] unload model success, model Id is 2147483704
+[INFO] unload model success, model Id is 2147483705
+[INFO] unload model success, model Id is 2147483706
+[INFO] unload model success, model Id is 2147483707
+[INFO] unload model success, model Id is 2147483708
+[INFO] unload model success, model Id is 2147483709
+[INFO] unload model success, model Id is 2147483710
+[INFO] unload model success, model Id is 2147483711
+[INFO] unload model success, model Id is 2147483712
+[INFO] unload model success, model Id is 2147483713
+[INFO] unload model success, model Id is 2147483714
+[INFO] unload model success, model Id is 2147483715
+[INFO] unload model success, model Id is 2147483716
+[INFO] unload model success, model Id is 2147483717
+[INFO] unload model success, model Id is 2147483718
+[INFO] unload model success, model Id is 2147483719
+[INFO] unload model success, model Id is 2147483720
+[INFO] unload model success, model Id is 2147483721
+[INFO] unload model success, model Id is 2147483722
+[INFO] unload model success, model Id is 2147483723
+[INFO] unload model success, model Id is 2147483724
+[INFO] unload model success, model Id is 2147483725
+[INFO] unload model success, model Id is 2147483726
+[INFO] unload model success, model Id is 2147483727
+[INFO] unload model success, model Id is 2147483728
+[INFO] unload model success, model Id is 2147483729
+[INFO] unload model success, model Id is 2147483730
+[INFO] unload model success, model Id is 2147483731
+[INFO] unload model success, model Id is 2147483732
+[WARN] acl repeat destroy
+== read_results: /data/syx_dp/exp/exp/simulation/closed_loop_nonreactive_agents/diffusion_planner/one_continuous_log/diffusion_planner_release/model_2026-08-29-10-00-13
+== model_2026-08-29-10-00-13
+final_score : 0.9014  (n=42)
+scenarios   : 42 succeeded / 50 total
+step latency: median-of-medians 122.3 ms | mean-of-means 138.8 ms
+wall time   : sum 1105s | concurrent 1664s
+artifacts   : 42 simulation logs, 16 metric files
