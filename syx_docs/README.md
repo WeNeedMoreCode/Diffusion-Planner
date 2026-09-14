@@ -37,6 +37,7 @@
 - [2026-09-02 RC 诊断轮：bench 三工具族（om/step/launch）与发射邮费证据链（RC 算力与 DUO 逐位同、邮费 2×、CPU 1.34×）；下轮路线 1 削发射](dev_logs/summary/2026-09-02_rc-diagnosis-bench-tools.md)
 - [2026-09-03 R8：削发射轮 encoder.om v3（norm/pos/route 并图；TASK_QUEUE=2 与 route 搬 CPU 双否决；ATC slice 写回静默 miscompile）；RC 121.3→102.5、DUO 80.6→77.5，双板 0.9171](dev_logs/summary/2026-09-03_r8-launch-cut.md)
 - [2026-09-04 R9：CPU 段削减——host 侧直通 + 地图不变量缓存（RC ①-6.2/②-6.3 分步实测；dispatch/launch/搬运概念澄清；SoC 误判教训）；RC 102.5→90.0、DUO 77.5→70.5，双板 0.9171；尾声 skill 三合一为 inference-delivery](dev_logs/summary/2026-09-04_r9-cpu-side.md)
+- [2026-09-14 设计说明书 Part 2 核查收口＋clean code 清档启动（编号引用式改造/三处重写/路径链接 18 处；py-spy 进 skill；Syncthing 删除事件拦截；六工具处置归档 syx_docs/scripts）](dev_logs/summary/2026-09-14_part2-review-and-cleanup-start.md)
 
 ### Handoff
 - [dev_logs/handoff.md](dev_logs/handoff.md) — /compact 三段式 prompt 生成器（① Compact 参数 / ② Post-compact 首句 / ③ Export 标题）
