@@ -16,6 +16,7 @@
 | `dev_logs/summary/` | 已发生归档 | compact 时 |
 | `dev_logs/handoff.md` | 当前活跃任务 | /compact 前 |
 | `dev_logs/run_prints/` | 仿真运行 stdout 原始归档 | tee 存 |
+| `scripts/` | 开发期工具与等价性对拍离线档案（不上库） | clean code 清档时 |
 
 ## 索引
 

@@ -145,9 +145,8 @@ pip install dist/dist/torchair-0.1-py3-none-any.whl
 DP_DEVICE=5 DP_THREADS=1 DP_LIMIT=5 DP_STAGE_TIMING=1 bash sim_diffusion_planner_runner.sh 2>&1 | tee bench.log
 python analyze_stage_log.py bench.log          # 统计分布（仓库根）
 
-# 捕获输入 + 纯前向重放压测（脱离 nuplan/Ray，独占卡）
+# 捕获输入（给外层 bench_step.py 重放与 export_om.py 导出对拍用；R8 起为归一化前 raw 语义）
 DP_CAPTURE_DIR=/data/syx_dp/capture DP_STAGE_TIMING=1 bash sim_diffusion_planner_runner.sh ...
-ASCEND_RT_VISIBLE_DEVICES=5 python bench_dp_forward.py /data/syx_dp/capture --iters 30
 
 # CPU 侧热点定位：py-spy 火焰图（容器内需先 pip install py-spy）
 # 仿真后台跑起来后，worker pid 从 bench.log 的 (wrapped_fn pid=NNNN) 抓
