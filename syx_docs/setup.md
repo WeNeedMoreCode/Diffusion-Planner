@@ -143,7 +143,7 @@ pip install dist/dist/torchair-0.1-py3-none-any.whl
 ```bash
 # 分阶段计时仿真（容器内）
 DP_DEVICE=5 DP_THREADS=1 DP_LIMIT=5 DP_STAGE_TIMING=1 bash sim_diffusion_planner_runner.sh 2>&1 | tee bench.log
-python analyze_stage_log.py bench.log          # 统计分布（仓库根）
+python analyze_stage_log.py bench.log          # 统计分布（已归档 syx_docs/scripts，复跑拷回仓库根）
 
 # 捕获输入（给外层 bench_step.py 重放与 export_om.py 导出对拍用；R8 起为归一化前 raw 语义）
 DP_CAPTURE_DIR=/data/syx_dp/capture DP_STAGE_TIMING=1 bash sim_diffusion_planner_runner.sh ...

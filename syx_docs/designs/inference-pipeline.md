@@ -186,7 +186,7 @@ EncoderRawExportWrapper（export_om.py，v3 导出单元）
 | 输入捕获 | planner.py（norm 前 = raw，R8 起语义） | `DP_CAPTURE_DIR=<dir>` |
 | runner 覆盖 | sim 脚本 | `DP_DEVICE`（默认 0）/ `DP_LIMIT` / `DP_THREADS` |
 
-工具：`analyze_stage_log.py`（计时日志统计）、`read_scores.py`（实验目录出分）；等价性对拍四件（插值/adapt 向量化/fast 采样器/静态编码器）、火焰图聚合器 `agg_speedscope.py`（py-spy speedscope JSON 按 self/total 出占比）与过时基准两件（bench_dp_forward、bench_torchair_dit）已归档至 [../scripts/](../scripts/README.md)——复跑时拷回仓库根；外层：`export_om.py`（三段式导出/编译/校验，v3 图）、`ctx_probe.py`（ACL context 链隔离探针，A/B/C 判读）、`om_runtime.py`（运行时 shim，多输出支持）、`bench_om.py`（OM 单图时延，mixed 模式复刻闭环数据路径并分段 d2h/infer/h2d/sync）、`bench_step.py`（闭环单步分段重放 + cpu_probe 标尺；v3 起段=enc_om/prep/dit_om/invnorm/post_sim）、`bench_launch.py`（发射邮费五项探针：host 派发/投递/小 kernel/算力标尺/往返）、`bench_route.py`（历史工具：route CPU-vs-NPU 对拍+线程扫描，裁定 CPU 方案否决）、`npu_utils.py` / `read_results.py`。
+工具：`read_scores.py`（实验目录出分）；等价性对拍四件（插值/adapt 向量化/fast 采样器/静态编码器）、计时分布统计 `analyze_stage_log.py`、火焰图聚合器 `agg_speedscope.py`（py-spy speedscope JSON 按 self/total 出占比）与过时基准两件（bench_dp_forward、bench_torchair_dit）已归档至 [../scripts/](../scripts/README.md)——复跑时拷回仓库根；外层：`export_om.py`（三段式导出/编译/校验，v3 图）、`ctx_probe.py`（ACL context 链隔离探针，A/B/C 判读）、`om_runtime.py`（运行时 shim，多输出支持）、`bench_om.py`（OM 单图时延，mixed 模式复刻闭环数据路径并分段 d2h/infer/h2d/sync）、`bench_step.py`（闭环单步分段重放 + cpu_probe 标尺；v3 起段=enc_om/prep/dit_om/invnorm/post_sim）、`bench_launch.py`（发射邮费五项探针：host 派发/投递/小 kernel/算力标尺/往返）、`bench_route.py`（历史工具：route CPU-vs-NPU 对拍+线程扫描，裁定 CPU 方案否决）、`npu_utils.py` / `read_results.py`。
 
 ## 5. 扩展点
 

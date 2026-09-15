@@ -1,6 +1,6 @@
 # scripts 档案：开发期工具与等价性对拍
 
-> 私人离线档案（随 syx_docs 保存，**不上库**）。主线仓 clean code 时已把这里的七个文件清出仓库根——四个等价性对拍与火焰图聚合器是"随时可拷回复跑"的活证据/工具，两个过时基准是历史存档。R1–R9 的"严格等价"主张全部由四个对拍支撑；删除的两个工具的证据链在各轮 summary。
+> 私人离线档案（随 syx_docs 保存，**不上库**）。主线仓 clean code 时已把这里的八个文件清出仓库根——四个等价性对拍与两件统计/诊断工具是"随时可拷回复跑"的活证据/工具，两个过时基准是历史存档。R1–R9 的"严格等价"主张全部由四个对拍支撑；删除的两个工具的证据链在各轮 summary。
 
 ## 等价性对拍四件（active，可复跑）
 
@@ -20,7 +20,13 @@
 - **退化注入**是故意的：零长折线、单点线、空帧、叠点——生产里真实出现（占位槽、短路线）。
 - 后两个要求 eager body（脚本内 assert `DP_TORCHAIR` 未开），把图编译浮点噪声隔离在外；需要 NPU 容器＋真 ckpt＋capture 输入。前两个 CPU＋numpy 即可（第一个还要 shapely，第二个 import devkit 的两个枚举常量）。
 
-## 开发工具一件（active，可复跑）
+## 开发工具两件（active，可复跑）
+
+### `analyze_stage_log.py`（R1 起，dp-stage 计时体系）
+
+仿真日志里 `[dp-stage]`（adapt/norm/fwd/post 四阶段）与 `[dp-adapt]`（六子块）计时行的分布统计器：p10/med/p90/max/占比，warm 过滤（砍 total≥2000ms 冷启动步）。**发布数字的度量衡**——交付 README 的 warm mean 口径、中位/p90 分位、四阶段与 adapt 六子块构成数字（如 DUO adapt 45.5/fwd 9.4/post 12.5）全部出自它；总步时中位另可由外层 read_results.py（parquet）出，warm 剔除与分阶段拆解是它独有。
+
+**下线原因**：不是过时——`DP_STAGE_TIMING` 开关与日志行仍在主线代码（数据不丢），只是统计尺不占交付仓面。复跑拷回仓库根 `python analyze_stage_log.py bench.log`。
 
 ### `agg_speedscope.py`（R4 起）
 
