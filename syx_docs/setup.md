@@ -152,5 +152,5 @@ DP_CAPTURE_DIR=/data/syx_dp/capture DP_STAGE_TIMING=1 bash sim_diffusion_planner
 # 仿真后台跑起来后，worker pid 从 bench.log 的 (wrapped_fn pid=NNNN) 抓
 P=/usr/local/miniconda/envs/diffusion_planner/bin
 $P/py-spy record --pid <PID> --rate 50 --format speedscope --duration 240 --output /data/syx_dp/pyspy.json
-$P/python agg_speedscope.py /data/syx_dp/pyspy.json map_process   # self/total 占比（仓库根）
+$P/python agg_speedscope.py /data/syx_dp/pyspy.json map_process   # self/total 占比（已归档 syx_docs/scripts，复跑拷回仓库根）
 ```

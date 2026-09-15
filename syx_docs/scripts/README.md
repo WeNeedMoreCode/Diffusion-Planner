@@ -1,6 +1,6 @@
 # scripts 档案：开发期工具与等价性对拍
 
-> 私人离线档案（随 syx_docs 保存，**不上库**）。主线仓 clean code 时已把这里的六个文件清出仓库根——四个等价性对拍是"随时可拷回复跑"的活证据，两个过时基准是历史存档。R1–R9 的"严格等价"主张全部由四个对拍支撑；删除的两个工具的证据链在各轮 summary。
+> 私人离线档案（随 syx_docs 保存，**不上库**）。主线仓 clean code 时已把这里的七个文件清出仓库根——四个等价性对拍与火焰图聚合器是"随时可拷回复跑"的活证据/工具，两个过时基准是历史存档。R1–R9 的"严格等价"主张全部由四个对拍支撑；删除的两个工具的证据链在各轮 summary。
 
 ## 等价性对拍四件（active，可复跑）
 
@@ -19,6 +19,14 @@
 - **判据分级对应数学性质**：纯重排（浮点序不变）必须逐位；结合顺序变了给 ulp 容差；代数变形（包装互逆消去）给 1e-3 相对容差。
 - **退化注入**是故意的：零长折线、单点线、空帧、叠点——生产里真实出现（占位槽、短路线）。
 - 后两个要求 eager body（脚本内 assert `DP_TORCHAIR` 未开），把图编译浮点噪声隔离在外；需要 NPU 容器＋真 ckpt＋capture 输入。前两个 CPU＋numpy 即可（第一个还要 shapely，第二个 import devkit 的两个枚举常量）。
+
+## 开发工具一件（active，可复跑）
+
+### `agg_speedscope.py`（R4 起）
+
+py-spy speedscope JSON 的离线聚合器：出每函数 self（栈顶样本占比，纯粹自身耗时）/ total（栈上任意位置占比，含全部被调方）两口径的数字表——TOP 40 by self ＋可选子串过滤行。处在 py-spy 工作链末端（`py-spy record --format speedscope` 采样 → speedscope.app 交互看 / 本脚本出数字）。方法学与完整工作流在 inference-delivery skill `optimization/references/profiling-pyspy.md`（skill 另有本脚本的快照副本，接受漂移）。
+
+**下线原因**：不是过时——火焰图分析后续还会用（R9 的 agents floor 结论即出自它），只是私人工具不该占交付仓面。复跑时拷回仓库根 `python agg_speedscope.py <file.json> [filter]`。
 
 ## 过时基准两件（archived，勿再当工具用）
 
