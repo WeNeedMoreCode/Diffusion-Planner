@@ -1,6 +1,5 @@
 
 import os
-import time
 import warnings
 import torch
 import torch_npu  # Ascend NPU backend, hard dependency (project rule: no try/except)
@@ -11,10 +10,6 @@ warnings.filterwarnings("ignore")
 torch.npu.set_compile_mode(jit_compile=False)  # use precompiled op kernels; stable for inference
 
 # Perf breakdown switches (default off = behavior identical to production path).
-# DP_STAGE_TIMING=1: print per-stage ms at every step. NPU ops run async, so each
-# stage boundary synchronizes before reading the clock, otherwise forward time
-# leaks into the post-processing stage.
-_STAGE_TIMING = os.environ.get("DP_STAGE_TIMING") == "1"
 # The jit window below is proven ineffective for the EZ1001 case (see
 # syx_docs/decisions/003: the float mask already disables the fast path), AND
 # measured harmful: replay A/B (2026-08-19) shows jit_compile=True during forward
@@ -152,14 +147,7 @@ class DiffusionPlanner(AbstractPlanner):
         """
         Inherited.
         """
-        if _STAGE_TIMING:
-            torch.npu.synchronize()
-            t0 = time.perf_counter()
         inputs = self.planner_input_to_model_inputs(current_input)
-
-        if _STAGE_TIMING:
-            torch.npu.synchronize()
-            t1 = time.perf_counter()
 
         if _CAPTURE_DIR is not None and not getattr(self, "_captured", False):
             torch.save(
@@ -172,34 +160,18 @@ class DiffusionPlanner(AbstractPlanner):
             # OM path: normalization (and pos) live inside encoder.om
             inputs = self.observation_normalizer(inputs)
 
-        if _STAGE_TIMING:
-            torch.npu.synchronize()
-            t2 = time.perf_counter()
         # jit window: 310P precompiled set lacks aclnnTransformBiasRescaleQkv (MHA fused path,
         # EZ1001). Proven ineffective (the float mask already avoids that op, see
         # syx_docs/decisions/003) but kept for baseline comparability; DP_JIT_WINDOW=0 skips it.
         if _JIT_WINDOW:
             torch.npu.set_compile_mode(jit_compile=True)
         _, outputs = self._planner(inputs)
-        if _STAGE_TIMING:
-            torch.npu.synchronize()
         if _JIT_WINDOW:
             torch.npu.set_compile_mode(jit_compile=False)
-        if _STAGE_TIMING:
-            t3 = time.perf_counter()
 
         trajectory = InterpolatedTrajectory(
             trajectory=self.outputs_to_trajectory(outputs, current_input.history.ego_states)
         )
-        if _STAGE_TIMING:
-            torch.npu.synchronize()
-            t4 = time.perf_counter()
-            print(
-                f"[dp-stage] adapt={1000*(t1-t0):7.1f} norm={1000*(t2-t1):6.1f} "
-                f"fwd={1000*(t3-t2):7.1f} post={1000*(t4-t3):6.1f} "
-                f"total={1000*(t4-t0):7.1f} ms",
-                flush=True,
-            )
 
         return trajectory
         # sync-bump: trivial comment to force a new file version for syncthing
