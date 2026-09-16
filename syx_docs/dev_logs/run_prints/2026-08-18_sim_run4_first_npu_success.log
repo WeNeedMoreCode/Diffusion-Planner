@@ -1,309 +1,0 @@
-Processing /data/syx_dp/checkpoints/model.pth...
-/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/lightning_fabric/__init__.py:40: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-Seed set to 0
-INFO:nuplan.planning.script.builders.main_callback_builder:Building MultiMainCallback...
-INFO:nuplan.planning.script.builders.main_callback_builder:Building MultiMainCallback: 4...DONE!
-2026-08-18 03:59:03,900	INFO worker.py:2012 -- Started a local Ray instance.
-2026-08-18 03:59:00,772 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/worker_pool_builder.py:19}  Building WorkerPool...
-2026-08-18 03:59:00,776 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_ray.py:52}  Not using GPU in ray
-2026-08-18 03:59:00,776 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_ray.py:78}  Starting ray local!
-2026-08-18 03:59:04,601 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:101}  Worker: RayDistributed
-2026-08-18 03:59:04,601 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:102}  Number of nodes: 1
-Number of CPUs per node: 4
-Number of GPUs per node: 0
-Number of threads across all nodes: 4
-2026-08-18 03:59:04,602 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/worker_pool_builder.py:27}  Building WorkerPool...DONE!
-2026-08-18 03:59:04,602 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:32}  Building experiment folders...
-2026-08-18 03:59:04,602 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:35}  
-
-	Folder where all results are stored: /data/syx_dp/exp/exp/simulation/closed_loop_nonreactive_agents/diffusion_planner/one_continuous_log/diffusion_planner_release/model_2026-08-18-03-58-43
-
-2026-08-18 03:59:04,607 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:70}  Building experiment folders...DONE!
-2026-08-18 03:59:04,608 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_callback_builder.py:52}  Building AbstractCallback...
-2026-08-18 03:59:04,608 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_callback_builder.py:68}  Building AbstractCallback: 0...DONE!
-2026-08-18 03:59:04,608 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:47}  Building simulations...
-2026-08-18 03:59:04,608 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:53}  Extracting scenarios...
-2026-08-18 03:59:04,609 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/common/utils/distributed_scenario_filter.py:83}  Building Scenarios in mode DistributedMode.SINGLE_NODE
-2026-08-18 03:59:04,610 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_building_builder.py:18}  Building AbstractScenarioBuilder...
-2026-08-18 03:59:04,641 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_building_builder.py:21}  Building AbstractScenarioBuilder...DONE!
-2026-08-18 03:59:04,642 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_filter_builder.py:35}  Building ScenarioFilter...
-2026-08-18 03:59:04,644 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_filter_builder.py:44}  Building ScenarioFilter...DONE!
-Ray objects:   0%|          | 0/1 [00:00<?, ?it/s]Ray objects: 100%|██████████| 1/1 [00:02<00:00,  2.58s/it]Ray objects: 100%|██████████| 1/1 [00:02<00:00,  2.58s/it]
-2026-08-18 03:59:07,243 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:74}  Building metric engines...
-2026-08-18 03:59:07,614 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:76}  Building metric engines...DONE
-2026-08-18 03:59:07,614 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:80}  Building simulations from 50 scenarios...
-2026-08-18 03:59:19,166 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:133}  Building simulations...DONE!
-2026-08-18 03:59:19,167 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit//nuplan/planning/script/run_simulation.py:78}  Running simulation...
-2026-08-18 03:59:19,167 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:138}  Executing runners...
-2026-08-18 03:59:19,167 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:82}  Starting 50 simulations using RayDistributed!
-2026-08-18 03:59:19,167 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:116}  Submitting 50 tasks!
-('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
-Ray objects:   0%|          | 0/50 [00:00<?, ?it/s][36m(pid=gcs_server)[0m [2026-08-18 03:59:32,316 E 165260 165260] (gcs_server) gcs_server.cc:302: Failed to establish connection to the event+metrics exporter agent. Events and metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[33m(raylet)[0m [2026-08-18 03:59:33,842 E 165493 165493] (raylet) main.cc:975: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[36m(wrapped_fn pid=165588)[0m [2026-08-18 03:59:34,570 E 165588 165766] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[2026-08-18 03:59:34,605 E 164940 165587] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[36m(wrapped_fn pid=165588)[0m [W compiler_depend.ts:83] Warning: [Check][offset] Check input storage_offset[%ld] = 0 failed, result is untrustworthy4 (function operator())
-[36m(wrapped_fn pid=165591)[0m [2026-08-18 03:59:34,590 E 165591 165848] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14[32m [repeated 3x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
-[36m(wrapped_fn pid=165588)[0m [W compiler_depend.ts:116] Warning: Driver Version: ��6֪� is invalid or not supported yet. (function operator())
-[36m(wrapped_fn pid=165590)[0m [W compiler_depend.ts:83] Warning: [Check][offset] Check input storage_offset[%ld] = 0 failed, result is untrustworthy4 (function operator())[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165590)[0m [W compiler_depend.ts:116] Warning: Driver Version: ��O��� is invalid or not supported yet. (function operator())
-[36m(wrapped_fn pid=165589)[0m [W compiler_depend.ts:116] Warning: Driver Version: 0q�� is invalid or not supported yet. (function operator())
-[36m(wrapped_fn pid=165591)[0m [W compiler_depend.ts:116] Warning: Driver Version: �o�� is invalid or not supported yet. (function operator())
-Ray objects:   2%|▏         | 1/50 [05:10<4:13:30, 310.42s/it]Ray objects:   4%|▍         | 2/50 [05:20<1:46:55, 133.65s/it]Ray objects:   6%|▌         | 3/50 [05:27<59:29, 75.95s/it]   Ray objects:   8%|▊         | 4/50 [07:38<1:14:49, 97.59s/it]Ray objects:  10%|█         | 5/50 [07:49<49:40, 66.24s/it]  Ray objects:  12%|█▏        | 6/50 [09:05<51:09, 69.75s/it]Ray objects:  14%|█▍        | 7/50 [09:45<42:56, 59.92s/it]Ray objects:  16%|█▌        | 8/50 [10:18<35:57, 51.36s/it]Ray objects:  18%|█▊        | 9/50 [10:19<24:18, 35.56s/it]Ray objects:  20%|██        | 10/50 [11:11<27:15, 40.90s/it]Ray objects:  22%|██▏       | 11/50 [11:55<27:11, 41.82s/it]Ray objects:  24%|██▍       | 12/50 [12:46<28:06, 44.38s/it]Ray objects:  26%|██▌       | 13/50 [12:46<19:10, 31.09s/it]Ray objects:  28%|██▊       | 14/50 [13:28<20:38, 34.40s/it]Ray objects:  30%|███       | 15/50 [14:57<29:41, 50.90s/it]Ray objects:  32%|███▏      | 16/50 [15:48<28:50, 50.90s/it]Ray objects:  34%|███▍      | 17/50 [17:10<33:06, 60.20s/it]Ray objects:  36%|███▌      | 18/50 [17:56<29:46, 55.82s/it]Ray objects:  38%|███▊      | 19/50 [19:20<33:18, 64.47s/it]Ray objects:  40%|████      | 20/50 [20:03<28:54, 57.80s/it][36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165590)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m ('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165591)[0m ('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165590)[0m ('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m ('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165590)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165590)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165590)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-Ray objects:  42%|████▏     | 21/50 [21:32<32:27, 67.16s/it]Ray objects:  44%|████▍     | 22/50 [22:16<28:06, 60.25s/it]Ray objects:  46%|████▌     | 23/50 [23:57<32:37, 72.50s/it]Ray objects:  48%|████▊     | 24/50 [24:19<24:52, 57.40s/it]Ray objects:  50%|█████     | 25/50 [24:29<18:02, 43.31s/it]Ray objects:  52%|█████▏    | 26/50 [25:00<15:49, 39.56s/it]Ray objects:  54%|█████▍    | 27/50 [26:08<18:28, 48.18s/it]Ray objects:  56%|█████▌    | 28/50 [26:28<14:31, 39.61s/it]Ray objects:  58%|█████▊    | 29/50 [26:38<10:45, 30.76s/it]Ray objects:  60%|██████    | 30/50 [27:52<14:33, 43.69s/it]Ray objects:  62%|██████▏   | 31/50 [28:23<12:39, 39.95s/it]Ray objects:  64%|██████▍   | 32/50 [28:43<10:09, 33.87s/it]Ray objects:  66%|██████▌   | 33/50 [28:44<06:48, 24.05s/it]Ray objects:  68%|██████▊   | 34/50 [30:00<10:36, 39.75s/it]Ray objects:  70%|███████   | 35/50 [30:59<11:22, 45.51s/it]Ray objects:  72%|███████▏  | 36/50 [31:01<07:32, 32.33s/it]Ray objects:  74%|███████▍  | 37/50 [32:19<10:00, 46.17s/it]Ray objects:  76%|███████▌  | 38/50 [33:09<09:27, 47.28s/it]Ray objects:  78%|███████▊  | 39/50 [33:20<06:39, 36.36s/it]Ray objects:  80%|████████  | 40/50 [33:33<04:51, 29.15s/it]Ray objects:  82%|████████▏ | 41/50 [34:30<05:38, 37.66s/it]Ray objects:  84%|████████▍ | 42/50 [35:14<05:17, 39.64s/it]Ray objects:  86%|████████▌ | 43/50 [35:44<04:16, 36.67s/it]Ray objects:  88%|████████▊ | 44/50 [36:00<03:01, 30.30s/it]Ray objects:  90%|█████████ | 45/50 [36:36<02:40, 32.09s/it]Ray objects:  92%|█████████▏| 46/50 [37:51<03:00, 45.01s/it]Ray objects:  94%|█████████▍| 47/50 [38:43<02:21, 47.07s/it]Ray objects:  96%|█████████▌| 48/50 [39:59<01:51, 55.75s/it]Ray objects:  98%|█████████▊| 49/50 [40:43<00:52, 52.41s/it]Ray objects: 100%|██████████| 50/50 [41:24<00:00, 48.95s/it]Ray objects: 100%|██████████| 50/50 [41:24<00:00, 49.70s/it]
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165591)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165590)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165591)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165589)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165589)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-[36m(wrapped_fn pid=165588)[0m .
-2026-08-18 04:40:52,421 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:127}  Number of successful simulations: 50
-2026-08-18 04:40:52,422 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:128}  Number of failed simulations: 0
-2026-08-18 04:40:52,422 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:147}  Finished executing runners!
-2026-08-18 04:40:52,454 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:74}  Saved runner reports to /data/syx_dp/exp/exp/simulation/closed_loop_nonreactive_agents/diffusion_planner/one_continuous_log/diffusion_planner_release/model_2026-08-18-03-58-43/runner_report.parquet
-2026-08-18 04:40:52,455 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/time_callback.py:27}  Simulation duration: 00:41:52 [HH:MM:SS]
-2026-08-18 04:40:53,983 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_file_callback.py:79}  Metric files integration: 00:00:01 [HH:MM:SS]
-2026-08-18 04:40:54,169 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_aggregator_callback.py:58}  Running metric aggregator: closed_loop_nonreactive_agents_weighted_average
-2026-08-18 04:40:54,321 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_aggregator_callback.py:69}  Metric aggregator: 00:00:00 [HH:MM:SS]
-Rendering histograms:   0%|          | 0/17 [00:00<?, ?it/s]Rendering histograms:   6%|▌         | 1/17 [00:00<00:04,  3.80it/s]Rendering histograms:  12%|█▏        | 2/17 [00:00<00:06,  2.40it/s]Rendering histograms:  18%|█▊        | 3/17 [00:01<00:05,  2.59it/s]Rendering histograms:  24%|██▎       | 4/17 [00:01<00:05,  2.30it/s]Rendering histograms:  29%|██▉       | 5/17 [00:01<00:04,  2.93it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.93it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.93it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.93it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.93it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.93it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.93it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.93it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.93it/s]Rendering histograms:  41%|████      | 7/17 [00:02<00:03,  2.89it/s]Rendering histograms:  53%|█████▎    | 9/17 [00:03<00:03,  2.28it/s]Rendering histograms:  59%|█████▉    | 10/17 [00:04<00:03,  2.18it/s]Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.08it/s]                                                                     Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.08it/s]                                                                     Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.08it/s]Rendering histograms:  76%|███████▋  | 13/17 [00:05<00:01,  2.46it/s]Rendering histograms:  82%|████████▏ | 14/17 [00:05<00:01,  2.31it/s]Rendering histograms:  94%|█████████▍| 16/17 [00:06<00:00,  3.37it/s]Rendering histograms: 100%|██████████| 17/17 [00:07<00:00,  2.06it/s]Rendering histograms: 100%|██████████| 17/17 [00:07<00:00,  2.36it/s]
-2026-08-18 04:40:56,580 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-18 04:40:56,582 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-18 04:40:56,589 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-18 04:40:56,590 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-18 04:40:56,595 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-18 04:40:56,597 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-18 04:40:56,603 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-18 04:40:56,604 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-18 04:40:59,457 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-18 04:40:59,458 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-18 04:41:09,662 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_summary_callback.py:344}  Metric summary: 00:00:15 [HH:MM:SS]
-2026-08-18 04:41:09,663 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit//nuplan/planning/script/run_simulation.py:80}  Finished running simulation!

@@ -1,309 +1,0 @@
-Processing /data/syx_dp/checkpoints/model.pth...
-/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/lightning_fabric/__init__.py:40: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-Seed set to 0
-INFO:nuplan.planning.script.builders.main_callback_builder:Building MultiMainCallback...
-INFO:nuplan.planning.script.builders.main_callback_builder:Building MultiMainCallback: 4...DONE!
-2026-08-19 01:57:47,849	INFO worker.py:2012 -- Started a local Ray instance.
-2026-08-19 01:57:44,783 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/worker_pool_builder.py:19}  Building WorkerPool...
-2026-08-19 01:57:44,787 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_ray.py:52}  Not using GPU in ray
-2026-08-19 01:57:44,787 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_ray.py:78}  Starting ray local!
-2026-08-19 01:57:48,552 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:101}  Worker: RayDistributed
-2026-08-19 01:57:48,553 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:102}  Number of nodes: 1
-Number of CPUs per node: 4
-Number of GPUs per node: 0
-Number of threads across all nodes: 4
-2026-08-19 01:57:48,553 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/worker_pool_builder.py:27}  Building WorkerPool...DONE!
-2026-08-19 01:57:48,553 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:32}  Building experiment folders...
-2026-08-19 01:57:48,554 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:35}  
-
-	Folder where all results are stored: /data/syx_dp/exp/exp/simulation/closed_loop_nonreactive_agents/diffusion_planner/one_continuous_log/diffusion_planner_release/model_2026-08-19-01-57-27
-
-2026-08-19 01:57:48,559 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/folder_builder.py:70}  Building experiment folders...DONE!
-2026-08-19 01:57:48,559 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_callback_builder.py:52}  Building AbstractCallback...
-2026-08-19 01:57:48,560 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_callback_builder.py:68}  Building AbstractCallback: 0...DONE!
-2026-08-19 01:57:48,560 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:47}  Building simulations...
-2026-08-19 01:57:48,560 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:53}  Extracting scenarios...
-2026-08-19 01:57:48,561 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/common/utils/distributed_scenario_filter.py:83}  Building Scenarios in mode DistributedMode.SINGLE_NODE
-2026-08-19 01:57:48,562 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_building_builder.py:18}  Building AbstractScenarioBuilder...
-2026-08-19 01:57:48,593 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_building_builder.py:21}  Building AbstractScenarioBuilder...DONE!
-2026-08-19 01:57:48,594 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_filter_builder.py:35}  Building ScenarioFilter...
-2026-08-19 01:57:48,596 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/scenario_filter_builder.py:44}  Building ScenarioFilter...DONE!
-Ray objects:   0%|          | 0/1 [00:00<?, ?it/s]Ray objects: 100%|██████████| 1/1 [00:02<00:00,  2.67s/it]Ray objects: 100%|██████████| 1/1 [00:02<00:00,  2.67s/it]
-[33m(raylet)[0m [2026-08-19 01:57:57,769 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2815 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-2026-08-19 01:57:51,287 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:74}  Building metric engines...
-2026-08-19 01:57:51,523 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:76}  Building metric engines...DONE
-2026-08-19 01:57:51,524 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:80}  Building simulations from 10 scenarios...
-2026-08-19 01:57:56,505 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/builders/simulation_builder.py:133}  Building simulations...DONE!
-2026-08-19 01:57:56,505 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit//nuplan/planning/script/run_simulation.py:78}  Running simulation...
-2026-08-19 01:57:56,505 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:138}  Executing runners...
-2026-08-19 01:57:56,506 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:82}  Starting 10 simulations using RayDistributed!
-2026-08-19 01:57:56,506 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/utils/multithreading/worker_pool.py:116}  Submitting 10 tasks!
-('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
-Ray objects:   0%|          | 0/10 [00:00<?, ?it/s][33m(raylet)[0m [2026-08-19 01:58:07,777 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2813 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[36m(pid=gcs_server)[0m [2026-08-19 01:58:16,299 E 496681 496681] (gcs_server) gcs_server.cc:302: Failed to establish connection to the event+metrics exporter agent. Events and metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[33m(raylet)[0m [2026-08-19 01:58:17,789 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.281 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 01:58:17,796 E 496914 496914] (raylet) main.cc:975: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[36m(wrapped_fn pid=497011)[0m [2026-08-19 01:58:18,497 E 497011 497193] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[2026-08-19 01:58:18,556 E 496361 497008] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
-[36m(wrapped_fn pid=497011)[0m [W compiler_depend.ts:83] Warning: [Check][offset] Check input storage_offset[%ld] = 0 failed, result is untrustworthy4 (function operator())
-[33m(raylet)[0m [2026-08-19 01:58:27,798 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.281 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[36m(wrapped_fn pid=497010)[0m [2026-08-19 01:58:18,543 E 497010 497279] core_worker_process.cc:825: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14[32m [repeated 3x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
-[36m(wrapped_fn pid=497012)[0m [W compiler_depend.ts:83] Warning: [Check][offset] Check input storage_offset[%ld] = 0 failed, result is untrustworthy4 (function operator())[32m [repeated 3x across cluster][0m
-[33m(raylet)[0m [2026-08-19 01:58:37,809 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2797 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[36m(wrapped_fn pid=497010)[0m [W compiler_depend.ts:116] Warning: Driver Version: 0�]˪� is invalid or not supported yet. (function operator())
-[36m(wrapped_fn pid=497012)[0m [W compiler_depend.ts:116] Warning: Driver Version: p�䪪 is invalid or not supported yet. (function operator())
-[33m(raylet)[0m [2026-08-19 01:58:47,822 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.278 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[36m(wrapped_fn pid=497009)[0m [W compiler_depend.ts:116] Warning: Driver Version: Pv4�� is invalid or not supported yet. (function operator())[32m [repeated 2x across cluster][0m
-[33m(raylet)[0m [2026-08-19 01:58:57,835 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2761 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 01:59:07,847 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2741 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 01:59:17,859 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2723 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 01:59:27,871 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2706 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 01:59:37,885 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2687 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 01:59:47,898 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2667 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 01:59:57,911 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.265 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:00:07,924 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2633 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:00:17,934 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2624 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:00:27,944 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2624 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:00:37,954 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2624 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:00:47,964 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2623 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:00:57,975 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2623 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:01:07,984 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2622 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:01:17,994 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2619 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:01:28,003 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2615 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:01:38,014 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2609 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:01:48,025 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2605 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:01:58,036 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2601 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:02:08,047 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2596 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-Ray objects:  10%|█         | 1/10 [04:17<38:41, 257.91s/it][33m(raylet)[0m [2026-08-19 02:02:18,058 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2587 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-Ray objects:  20%|██        | 2/10 [04:26<14:47, 110.97s/it][33m(raylet)[0m [2026-08-19 02:02:28,068 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2578 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:02:38,077 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2568 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:02:48,088 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2557 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[36m(wrapped_fn pid=497011)[0m .
-[36m(wrapped_fn pid=497009)[0m .[32m [repeated 4x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m .[32m [repeated 4x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m .[32m [repeated 4x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m .[32m [repeated 4x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .[32m [repeated 4x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m .[32m [repeated 4x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m .[32m [repeated 4x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m .[32m [repeated 4x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m .[32m [repeated 4x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt= 3682.3 norm= 222.4 fwd=108953.9 post=  11.8 total=112870.3 ms
-[36m(wrapped_fn pid=497012)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  666.5 norm=   8.1 fwd=  235.6 post=   9.0 total=  919.3 ms
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  319.7 norm=   7.0 fwd=  230.8 post=   8.9 total=  566.5 ms
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  318.6 norm=   7.2 fwd=  229.7 post=   9.1 total=  564.5 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt= 3627.8 norm= 227.7 fwd=111887.2 post=  11.4 total=115754.1 ms[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  699.5 norm=   7.5 fwd=  238.1 post=   8.9 total=  953.9 ms[32m [repeated 15x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt= 3842.1 norm= 212.4 fwd=116078.6 post=  17.4 total=120150.4 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  724.4 norm=   7.8 fwd=  248.9 post=   9.4 total=  990.6 ms[32m [repeated 23x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  599.5 norm=   8.4 fwd=  249.0 post=   8.8 total=  865.6 ms[32m [repeated 26x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  686.4 norm=   7.2 fwd=  285.5 post=   9.8 total=  988.9 ms[32m [repeated 27x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  369.7 norm=   8.0 fwd=  249.8 post=   9.1 total=  636.6 ms[32m [repeated 26x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  300.9 norm=   7.8 fwd=  251.1 post=   8.6 total=  568.4 ms[32m [repeated 28x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  803.0 norm=   8.9 fwd=  286.2 post=   9.3 total= 1107.3 ms[32m [repeated 28x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  379.1 norm=   8.2 fwd=  283.0 post=   9.2 total=  679.5 ms[32m [repeated 27x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  333.6 norm=   7.6 fwd=  244.5 post=   9.1 total=  594.7 ms[32m [repeated 27x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  608.7 norm=   7.2 fwd=  232.4 post=   8.8 total=  857.1 ms[32m [repeated 27x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  763.2 norm=   8.0 fwd=  260.5 post=   8.6 total= 1040.3 ms[32m [repeated 26x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  750.1 norm=   7.3 fwd=  252.0 post=   9.2 total= 1018.6 ms[32m [repeated 25x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  713.8 norm=   7.0 fwd=  246.4 post=   9.2 total=  976.5 ms[32m [repeated 19x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  400.9 norm=   7.9 fwd=  280.6 post=   9.9 total=  699.3 ms[32m [repeated 18x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  284.2 norm=   7.1 fwd=12358.0 post=  10.0 total=12659.3 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  356.0 norm=   8.4 fwd=  241.8 post=   9.2 total=  615.4 ms[32m [repeated 21x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m .
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  733.2 norm=   7.7 fwd=  250.9 post=   8.8 total= 1000.7 ms[32m [repeated 17x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  271.9 norm=   7.5 fwd=12345.5 post=  10.0 total=12634.9 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  354.6 norm=   8.8 fwd= 3755.5 post=   9.5 total= 4128.4 ms[32m [repeated 17x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m .
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  265.6 norm=   6.8 fwd=  231.6 post=  14.8 total=  518.9 ms[32m [repeated 22x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  752.6 norm=   9.9 fwd=  269.5 post=   8.6 total= 1040.6 ms[32m [repeated 22x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m .
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  836.8 norm=   8.1 fwd=12945.9 post=  10.9 total=13801.5 ms
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  314.8 norm=   8.2 fwd=  243.2 post=   9.0 total=  575.1 ms[32m [repeated 22x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  359.4 norm=   9.2 fwd=  295.1 post=   9.7 total=  673.3 ms[32m [repeated 16x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m .
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  264.5 norm=   6.5 fwd=  234.1 post=  14.6 total=  519.7 ms[32m [repeated 14x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  361.8 norm=   9.4 fwd=12413.8 post=  10.2 total=12795.2 ms
-[36m(wrapped_fn pid=497012)[0m .
-[36m(wrapped_fn pid=497009)[0m ('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  267.0 norm=   6.8 fwd=  245.1 post=   9.4 total=  528.2 ms[32m [repeated 9x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m .
-[36m(wrapped_fn pid=497010)[0m ('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  359.1 norm=   8.2 fwd= 3942.8 post=   9.3 total= 4319.4 ms[32m [repeated 6x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m .
-[36m(wrapped_fn pid=497011)[0m .
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  815.1 norm=   7.8 fwd=  262.2 post=   8.8 total= 1093.9 ms[32m [repeated 6x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  710.0 norm=   8.2 fwd=11413.6 post=  10.3 total=12142.1 ms
-[36m(wrapped_fn pid=497010)[0m .[32m [repeated 3x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  360.9 norm=   8.5 fwd=  275.6 post=  12.0 total=  656.9 ms[32m [repeated 8x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  801.0 norm=   8.8 fwd=13088.7 post=  10.2 total=13908.7 ms
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  315.5 norm=   8.0 fwd=  258.6 post=   8.9 total=  591.0 ms[32m [repeated 11x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  674.6 norm=  10.3 fwd=11999.9 post=  10.6 total=12695.5 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  923.2 norm=   7.7 fwd=  312.5 post=  10.2 total= 1253.6 ms[32m [repeated 12x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m .[32m [repeated 2x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  820.0 norm=   8.6 fwd=12833.2 post=  10.1 total=13671.9 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  707.9 norm=   7.5 fwd=  243.9 post=   9.2 total=  968.4 ms[32m [repeated 10x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .[32m [repeated 2x across cluster][0m
-[33m(raylet)[0m [2026-08-19 02:02:58,098 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2549 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:03:08,106 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2545 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-Ray objects:  30%|███       | 3/10 [05:18<09:51, 84.46s/it] [33m(raylet)[0m [2026-08-19 02:03:18,114 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2541 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:03:28,120 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.254 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-Ray objects:  40%|████      | 4/10 [05:30<05:33, 55.61s/it][33m(raylet)[0m [2026-08-19 02:03:38,128 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.254 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:03:48,137 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.254 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:03:58,146 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2537 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:04:08,158 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.253 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:04:18,167 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2522 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:04:28,176 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2518 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:04:38,184 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2518 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:04:48,193 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2513 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-Ray objects:  50%|█████     | 5/10 [06:51<05:24, 64.81s/it][33m(raylet)[0m [2026-08-19 02:04:58,202 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2509 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:05:08,212 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2505 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:05:18,221 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2499 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:05:28,230 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2496 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:05:38,239 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2494 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-Ray objects:  60%|██████    | 6/10 [07:42<04:00, 60.20s/it]Ray objects:  70%|███████   | 7/10 [07:49<02:08, 42.67s/it][33m(raylet)[0m [2026-08-19 02:05:48,247 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2488 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:05:58,256 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2485 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  312.5 norm=   7.9 fwd=  257.6 post=   9.2 total=  587.2 ms[32m [repeated 11x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  780.4 norm=   8.0 fwd=12526.8 post=   9.9 total=13325.1 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  360.9 norm=   8.1 fwd=  267.1 post=   9.8 total=  645.8 ms[32m [repeated 17x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m .
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  339.5 norm=   7.3 fwd=  249.8 post=   9.2 total=  605.7 ms[32m [repeated 13x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  347.5 norm=  11.3 fwd=12201.1 post=  15.2 total=12575.1 ms
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  745.7 norm=   9.9 fwd=  243.7 post=   9.1 total= 1008.5 ms[32m [repeated 18x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  730.6 norm=   7.4 fwd=12659.7 post=  10.3 total=13408.1 ms
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  336.9 norm=  10.0 fwd=  291.3 post=   9.6 total=  647.9 ms[32m [repeated 19x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m ('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  742.3 norm=   9.9 fwd=  263.0 post=   9.9 total= 1025.1 ms[32m [repeated 13x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  804.8 norm=   7.9 fwd=  258.8 post=   9.2 total= 1080.7 ms[32m [repeated 13x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  265.7 norm=   7.1 fwd=12634.1 post=  10.3 total=12917.2 ms
-[36m(wrapped_fn pid=497012)[0m ('Warning: torch.save with "_use_new_zipfile_serialization = False" is not recommended for npu tensor, which may bring unexpected errors and hopefully set "_use_new_zipfile_serialization = True"', 'if it is necessary to use this, please convert the npu tensor to cpu tensor for saving')
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  296.3 norm=   7.8 fwd=  254.2 post=   9.0 total=  567.3 ms[32m [repeated 21x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  317.0 norm=   8.4 fwd=  252.7 post=   8.6 total=  586.7 ms[32m [repeated 23x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  816.5 norm=   7.2 fwd=  239.0 post=   9.2 total= 1072.0 ms[32m [repeated 29x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  275.3 norm=   6.8 fwd=  239.8 post=   9.4 total=  531.3 ms[32m [repeated 27x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  350.1 norm=  10.1 fwd=  302.8 post=   9.8 total=  672.8 ms[32m [repeated 28x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  375.9 norm=   8.5 fwd=  251.6 post=   9.2 total=  645.2 ms[32m [repeated 27x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m .
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  942.8 norm=   8.1 fwd=  256.0 post=   8.8 total= 1215.6 ms[32m [repeated 23x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  333.1 norm=   8.3 fwd=  270.0 post=   8.7 total=  620.1 ms[32m [repeated 15x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m .
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  809.4 norm=   8.8 fwd=11336.4 post=  10.6 total=12165.3 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  860.7 norm=   8.0 fwd=  252.3 post=   9.2 total= 1130.3 ms[32m [repeated 13x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  776.4 norm=   7.7 fwd=14246.7 post=  10.4 total=15041.2 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  907.7 norm=   8.0 fwd=  250.3 post=   9.7 total= 1175.7 ms[32m [repeated 11x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m .
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  258.6 norm=   7.8 fwd=11336.6 post=   9.8 total=11612.8 ms
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  886.4 norm=   8.3 fwd=  263.2 post=   9.4 total= 1167.4 ms[32m [repeated 14x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  314.1 norm=  10.2 fwd=  299.5 post=   9.0 total=  632.8 ms[32m [repeated 21x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  258.9 norm=   8.9 fwd=14144.0 post=  10.4 total=14422.2 ms
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  253.0 norm=   7.4 fwd=  239.4 post=   8.7 total=  508.5 ms[32m [repeated 20x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  273.3 norm=   7.9 fwd=  251.7 post=   9.0 total=  541.9 ms[32m [repeated 27x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  878.2 norm=   8.3 fwd=  285.1 post=  11.1 total= 1182.7 ms[32m [repeated 26x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  312.9 norm=   8.8 fwd=  266.1 post=   9.1 total=  596.9 ms[32m [repeated 14x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  338.6 norm=   8.7 fwd=  282.8 post=  10.0 total=  640.1 ms[32m [repeated 12x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  236.1 norm=   7.6 fwd=15549.2 post=  10.6 total=15803.4 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  826.7 norm=  11.0 fwd=  302.0 post=   9.4 total= 1149.2 ms[32m [repeated 18x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  355.1 norm=  11.5 fwd=  281.3 post=   9.2 total=  657.0 ms[32m [repeated 18x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  375.6 norm=   8.2 fwd=  249.5 post=   9.1 total=  642.4 ms[32m [repeated 19x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  239.8 norm=   8.1 fwd=15618.2 post=  10.5 total=15876.6 ms
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  314.2 norm=   8.1 fwd=  271.4 post=   8.7 total=  602.5 ms[32m [repeated 19x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  335.2 norm=  10.1 fwd=  263.8 post=   9.4 total=  618.5 ms[32m [repeated 19x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt= 1286.9 norm=   9.0 fwd=  264.4 post=   9.0 total= 1569.2 ms[32m [repeated 17x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  227.2 norm=   7.8 fwd=15413.3 post=  10.3 total=15658.6 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  338.5 norm=   8.1 fwd=  304.6 post=   9.9 total=  661.1 ms[32m [repeated 21x across cluster][0m
-[36m(wrapped_fn pid=497012)[0m [dp-stage] adapt=  320.9 norm=   9.5 fwd=  249.2 post=   8.9 total=  588.5 ms[32m [repeated 25x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  884.3 norm=   8.2 fwd=  255.9 post=   9.2 total= 1157.6 ms[32m [repeated 11x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  945.4 norm=   9.0 fwd=  258.5 post=   9.2 total= 1222.2 ms[32m [repeated 7x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  900.6 norm=   8.6 fwd=  261.7 post=   9.5 total= 1180.4 ms[32m [repeated 12x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  264.0 norm=   6.7 fwd=15374.4 post=  10.6 total=15655.8 ms
-[36m(wrapped_fn pid=497009)[0m .
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  348.1 norm=   9.9 fwd= 1591.4 post=   9.5 total= 1958.8 ms[32m [repeated 15x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  339.1 norm=   7.1 fwd=  244.0 post=   9.2 total=  599.4 ms[32m [repeated 17x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[33m(raylet)[0m [2026-08-19 02:06:08,265 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2478 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:06:18,273 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2475 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:06:28,282 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2473 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:06:38,291 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2469 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:06:48,302 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2464 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:06:58,312 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.246 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:07:08,321 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2456 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:07:18,331 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2456 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-Ray objects:  80%|████████  | 8/10 [09:22<01:57, 58.89s/it]Ray objects:  90%|█████████ | 9/10 [09:24<00:40, 40.92s/it][33m(raylet)[0m [2026-08-19 02:07:28,341 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2456 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:07:38,351 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2456 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:07:48,361 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2456 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-[33m(raylet)[0m [2026-08-19 02:07:58,371 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2455 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-Ray objects: 100%|██████████| 10/10 [10:01<00:00, 39.70s/it]Ray objects: 100%|██████████| 10/10 [10:01<00:00, 60.13s/it]
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt= 1091.8 norm=   9.2 fwd=  256.5 post=   9.9 total= 1367.4 ms[32m [repeated 9x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m .
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  366.6 norm=   9.0 fwd=11311.3 post=   9.3 total=11696.2 ms
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  365.3 norm=   8.0 fwd=  249.9 post=   9.3 total=  632.6 ms[32m [repeated 10x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  326.8 norm=   8.1 fwd=  250.1 post=   9.1 total=  594.1 ms[32m [repeated 13x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  242.0 norm=   8.5 fwd=15429.6 post=  10.5 total=15690.7 ms
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  779.2 norm=   7.2 fwd=  230.9 post=   9.1 total= 1026.4 ms[32m [repeated 19x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt= 1031.3 norm=   6.9 fwd=  246.9 post=   9.3 total= 1294.4 ms[32m [repeated 17x across cluster][0m
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  924.0 norm=   8.7 fwd=  275.7 post=   9.7 total= 1218.2 ms[32m [repeated 12x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  353.6 norm=   7.3 fwd=  286.7 post=   9.7 total=  657.3 ms[32m [repeated 13x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  278.8 norm=   7.8 fwd=15358.7 post=  10.3 total=15655.5 ms
-[36m(wrapped_fn pid=497009)[0m [dp-stage] adapt=  903.0 norm=   8.0 fwd=  251.9 post=   9.1 total= 1172.0 ms[32m [repeated 12x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  876.4 norm=  10.3 fwd=  316.0 post=   9.8 total= 1212.5 ms[32m [repeated 13x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  815.4 norm=   7.0 fwd=  240.9 post=   9.4 total= 1072.7 ms[32m [repeated 13x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  293.3 norm=   7.9 fwd=14088.0 post=  10.0 total=14399.2 ms
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  996.1 norm=   8.0 fwd=  279.4 post=  10.0 total= 1293.5 ms[32m [repeated 14x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  341.8 norm=   7.3 fwd=  245.3 post=   9.4 total=  603.8 ms[32m [repeated 12x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m .
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  339.5 norm=   7.4 fwd=  241.4 post=   9.2 total=  597.5 ms[32m [repeated 13x across cluster][0m
-[36m(wrapped_fn pid=497010)[0m [dp-stage] adapt=  821.9 norm=   7.8 fwd=14225.3 post=  11.2 total=15066.2 ms
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  883.5 norm=   7.2 fwd=  242.4 post=   9.2 total= 1142.3 ms[32m [repeated 17x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  339.8 norm=   7.4 fwd=  242.4 post=   9.2 total=  598.8 ms[32m [repeated 7x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  344.0 norm=   7.5 fwd=  242.6 post=   9.2 total=  603.3 ms[32m [repeated 7x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  848.2 norm=   7.3 fwd=  240.3 post=   9.2 total= 1105.1 ms[32m [repeated 7x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  367.4 norm=   7.5 fwd=  251.5 post=   9.8 total=  636.2 ms[32m [repeated 7x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  898.0 norm=   7.4 fwd=  242.2 post=   9.2 total= 1156.8 ms[32m [repeated 7x across cluster][0m
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  341.4 norm=   7.5 fwd=  245.4 post=   9.2 total=  603.5 ms[32m [repeated 7x across cluster][0m
-2026-08-19 02:07:59,390 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:127}  Number of successful simulations: 10
-2026-08-19 02:07:59,390 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/runner/executor.py:128}  Number of failed simulations: 0
-2026-08-19 02:07:59,390 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:147}  Finished executing runners!
-2026-08-19 02:07:59,411 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/script/utils.py:74}  Saved runner reports to /data/syx_dp/exp/exp/simulation/closed_loop_nonreactive_agents/diffusion_planner/one_continuous_log/diffusion_planner_release/model_2026-08-19-01-57-27/runner_report.parquet
-2026-08-19 02:07:59,412 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/time_callback.py:27}  Simulation duration: 00:10:15 [HH:MM:SS]
-2026-08-19 02:07:59,781 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_file_callback.py:79}  Metric files integration: 00:00:00 [HH:MM:SS]
-2026-08-19 02:07:59,903 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_aggregator_callback.py:58}  Running metric aggregator: closed_loop_nonreactive_agents_weighted_average
-2026-08-19 02:07:59,954 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_aggregator_callback.py:69}  Metric aggregator: 00:00:00 [HH:MM:SS]
-Rendering histograms:   0%|          | 0/17 [00:00<?, ?it/s]Rendering histograms:   6%|▌         | 1/17 [00:00<00:04,  3.88it/s]Rendering histograms:  12%|█▏        | 2/17 [00:01<00:10,  1.50it/s]Rendering histograms:  18%|█▊        | 3/17 [00:01<00:07,  1.94it/s]Rendering histograms:  24%|██▎       | 4/17 [00:02<00:06,  1.94it/s]Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.51it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.51it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.51it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.51it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.51it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.51it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.51it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.51it/s]                                                                    Rendering histograms:  29%|██▉       | 5/17 [00:02<00:04,  2.51it/s]Rendering histograms:  41%|████      | 7/17 [00:02<00:03,  3.32it/s]Rendering histograms:  53%|█████▎    | 9/17 [00:03<00:02,  3.24it/s]Rendering histograms:  59%|█████▉    | 10/17 [00:03<00:02,  2.73it/s]Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.46it/s]                                                                     Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.46it/s]                                                                     Rendering histograms:  65%|██████▍   | 11/17 [00:04<00:02,  2.46it/s]Rendering histograms:  76%|███████▋  | 13/17 [00:04<00:01,  2.81it/s]Rendering histograms:  82%|████████▏ | 14/17 [00:05<00:01,  2.50it/s]Rendering histograms:  94%|█████████▍| 16/17 [00:06<00:00,  2.69it/s]Rendering histograms: 100%|██████████| 17/17 [00:06<00:00,  2.21it/s]Rendering histograms: 100%|██████████| 17/17 [00:06<00:00,  2.46it/s]
-[33m(raylet)[0m [2026-08-19 02:08:08,381 E 496914 496939] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-08-19_01-57-44_802259_496361 is over 95% full, available space: 57.2455 GB; capacity: 1756.86 GB. Object creation will fail if spilling is required.
-2026-08-19 02:08:02,570 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-19 02:08:02,571 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-19 02:08:02,577 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-19 02:08:02,578 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-19 02:08:02,583 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-19 02:08:02,584 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-19 02:08:02,589 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-19 02:08:02,591 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-19 02:08:04,698 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-19 02:08:04,700 INFO {/usr/local/miniconda/envs/diffusion_planner/lib/python3.9/site-packages/matplotlib/category.py:223}  Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-2026-08-19 02:08:14,270 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit/nuplan/planning/simulation/main_callback/metric_summary_callback.py:344}  Metric summary: 00:00:14 [HH:MM:SS]
-2026-08-19 02:08:14,270 INFO {/home/syx/ModelZoo-PyTorch/ACL_PyTorch/built-in/embodied_ai/Diffussion_Planner/nuplan-devkit//nuplan/planning/script/run_simulation.py:80}  Finished running simulation!
-[36m(wrapped_fn pid=497011)[0m [dp-stage] adapt=  858.0 norm=   7.5 fwd=  250.1 post=   9.4 total= 1125.0 ms[32m [repeated 2x across cluster][0m

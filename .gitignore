@@ -3,3 +3,4 @@
 *.egg-info/
 __pycache__/
 fusion_result.json
+syx_docs/
