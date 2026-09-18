@@ -21,11 +21,11 @@ _JIT_WINDOW = os.environ.get("DP_JIT_WINDOW", "0") == "1"
 # Captured before normalization since encoder.om v3 (R8): the graph eats raw
 # adapt output, so replays/export parity must start from raw too.
 _CAPTURE_DIR = os.environ.get("DP_CAPTURE_DIR")
-# DP_OM=1/loop: encoder.om v3 bakes observation normalization (constants) and
+# DP_OM=loop: encoder.om v3 bakes observation normalization (constants) and
 # the pos extraction into the graph and feeds on raw adapt output -- skip the
 # eager ObservationNormalizer pass entirely (its per-key mask/zeroing chain
 # was a launch-postage victim on RC)
-_OM = os.environ.get("DP_OM", "0") in ("1", "loop")
+_OM = os.environ.get("DP_OM", "0") == "loop"
 
 from nuplan.common.actor_state.ego_state import EgoState
 from nuplan.common.utils.interpolatable_state import InterpolatableState

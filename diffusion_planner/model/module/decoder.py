@@ -20,16 +20,15 @@ from diffusion_planner.model.module.dit import TimestepEmbedder, DiTBlock, Final
 # 2026-08-20). Default on since the 50-scenario full run matched the
 # pre-optimization baseline (0.9170, 2026-08-21); set 0 for the upstream path.
 _FASTDPM = os.environ.get("DP_FASTDPM", "1") == "1"
-# DP_OM: DiTBody as a pre-compiled om (export_om.py, ONNX -> ATC) run through
-# aclruntime instead of the torchair runtime. Same motivation / precedence as
-# the encoder-side switch (RC risk removal). Two modes:
-#   DP_OM=1    per-step dit_body.om, the fast-DPM loop stays in eager torch
-#              on CPU (11 aclruntime round trips per planning step)
-#   DP_OM=loop the whole 10-step loop baked into dit_loop.om (coefficients
-#              are schedule constants, the loop unrolls into one graph) --
-#              one round trip per planning step
-_OM = os.environ.get("DP_OM", "0") in ("1", "loop")
-_OM_LOOP = os.environ.get("DP_OM", "0") == "loop"
+# DP_OM=loop: DiTBody as a pre-compiled om (export_om.py, ONNX -> ATC) run
+# through aclruntime instead of the torchair runtime. Same motivation /
+# precedence as the encoder-side switch (RC risk removal). The whole 10-step
+# solver loop is baked into dit_loop.om (coefficients are schedule constants,
+# the loop unrolls into one graph) -- one aclruntime round trip per planning
+# step. The historical per-step variant (DP_OM=1, 11 round trips, used to
+# localize "which step drifts first" during R7 bring-up) was removed; recover
+# it from git history if that diagnosis is ever needed again.
+_OM = os.environ.get("DP_OM", "0") == "loop"
 
 
 class DiTBody(nn.Module):
@@ -167,7 +166,7 @@ class Decoder(nn.Module):
         # key set that no checkpoint provides. The adapter's dit aliases
         # self.dit (same Parameter objects), so loaded weights are shared.
         self._sampler_holder = [SamplerAdapter(self.dit)]
-        # OM variant of the DiT body (DP_OM=1); same lazy/list discipline
+        # OM variant of the DiT body (DP_OM=loop); same lazy/list discipline
         self._om_dit_holder = [None]
 
     def __getstate__(self):
@@ -182,16 +181,17 @@ class Decoder(nn.Module):
         if self._om_dit_holder[0] is None:
             from om_runtime import OmBody  # outer sample dir, deferred import
 
-            name = "dit_loop" if _OM_LOOP else "dit_body"
-            self._om_dit_holder[0] = OmBody(name, (1, p, out_dim))
+            self._om_dit_holder[0] = OmBody("dit_loop", (1, p, out_dim))
         return self._om_dit_holder[0]
 
     def _om_sample(self, encoder_outputs, inputs, neighbor_current_mask, b, p):
-        """OM orchestration for the inference branch: everything except the
-        two big bodies runs in eager torch on CPU (the loop ops are tiny
-        [1,P,324] tensors, host-side is free), each DPM step is one
-        dit_body.om call. RouteEncoder runs once per planning step, eager on
-        CPU, exactly the begin_step hoist of the torchair path.
+        """OM orchestration for the inference branch: the whole 10-step solver
+        (linear combinations, first-frame constraint, body calls) lives inside
+        dit_loop.om -- one aclruntime round trip per planning step. Host side
+        only assembles the flat inputs: encoding/route_encoding/current_states
+        come straight from encoder.om v3 outputs, the attention mask is built
+        as the float additive form the graph expects, and xT is seeded on CPU
+        (naturally RC-safe, no is_rc_device split needed).
         """
         ego_neighbor_encoding = encoder_outputs['encoding'].cpu()
         # route encoding rides the encoder.om call (static RouteEncoder baked
@@ -205,30 +205,15 @@ class Decoder(nn.Module):
         attn_bool[:, 1:] = neighbor_current_mask.cpu()
         attn_mask = torch.zeros(attn_bool.shape, dtype=torch.float32).masked_fill(attn_bool, float("-inf"))
 
-        # xT on CPU (same construction as the eager branch, unseeded like it;
-        # OM branch is naturally RC-safe, no is_rc_device split needed)
+        # xT on CPU (same construction as the eager branch, unseeded like it)
         noise = torch.randn(b, p, self._future_len, 4, dtype=torch.float32) * 0.5
         # norm-ed ego + last-frame neighbors out of encoder.om (v3); the
         # forward-arg current_states is raw on this path and unused here
         cs = encoder_outputs['current_states'].cpu()
         x = torch.cat([cs[:, :, None], noise], dim=2).reshape(b, p, -1)
 
-        def initial_state_constraint(xt, t, step):
-            xt = xt.reshape(b, p, -1, 4)
-            xt[:, :, 0, :] = cs
-            return xt.reshape(b, p, -1)
-
         om = self._get_om_dit(p, x.shape[-1])
-        if _OM_LOOP:
-            # whole 10-step solver unrolled inside dit_loop.om (constraint
-            # included): one aclruntime round trip per planning step
-            x0 = om(x, cs, ego_neighbor_encoding, route_encoding, attn_mask)
-        else:
-            x0 = fast_dpm_sampler.fast_dpm_sample(
-                lambda xt, t: om(xt, t, ego_neighbor_encoding, route_encoding, attn_mask),
-                x,
-                correcting_xt_fn=initial_state_constraint,
-            )
+        x0 = om(x, cs, ego_neighbor_encoding, route_encoding, attn_mask)
         x0 = self._state_normalizer.inverse(x0.reshape(b, p, -1, 4))[:, :, 1:]
         return {"prediction": x0}
         
