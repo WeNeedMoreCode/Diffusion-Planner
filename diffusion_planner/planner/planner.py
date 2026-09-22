@@ -9,16 +9,6 @@ from typing import Deque, Dict, List, Type
 warnings.filterwarnings("ignore")
 torch.npu.set_compile_mode(jit_compile=False)  # use precompiled op kernels; stable for inference
 
-# Perf breakdown switches (default off = behavior identical to production path).
-# DP_CAPTURE_DIR=<dir>: save the RAW forward inputs (flat dict of CPU
-# tensors) of the first step per process, for offline forward-only replay.
-# Captured before normalization since encoder.om v3 (R8): the graph eats raw
-# adapt output, so replays/export parity must start from raw too.
-_CAPTURE_DIR = os.environ.get("DP_CAPTURE_DIR")
-# DP_OM=loop: encoder.om v3 bakes observation normalization (constants) and
-# the pos extraction into the graph and feeds on raw adapt output -- skip the
-# eager ObservationNormalizer pass entirely (its per-key mask/zeroing chain
-# was a launch-postage victim on RC)
 _OM = os.environ.get("DP_OM", "0") == "loop"
 
 from nuplan.common.actor_state.ego_state import EgoState
@@ -117,11 +107,6 @@ class DiffusionPlanner(AbstractPlanner):
     def planner_input_to_model_inputs(self, planner_input: PlannerInput) -> Dict[str, torch.Tensor]:
         history = planner_input.history
         traffic_light_data = list(planner_input.traffic_light_data)
-        # DP_OM: everything compute-side lives inside the graphs (aclruntime
-        # exchanges host buffers), so adapt output stays on the host --
-        # staging it on the card only to copy it back per OmBody call is
-        # pure H2D+D2H overhead, and the decoder's mask ops also get cheaper
-        # as host-side launches (R9)
         device = "cpu" if _OM else self._device
         model_inputs = self.data_processor.observation_adapter(history, traffic_light_data, self._map_api, self._route_roadblock_ids, device)
 
@@ -143,13 +128,6 @@ class DiffusionPlanner(AbstractPlanner):
         """
         inputs = self.planner_input_to_model_inputs(current_input)
 
-        if _CAPTURE_DIR is not None and not getattr(self, "_captured", False):
-            torch.save(
-                {k: v.cpu() for k, v in inputs.items()},
-                f"{_CAPTURE_DIR}/inputs_pid{os.getpid()}.pt",
-            )
-            self._captured = True
-
         if not _OM:
             # OM path: normalization (and pos) live inside encoder.om
             inputs = self.observation_normalizer(inputs)
@@ -161,5 +139,4 @@ class DiffusionPlanner(AbstractPlanner):
         )
 
         return trajectory
-        # sync-bump: trivial comment to force a new file version for syncthing
     
