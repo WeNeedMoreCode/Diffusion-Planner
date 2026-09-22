@@ -9,7 +9,6 @@ Categories:
 
 from typing import List, Dict, Tuple, Set
 import numpy as np
-from shapely import LineString
 
 from nuplan.common.actor_state.state_representation import Point2D
 from nuplan.common.maps.abstract_map import AbstractMap
@@ -183,39 +182,14 @@ def get_neighbor_vector_set_map(
 # =====================
 # 2. Get maps array for model input
 # =====================
-def _interpolate_points(line, num_point):
-    # Resample a polyline to num_point points equidistant in arc length (endpoints
-    # included). Vectorized numpy arc-length parameterization replaces per-point
-    # shapely interpolate() calls, which dominated map_process runtime.
-    pts = np.asarray(line, dtype=np.float64)
-    if pts.shape[0] < 2:
-        # Degenerate input (old shapely code would raise); return repeated point.
-        return np.repeat(pts[-1:], num_point, axis=0)
-
-    seg = pts[1:] - pts[:-1]
-    seg_len = np.linalg.norm(seg, axis=-1)
-    cum = np.concatenate([[0.0], np.cumsum(seg_len)])
-    total = cum[-1]
-    if total <= 0.0:
-        # All points coincide: zero-length line.
-        return np.repeat(pts[:1], num_point, axis=0)
-
-    s = np.linspace(0.0, total, num_point)
-    idx = np.clip(np.searchsorted(cum, s, side="right") - 1, 0, seg_len.shape[0] - 1)
-    denom = seg_len[idx]
-    safe_denom = np.where(denom > 0.0, denom, 1.0)
-    t = np.where(denom > 0.0, (s - cum[idx]) / safe_denom, 0.0)
-    return pts[idx] + t[:, None] * seg[idx]
-
-
 def _interpolate_points_batch(lines, num_point):
-    """Batch version of _interpolate_points: resample every ragged polyline to
-    the same fixed point count. Equivalent to calling _interpolate_points once
-    per line, but flattens all lines into one array and shifts each line's
-    cumulative arclength by line_index * span (span > any line length) so the
-    merged array stays non-decreasing and one searchsorted serves all lines.
-    Replaces the per-element loop in _convert_lane_to_fixed_size, where
-    hundreds of small-array numpy call chains dominated the mapproc stage."""
+    """Resample every ragged polyline to the same fixed point count,
+    equidistant in arc length (endpoints included). Flattens all lines into
+    one array and shifts each line's cumulative arclength by line_index * span
+    (span > any line length) so the merged array stays non-decreasing and one
+    searchsorted serves all lines. Replaces the per-element shapely
+    interpolate() loop that dominated the mapproc stage. (A single-line
+    bring-up variant was removed with the shapely import; see git history.)"""
     n_lines = len(lines)
     out = np.zeros((n_lines, num_point, 2), dtype=np.float64)
     if n_lines == 0:
@@ -223,8 +197,7 @@ def _interpolate_points_batch(lines, num_point):
 
     arrays = [np.asarray(line, dtype=np.float64) for line in lines]
 
-    # Degenerate lines (< 2 points): repeat the single point, matching
-    # _interpolate_points.
+    # Degenerate lines (< 2 points): repeat the single point.
     batch_idx = []
     for i, arr in enumerate(arrays):
         if arr.shape[0] < 2:
