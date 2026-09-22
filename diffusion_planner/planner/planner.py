@@ -10,12 +10,6 @@ warnings.filterwarnings("ignore")
 torch.npu.set_compile_mode(jit_compile=False)  # use precompiled op kernels; stable for inference
 
 # Perf breakdown switches (default off = behavior identical to production path).
-# The jit window below is proven ineffective for the EZ1001 case (see
-# syx_docs/decisions/003: the float mask already disables the fast path), AND
-# measured harmful: replay A/B (2026-08-19) shows jit_compile=True during forward
-# costs ~50ms/step (245 vs 197ms) on 310P. Default off; DP_JIT_WINDOW=1 restores
-# the old baseline behavior.
-_JIT_WINDOW = os.environ.get("DP_JIT_WINDOW", "0") == "1"
 # DP_CAPTURE_DIR=<dir>: save the RAW forward inputs (flat dict of CPU
 # tensors) of the first step per process, for offline forward-only replay.
 # Captured before normalization since encoder.om v3 (R8): the graph eats raw
@@ -160,14 +154,7 @@ class DiffusionPlanner(AbstractPlanner):
             # OM path: normalization (and pos) live inside encoder.om
             inputs = self.observation_normalizer(inputs)
 
-        # jit window: 310P precompiled set lacks aclnnTransformBiasRescaleQkv (MHA fused path,
-        # EZ1001). Proven ineffective (the float mask already avoids that op, see
-        # syx_docs/decisions/003) but kept for baseline comparability; DP_JIT_WINDOW=0 skips it.
-        if _JIT_WINDOW:
-            torch.npu.set_compile_mode(jit_compile=True)
         _, outputs = self._planner(inputs)
-        if _JIT_WINDOW:
-            torch.npu.set_compile_mode(jit_compile=False)
 
         trajectory = InterpolatedTrajectory(
             trajectory=self.outputs_to_trajectory(outputs, current_input.history.ego_states)
