@@ -7,8 +7,6 @@ class StateNormalizer:
     def __init__(self, mean, std):
         self.mean = torch.as_tensor(mean)
         self.std = torch.as_tensor(std)
-        # stats moved to device once and cached: .to(device) per call is a
-        # small H2D copy each way, pure overhead in the hot loop
         self._device_cache = {}
 
     @classmethod
@@ -43,8 +41,6 @@ class StateNormalizer:
 class ObservationNormalizer:
     def __init__(self, normalization_dict):
         self._normalization_dict = normalization_dict
-        # per-device cache of moved stats (see StateNormalizer): the dict holds
-        # CPU tensors, .to(device) per key per call is a small H2D copy
         self._device_cache = {}
 
     @classmethod

@@ -16,14 +16,7 @@ def normalize_angle(angle: np.ndarray):
     return (angle + np.pi) % (2 * np.pi) - np.pi
 
 
-# --- map-invariant caches (inference adapter only, R9) ---
-# The candidate-error loop below re-converted every candidate lane's python
-# StateSE2 list into numpy arrays on every planning step; the lane geometry
-# is a map invariant, so the conversion is cached once per lane. The route
-# block lookup likewise rebuilds the same dict for the same mission route
-# ids every step. Both are exact (no quantization). A single map slot: if
-# the process ever switches maps, the caches are dropped wholesale so ids
-# from different maps can never collide.
+# map-invariant caches (inference adapter only)
 _LANE_GEOM_CACHE: Dict[str, Tuple[np.ndarray, np.ndarray]] = {}
 _ROUTE_BLOCK_CACHE: Dict[tuple, Dict[str, RoadBlockGraphEdgeMapObject]] = {}
 _CACHE_MAP_NAME = [None]

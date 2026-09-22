@@ -1,27 +1,4 @@
-"""Precomputed-coefficient DPM-Solver++ sampler for the fixed inference config.
-
-The generic dpm_solver_pytorch path recomputes noise-schedule scalars on the
-NPU at every step: marginal_lambda / marginal_std / expm1 chains around each
-solver update plus a noise_pred -> data_pred wrapper around every model call.
-On the 310P each of those is a host-launched small-tensor op (~30 per NFE,
-~550 over the 11 NFEs of a 10-step sample), which py-spy measured at ~8% of
-the whole planning step. Every one of those scalars depends only on the noise
-schedule constants and the step index -- never on the input data -- so they
-are precomputed once per process on CPU (via the upstream NoiseScheduleVP
-class, so the formulas are literally the upstream ones) and the runtime loop
-reduces to one linear combination per step.
-
-For model_type == "x_start" with algorithm_type == "dpmsolver++" the wrapper
-math cancels exactly: model_fn returns
-    (x - sigma_t * (x - alpha_t * body_out) / sigma_t) / alpha_t == body_out,
-so the fast path feeds the body output directly into the solver update, and
-the final denoise_to_zero step is simply the body output itself.
-
-Only this project's exact sampling config is supported (multistep, order=2,
-skip_type='logSNR', linear schedule, denoise_to_zero=True, uncond guidance).
-Anything else must keep using the upstream sampler. Equivalence is checked by
-fixed-seed replay (test_fast_dpm_equiv.py).
-"""
+"""Precomputed-coefficient DPM-Solver++ sampler for the fixed inference config."""
 
 from collections import namedtuple
 from typing import Callable, Optional

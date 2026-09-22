@@ -7,31 +7,13 @@ from timm.layers import DropPath
 
 from diffusion_planner.model.module.mixer import MixerBlock
 
-# DP_TORCHAIR: encoder runs as the static-shape StaticEncoderBody, compiled
-# into a torchair GE graph (same switch and lazy-build pattern as the DiT
-# sampler body in decoder.py). Default on since the 50-scenario full run
-# matched the pre-optimization baseline (0.9170, 2026-08-21); set 0 to fall
-# back to the upstream eager forward.
+
 _TORCHAIR = os.environ.get("DP_TORCHAIR", "1") == "1"
-# DP_OM: same StaticEncoderBody graph, but pre-compiled offline to encoder.om
-# via export_om.py (ONNX -> ATC) and run through aclruntime instead of the
-# torchair runtime. Motivation is RC boards (ATC locks operator selection at
-# compile time), not speed; takes precedence over DP_TORCHAIR. The only value
-# is "loop" (the whole-solver dit_loop.om on the decoder side; the encoder
-# side is the same graph either way). Requires encoder.om under
-# DP_OM_DIR (default $DP_DATA/om).
 _OM = os.environ.get("DP_OM", "0") == "loop"
 
 
 def _agent_pos(x):
-    """Neighbor token positions: [x, y, cos, sin, 1, 0, 0].
-
-    Functional cat form. The original clone+slice-write (`pos[..., -3] = 1`)
-    traces into write-back style ONNX nodes that ATC on 310P3 silently
-    miscompiles (the one-hot 1 came back 0, 2026-09-03 pos.onnx probe:
-    ort exact, om wrong) -- plain Concat carries no such risk and is
-    value-identical on every path (eager/torchair/OM).
-    """
+    """Neighbor token positions: [x, y, cos, sin, 1, 0, 0]."""
     core = x[..., :8][:, :, -1, :4]  # x, y, cos, sin
     typ = torch.tensor([1.0, 0.0, 0.0], device=x.device).expand(*core.shape[:-1], 3)
     return torch.cat([core, typ], dim=-1)
@@ -45,14 +27,7 @@ def _static_pos(x):
 
 
 def _lane_pos(x, lane_len):
-    """Lane token positions: [x, y, cos(h), sin(h), 0, 0, 1].
-
-    Functional cat form (see _agent_pos for the ATC slice-write pitfall).
-    Contains atan2/cos/sin for the heading rewrite; torchair's GE backend has
-    no aten.atan2 converter, so on the torchair path this stays outside the
-    compiled unit and runs eagerly. Through ONNX/ATC it rides the standard
-    atan2 decomposition (v3 encoder graph).
-    """
+    """Lane token positions: [x, y, cos(h), sin(h), 0, 0, 1]."""
     x = x[..., :8]
     mid = x[:, :, int(lane_len / 2), :4]  # x, y, x'-x, y'-y
     heading = torch.atan2(mid[..., 3], mid[..., 2])
@@ -62,34 +37,7 @@ def _lane_pos(x, lane_len):
 
 
 class StaticEncoderBody(nn.Module):
-    """Static-shape, graph-friendly rewrite of Encoder.forward.
-
-    The upstream forward scatters rows through boolean masks (x[valid_indices]
-    and x_result[valid_indices] = x), which the torchair GE backend rejects
-    (dynamic shapes, same blocker as RouteEncoder in decoder.py). Here every
-    row is computed and invalid rows are zeroed at the output instead of being
-    skipped:
-
-      - the three fusion encoders are row-independent (LayerNorm and Mlp act
-        per row, MixerBlock mixes tokens within a row), so valid rows go
-        through the identical op sequence as upstream -> bit-exact;
-      - invalid rows carry all-zero inputs, produce finite garbage through the
-        MLPs (GELU(bias) is finite, LayerNorm's eps guards the zero-variance
-        case), and are multiplied by 0 at the end -- reproducing the upstream
-        zero-initialized scatter;
-      - the exact-zero output matters: DiT's cross-attention has no context
-        mask, so invalid context tokens participate in softmax as zero
-        vectors. That is the trained semantics, not something to optimize
-        away.
-
-    Three more upstream behaviors are translated for graph friendliness, all
-    semantically identical: the pos extraction runs outside the compiled unit
-    (atan2 has no GE converter), the lane speed-limit masked-fill branches
-    become a torch.where (both sides computed, selected per element), and the
-    fusion blocks' bool key_padding_mask becomes the float additive mask with
-    the ego row un-masked out-of-place (upstream does mask[:, 0] = False in
-    place; see decisions/003 for the float-mask rationale).
-    """
+    """Static-shape, graph-friendly rewrite of Encoder.forward."""
 
     def __init__(self, encoder):
         super().__init__()
@@ -156,9 +104,6 @@ class StaticEncoderBody(nn.Module):
 
         x = torch.mean(x, dim=1)
 
-        # static where instead of the upstream masked-fill branches; the
-        # invalid-lane rows compute garbage on both sides and are zeroed by
-        # `valid` below, matching the upstream zero scatter
         sl = speed_limit.view(B * P, 1)
         has = has_speed_limit.view(B * P, 1)
         speed_limit_embedding = torch.where(
@@ -187,12 +132,9 @@ class StaticEncoderBody(nn.Module):
             torch.cat([neighbor_pos, static_pos, lane_pos], dim=1).view(B * enc.token_num, -1)
         )
         encoding_mask = torch.cat([neighbors_mask, static_mask, lanes_mask], dim=1)  # [B, token_num]
-        # upstream zeroes invalid rows via a zero-initialized scatter; multiplying
-        # by the valid indicator is exact for finite garbage
         valid_flat = (~encoding_mask).to(encoding_pos.dtype).view(B * enc.token_num, 1)
         encoding_input = encoding_input + (encoding_pos * valid_flat).view(B, enc.token_num, -1)
 
-        # ego token always attends (upstream mask[:, 0] = False), out-of-place
         mask_no_ego = torch.cat([torch.zeros_like(encoding_mask[:, :1]), encoding_mask[:, 1:]], dim=1)
         mask_f = torch.zeros(mask_no_ego.shape, dtype=encoding_input.dtype, device=encoding_input.device).masked_fill(mask_no_ego, float("-inf"))
 
@@ -205,7 +147,6 @@ class Encoder(nn.Module):
 
         self.hidden_dim = config.hidden_dim
 
-        # decoder-side agent count for the encoder.om v3 current_states output
         self._predicted_neighbor_num = config.predicted_neighbor_num
 
         self.token_num = config.agent_num + config.static_objects_num + config.lane_num
@@ -225,18 +166,10 @@ class Encoder(nn.Module):
         # position embedding encode x, y, cos, sin, type
         self.pos_emb = nn.Linear(7, config.hidden_dim)
 
-        # static graph-friendly view, built lazily on first use (weights must
-        # be loaded first); held in a list so nn.Module.__setattr__ does not
-        # register it into state_dict (same pattern as Decoder._sampler_holder)
         self._static_holder = [None]
-        # OM variant of the same body (DP_OM=loop), same lazy/list pattern
         self._om_holder = [None]
 
     def __getstate__(self):
-        # Same rationale as SamplerAdapter.__getstate__: the torchair compiled
-        # body is unpicklable runtime state, the simulation-log pickle must
-        # not traverse it. Rebuilt lazily by _get_static_body() after load.
-        # The OM holder carries an aclruntime session, same treatment.
         state = self.__dict__.copy()
         state["_static_holder"] = [None]
         state["_om_holder"] = [None]
@@ -246,10 +179,6 @@ class Encoder(nn.Module):
         if self._om_holder[0] is None:
             from om_runtime import OmBody  # outer sample dir, deferred import
 
-            # closed loop is B=1; the exported graph is static B=1 as well.
-            # v3 outputs: encoding, route_encoding, current_states (norm-ed
-            # ego + last-frame neighbors, what the decoder's sampler anchors
-            # on -- saves the decoder a host-side norm of its own)
             self._om_holder[0] = OmBody(
                 "encoder", [(1, self.token_num, self.hidden_dim),
                             (1, self.hidden_dim),
@@ -263,8 +192,7 @@ class Encoder(nn.Module):
                 import torchair  # top-level import would break CUDA-only environments
 
                 config = torchair.CompilerConfig()
-                # persist compiled graph, same rationale and stale-cache
-                # caveat as decoder.py (cache key has no source hash)
+                # persist compiled graph
                 self._static_holder[0] = torchair.inference.cache_compile(
                     body.forward,
                     config=config,
@@ -278,12 +206,6 @@ class Encoder(nn.Module):
     def forward(self, inputs):
 
         if _OM:
-            # encoder.om v3 (R8): the graph eats RAW adapt output -- the
-            # observation normalization (json constants baked in), the pos
-            # extraction (atan2 rides its ONNX decomposition; ATC has the
-            # kernels, unlike the torchair GE converter) and the static
-            # RouteEncoder all run inside. Three outputs; the eager
-            # norm/pos/route launch trains are gone, one submission total
             body = self._get_om_body()
             encoding, route_encoding, current_states = body(
                 inputs['neighbor_agents_past'],
@@ -299,8 +221,6 @@ class Encoder(nn.Module):
 
         if _TORCHAIR:
             body = self._get_static_body()
-            # pos extraction stays eager: lane heading needs atan2, which has
-            # no torchair GE converter (see _lane_pos)
             encoding = body(
                 inputs['neighbor_agents_past'],
                 inputs['static_objects'],

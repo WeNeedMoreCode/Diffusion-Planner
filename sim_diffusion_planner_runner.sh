@@ -1,8 +1,3 @@
-# Pick a free card with `npu-smi info` first (occupancy is dynamic on shared
-# servers); DP_DEVICE overrides the default card 0 for multi-card machines.
-# DP_WORKER=sequential runs single-process without Ray (troubleshooting mode;
-# DP_THREADS is ignored there). DP_DEVICE / DP_LIMIT / DP_THREADS override
-# for benchmark runs.
 export ASCEND_RT_VISIBLE_DEVICES=${DP_DEVICE:-0}
 export HYDRA_FULL_ERROR=1
 # Ray blanks accelerator-visibility env vars (ASCEND_RT_VISIBLE_DEVICES -> "") in workers
@@ -29,10 +24,6 @@ export DP_TORCHAIR_CACHE=${DP_TORCHAIR_CACHE:-"$DP_DATA/torchair_cache"}
 
 # Set environment variables
 export NUPLAN_DEVKIT_ROOT="$DP_DEVKIT/"  # nuplan-devkit absolute path
-# Official mini archives extract straight to <dir>/mini/ (no nuplan-v1.1/splits
-# prefix), so the runner overrides scenario_builder.data_root to point at
-# cache/mini directly instead of relying on NUPLAN_DATA_ROOT + the hardcoded
-# suffix in nuplan_mini.yaml (see DB_ROOT_OVERRIDE below).
 export NUPLAN_DATA_ROOT="$DP_DATA/datasets/data/cache/"  # nuplan dataset absolute path
 export NUPLAN_MAPS_ROOT="$DP_DATA/datasets/maps/" # nuplan maps absolute path
 export NUPLAN_EXP_ROOT="$DP_DATA/exp" # nuplan experiment absolute path
@@ -57,9 +48,7 @@ BRANCH_NAME=diffusion_planner_release
 ARGS_FILE="$DP_DATA/checkpoints/args.json"
 CKPT_FILE="$DP_DATA/checkpoints/model.pth"
 
-# val14 uses the full nuplan builder; everything else (mini db / one_continuous_log) uses nuplan_mini
-# threads_per_node exists only in the ray_distributed worker config; sequential
-# rejects the override (hydra struct mode)
+
 THREADS_OVERRIDE="worker.threads_per_node=${DP_THREADS:-4}"
 if [ "${DP_WORKER:-ray_distributed}" == "sequential" ]; then
     THREADS_OVERRIDE=""
@@ -78,14 +67,6 @@ FILENAME_WITHOUT_EXTENSION="${FILENAME%.*}"
 
 PLANNER=diffusion_planner
 
-# device is driven by config/planner/diffusion_planner.yaml (defaults to npu).
-# NPU (Path C) notes vs the CUDA runner:
-#   - ASCEND_RT_VISIBLE_DEVICES replaces CUDA_VISIBLE_DEVICES.
-#   - number_of_gpus_allocated_per_simulation=0: nuPlan's initialize_ray() hardcodes the GPU count
-#     from torch.cuda.device_count() (=0 on NPU) and the local ray.init() never passes num_gpus,
-#     so Ray advertises 0 GPUs. A non-zero value here would leave sim tasks unscheduled (silent hang).
-#   - Concurrency is instead capped by worker.threads_per_node (Ray CPU scheduling). Raise cautiously
-#     to avoid piling too many sims onto one NPU (OOM).
 python $NUPLAN_DEVKIT_ROOT/nuplan/planning/script/run_simulation.py \
     +simulation=$CHALLENGE \
     planner=$PLANNER \

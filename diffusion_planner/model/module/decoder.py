@@ -15,19 +15,10 @@ from diffusion_planner.utils.normalizer import ObservationNormalizer, StateNorma
 from diffusion_planner.model.module.mixer import MixerBlock
 from diffusion_planner.model.module.dit import TimestepEmbedder, DiTBlock, FinalLayer
 
-# DP_FASTDPM: precomputed-coefficient 10-step solver instead of the generic
-# dpm_sampler (kills the per-step NPU scalar chain, ~11ms/step measured
-# 2026-08-20). Default on since the 50-scenario full run matched the
-# pre-optimization baseline (0.9170, 2026-08-21); set 0 for the upstream path.
+# DP_FASTDPM: precomputed-coefficient 10-step solver instead of the generic dpm_sampler.
 _FASTDPM = os.environ.get("DP_FASTDPM", "1") == "1"
-# DP_OM=loop: DiTBody as a pre-compiled om (export_om.py, ONNX -> ATC) run
-# through aclruntime instead of the torchair runtime. Same motivation /
-# precedence as the encoder-side switch (RC risk removal). The whole 10-step
-# solver loop is baked into dit_loop.om (coefficients are schedule constants,
-# the loop unrolls into one graph) -- one aclruntime round trip per planning
-# step. The historical per-step variant (DP_OM=1, 11 round trips, used to
-# localize "which step drifts first" during R7 bring-up) was removed; recover
-# it from git history if that diagnosis is ever needed again.
+# DP_OM=loop: the whole 10-step solver loop baked into dit_loop.om
+# (export_om.py, ONNX -> ATC), one aclruntime call per planning step.
 _OM = os.environ.get("DP_OM", "0") == "loop"
 
 
@@ -61,19 +52,7 @@ class DiTBody(nn.Module):
 
 
 class SamplerAdapter(nn.Module):
-    """DiT wrapper handed to dpm_sampler / fast_dpm_sampler.
-
-    Two wins over calling self.dit directly in the sampling loop:
-    1. RouteEncoder runs once per planning step (begin_step) instead of being
-       recomputed at every DPM step (~3.5ms x 10 steps measured 2026-08-19);
-       the attention mask is prebuilt there too (neighbor_current_mask is a
-       loop invariant, the DiT.forward path rebuilt it at every DPM step).
-    2. DP_TORCHAIR=1 compiles the static-shape DiTBody into a torchair GE graph
-       (~15.8x on the body, one-time ~31s compile on first step, cached).
-    Call signature matches dpm_solver's model_kwargs: (x, t, cross_c,
-    route_lanes, neighbor_current_mask); route_lanes and
-    neighbor_current_mask are ignored after begin_step captured them.
-    """
+    """DiT wrapper handed to dpm_sampler / fast_dpm_sampler."""
 
     def __init__(self, dit):
         super().__init__()
@@ -95,9 +74,7 @@ class SamplerAdapter(nn.Module):
         return self.dit.model_type
 
     def __getstate__(self):
-        # The simulation-log callback pickles the whole planner; the torchair
-        # compiled body (LazyCompiledModel) cannot be pickled and is runtime
-        # state anyway -- drop it, _get_body() rebuilds lazily after load.
+        # For pickles the simulation-log callbacked.
         state = self.__dict__.copy()
         state["_body"] = None
         return state
@@ -110,13 +87,10 @@ class SamplerAdapter(nn.Module):
                 import torchair  # top-level import would break CUDA-only environments
 
                 config = torchair.CompilerConfig()
-                # torchair.inference.cache_compile persists the compiled graph:
-                # every Ray worker recompiles ~31s without it; with it the
-                # first worker builds the cache and the rest load from disk
-                # (same graph, no numerical effect). CAVEAT: the cache key is
-                # str(module) + config options -- NOT the forward source -- so
-                # after editing this file delete DP_TORCHAIR_CACHE or point it
-                # at a fresh directory, or a stale graph gets loaded.
+                # torchair.inference.cache_compile persists the compiled graph.
+                # CAVEAT: the cache key is str(module) + config options -- NOT the forward source
+                # -- so after editing this file OR any code the body calls (dit.py),
+                # delete DP_TORCHAIR_CACHE or point it at a fresh directory, or a stale graph gets loaded.
                 self._body = torchair.inference.cache_compile(
                     body.forward,
                     config=config,
@@ -158,21 +132,12 @@ class Decoder(nn.Module):
 
         self._guidance_fn = config.guidance_fn
 
-        # dpm_sampler-facing DiT wrapper: hoists RouteEncoder out of the sampling
-        # loop and (DP_TORCHAIR=1) runs the body as a torchair graph. Cached on
-        # the module so the one-time graph compile happens once per process.
-        # Held in a list on purpose: nn.Module.__setattr__ would register a bare
-        # module attribute into state_dict, adding a duplicate "_sampler.dit.*"
-        # key set that no checkpoint provides. The adapter's dit aliases
-        # self.dit (same Parameter objects), so loaded weights are shared.
         self._sampler_holder = [SamplerAdapter(self.dit)]
         # OM variant of the DiT body (DP_OM=loop); same lazy/list discipline
         self._om_dit_holder = [None]
 
     def __getstate__(self):
-        # Simulation-log pickle safety (same rationale as
-        # SamplerAdapter/Encoder): the aclruntime session inside OmBody is
-        # process-bound runtime state and must not be serialized.
+        # Simulation-log pickle safety.
         state = self.__dict__.copy()
         state["_om_dit_holder"] = [None]
         return state
@@ -185,30 +150,15 @@ class Decoder(nn.Module):
         return self._om_dit_holder[0]
 
     def _om_sample(self, encoder_outputs, inputs, neighbor_current_mask, b, p):
-        """OM orchestration for the inference branch: the whole 10-step solver
-        (linear combinations, first-frame constraint, body calls) lives inside
-        dit_loop.om -- one aclruntime round trip per planning step. Host side
-        only assembles the flat inputs: encoding/route_encoding/current_states
-        come straight from encoder.om v3 outputs, the attention mask is built
-        as the float additive form the graph expects, and xT is seeded on CPU
-        (naturally RC-safe, no is_rc_device split needed).
-        """
+        """OM orchestration for the inference branch: the whole 10-step solver."""
         ego_neighbor_encoding = encoder_outputs['encoding'].cpu()
-        # route encoding rides the encoder.om call (static RouteEncoder baked
-        # into the graph, R8 launch-cut): no separate eager pass, no extra
-        # launch train, output lands host-side with the encoding
         route_encoding = encoder_outputs['route_encoding'].cpu()
 
-        # SamplerAdapter.begin_step layout with DiTBlock's bool->float mask
-        # conversion pre-applied (the OM graph takes the additive mask)
         attn_bool = torch.zeros((b, p), dtype=torch.bool)
         attn_bool[:, 1:] = neighbor_current_mask.cpu()
         attn_mask = torch.zeros(attn_bool.shape, dtype=torch.float32).masked_fill(attn_bool, float("-inf"))
 
-        # xT on CPU (same construction as the eager branch, unseeded like it)
         noise = torch.randn(b, p, self._future_len, 4, dtype=torch.float32) * 0.5
-        # norm-ed ego + last-frame neighbors out of encoder.om (v3); the
-        # forward-arg current_states is raw on this path and unused here
         cs = encoder_outputs['current_states'].cpu()
         x = torch.cat([cs[:, :, None], noise], dim=2).reshape(b, p, -1)
 
@@ -283,15 +233,8 @@ class Decoder(nn.Module):
                 }
         else:
             if _OM:
-                # offline-OM orchestration (see _om_sample); takes precedence
-                # over the torchair/eager sampler paths below
                 return self._om_sample(encoder_outputs, inputs, neighbor_current_mask, B, P)
 
-            # [B, 1 + predicted_neighbor_num, (1 + V_future) * 4]
-            # RC boards (310P1-class) cannot execute the aicpu
-            # StatelessRandomNormalV2 kernel behind device-side randn; sample on
-            # CPU there and copy (~3.5K floats, negligible). Same standard-normal
-            # distribution, different RNG stream -- closed-loop equivalent.
             if is_rc_device():
                 noise = torch.randn(B, P, self._future_len, 4, dtype=torch.float32).to(current_states.device)
             else:
@@ -303,9 +246,6 @@ class Decoder(nn.Module):
                 xt[:, :, 0, :] = current_states
                 return xt.reshape(B, P, -1)
             
-            # route_lanes and the attention mask are loop-invariant: encode once
-            # via begin_step, then sample through the adapter (eager body by
-            # default; DP_TORCHAIR=1 for the GE graph).
             sampler = self._sampler_holder[0]
             sampler.begin_step(route_lanes, neighbor_current_mask)
             if _FASTDPM:

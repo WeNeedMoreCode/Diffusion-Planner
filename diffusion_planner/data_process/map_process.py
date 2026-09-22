@@ -31,12 +31,9 @@ from diffusion_planner.data_process.utils import vector_set_coordinates_to_local
 # =====================
 # 1. Get lanes, speed limit, traffic light and lane's roadblock ids
 # =====================
-# Per-lane polyline conversion cache. discrete_path content is a map invariant
-# (devkit caches it on the map object itself), so the [N, 2] array for a given
-# (map, lane, role) is a pure function of immutable map data. Closed-loop
-# simulation re-queries the same lanes every step; the cache removes the
-# per-point Point2D construction that dominated the mapquery stage (~17% of
-# profile samples, 2026-08-20).
+# Per-lane polyline conversion cache. discrete_path content is a map invariant.
+# Closed-loop simulation re-queries the same lanes every step; the cache removes the
+# per-point Point2D construction that dominated the mapquery stage.
 _POLYLINE_CACHE: Dict[Tuple[str, str, str], np.ndarray] = {}
 
 
@@ -189,8 +186,7 @@ def get_neighbor_vector_set_map(
 def _interpolate_points(line, num_point):
     # Resample a polyline to num_point points equidistant in arc length (endpoints
     # included). Vectorized numpy arc-length parameterization replaces per-point
-    # shapely interpolate() calls, which dominated map_process runtime (~220ms/step
-    # measured 2026-08-19, see syx_docs summary 2026-08-19).
+    # shapely interpolate() calls, which dominated map_process runtime.
     pts = np.asarray(line, dtype=np.float64)
     if pts.shape[0] < 2:
         # Degenerate input (old shapely code would raise); return repeated point.
@@ -403,10 +399,7 @@ def map_process(route_roadblock_ids, anchor_ego_state, coords, traffic_light_dat
         list_feature_coords = []
 
         # Pack coords into array list. Since _get_lane_polylines polylines hold
-        # [N, 2] float64 arrays already, consume them directly: the old devkit
-        # to_vector() round-trip (Point2D objects -> nested lists -> array)
-        # cost ~13% of step time (2026-08-20). Lane layers are the only feature
-        # layers requested here, so no Point2D-based polygon layers occur.
+        # [N, 2] float64 arrays already, consume them directly. 
         for element_coords in feature_coords.polylines:
             list_feature_coords.append(np.asarray(element_coords, dtype=np.float64))
         list_array_data[f"coords.{feature_name}"] = list_feature_coords
