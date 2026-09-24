@@ -20,6 +20,8 @@ DP_DEVKIT="$(dirname "$SCRIPT_DIR")/nuplan-devkit"
 # importable for the model code
 export PYTHONPATH="$(dirname "$SCRIPT_DIR"):$PYTHONPATH"
 DP_DATA=${DP_DATA:-"$SCRIPT_DIR"}
+# Use the offline whole-loop graph by default; DP_OM=0 falls back to torchair.
+export DP_OM="${DP_OM:-loop}"
 export DP_TORCHAIR_CACHE=${DP_TORCHAIR_CACHE:-"$DP_DATA/torchair_cache"}
 
 # Set environment variables
