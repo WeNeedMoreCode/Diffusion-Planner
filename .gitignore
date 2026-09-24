@@ -1,6 +1,12 @@
-.stfolder/
-.stignore
-*.egg-info/
+logs/*
+*/.vscode/*
+*/.git/*
+exp/*
+.vscode
 __pycache__/
-fusion_result.json
-syx_docs/
+*.egg-info/
+ckpt/
+image*
+exp/
+cache/
+checkpoints/
