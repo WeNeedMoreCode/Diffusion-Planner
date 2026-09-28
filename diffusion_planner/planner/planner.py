@@ -43,11 +43,14 @@ class DiffusionPlanner(AbstractPlanner):
             device: str = "cpu",
         ):
 
-        assert device in ["cpu", "cuda", "npu"], f"device {device} not supported"
+        if device not in ["cpu", "cuda", "npu"]:
+            raise ValueError(f"device {device} not supported")
         if device == "cuda":
-            assert torch.cuda.is_available(), "cuda is not available"
+            if not torch.cuda.is_available():
+                raise RuntimeError("cuda is not available")
         elif device == "npu":
-            assert torch.npu.is_available(), "npu is not available"
+            if not torch.npu.is_available():
+                raise RuntimeError("npu is not available")
             
         self._future_horizon = future_trajectory_sampling.time_horizon # [s] 
         self._step_interval = future_trajectory_sampling.time_horizon / future_trajectory_sampling.num_poses # [s]

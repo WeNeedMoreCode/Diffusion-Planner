@@ -32,7 +32,7 @@ def _extract_agent_array(tracked_objects, track_token_ids, object_types):
     output = np.zeros((len(agents), AgentInternalIndex.dim()), dtype=np.float64)
     max_agent_id = len(track_token_ids)
 
-    # Track tokens first (sequential int assignment, dict ops), then field values in one list -> array conversion. 
+    # Track tokens first (sequential int assignment, dict ops), then field values in one list -> array conversion.
     token_ints = []
     field_rows = []
     for agent in agents:

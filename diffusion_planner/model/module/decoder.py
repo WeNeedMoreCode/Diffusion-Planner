@@ -81,7 +81,8 @@ class SamplerAdapter(nn.Module):
 
     def _get_body(self):
         if self._body is None:
-            assert self.dit.model_type == "x_start", "SamplerAdapter assumes x_start"
+            if self.dit.model_type != "x_start":
+                raise ValueError("SamplerAdapter requires model_type=x_start")
             body = DiTBody(self.dit).eval()
             if os.environ.get("DP_TORCHAIR", "1") == "1":
                 import torchair  # top-level import would break CUDA-only environments
@@ -102,8 +103,8 @@ class SamplerAdapter(nn.Module):
         return self._body
 
     def forward(self, x, t, cross_c, route_lanes=None, neighbor_current_mask=None):
-        assert self._route_encoding is not None and self._attn_mask is not None, \
-            "begin_step() must run before sampling"
+        if self._route_encoding is None or self._attn_mask is None:
+            raise RuntimeError("begin_step() must run before sampling")
         return self._get_body()(x, t, cross_c, self._route_encoding, self._attn_mask)
 
 
@@ -251,7 +252,8 @@ class Decoder(nn.Module):
             if _FASTDPM:
                 # precomputed-coefficient 10-step multistep solver; model_fn is
                 # the body directly (x_start + dpmsolver++ wrapper cancels)
-                assert self._guidance_fn is None, "fast_dpm_sample assumes uncond guidance"
+                if self._guidance_fn is not None:
+                    raise ValueError("fast_dpm_sample requires unconditional guidance")
                 x0 = fast_dpm_sampler.fast_dpm_sample(
                     lambda x, t: sampler(x, t, ego_neighbor_encoding),
                     xT,

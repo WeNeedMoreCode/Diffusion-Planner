@@ -6,7 +6,8 @@ import pandas as pd
 
 d = sys.argv[1]
 files = glob.glob(f"{d}/**/aggregator_metric/**/*.parquet", recursive=True)
-assert files, f"no aggregator parquet under {d}"
+if not files:
+    raise FileNotFoundError(f"no aggregator parquet under {d}")
 df = pd.concat(pd.read_parquet(f) for f in files)
 key = ["scenario_type", "num_scenarios", "score", "no_ego_at_fault_collisions",
        "time_to_collision_within_bound", "ego_progress_along_expert_route",

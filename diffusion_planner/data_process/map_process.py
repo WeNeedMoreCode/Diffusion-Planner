@@ -372,7 +372,7 @@ def map_process(route_roadblock_ids, anchor_ego_state, coords, traffic_light_dat
         list_feature_coords = []
 
         # Pack coords into array list. Since _get_lane_polylines polylines hold
-        # [N, 2] float64 arrays already, consume them directly. 
+        # [N, 2] float64 arrays already, consume them directly.
         for element_coords in feature_coords.polylines:
             list_feature_coords.append(np.asarray(element_coords, dtype=np.float64))
         list_array_data[f"coords.{feature_name}"] = list_feature_coords
